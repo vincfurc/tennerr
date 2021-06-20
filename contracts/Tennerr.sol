@@ -4,6 +4,7 @@ pragma solidity ^0.6.6;
 
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import "@openzeppelin/contracts/token/ERC1155/ERC1155Holder.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -12,23 +13,67 @@ import "@openzeppelin/contracts/proxy/Initializable.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@chainlink/contracts/src/v0.6/ChainlinkClient.sol";
 
+import "@openzeppelin/contracts/utils/Counters.sol";
 
-contract Tennerr is ERC1155Holder, Ownable, ReentrancyGuard, ChainlinkClient {
+
+contract Tennerr is Ownable, ReentrancyGuard, ChainlinkClient {
   using SafeERC20 for IERC20;
   using SafeMath for uint;
+  using Counters for Counters.Counter;
+
+  // OZ counter
+  Counters.Counter private sellerIdTracker;
+
+  struct Seller {
+      uint _id;
+      string name;
+      string area;
+      string[] socialHandles;
+      uint jobsNumber;
+      uint jobsVolume;
+      uint reputationScore;
+      string reputationLevel;
+  }
+
+  mapping(address => bool) public isSellerRegistered;
+  // a mapping of sellers
+  mapping(uint256 => Seller) sellers;
+
+  event SellerRegistered(address sellerAddress, string name, string area);
+
 
   constructor() public {}
 
   /* register dev/seller */
+  function registerSeller(string memory name, string memory area, string memory socialHandle) public {
+    sellerIdTracker.increment();
+    uint sellerId = sellerIdTracker.current();
+    Seller storage seller = sellers[sellerId];
+    seller._id = sellerId;
+    seller.name = name;
+    seller.area = area;
+    seller.socialHandles = [socialHandle];
+    seller.jobsNumber = 0;
+    seller.jobsVolume = 0;
+    seller.reputationScore = 0;
+    seller.reputationLevel = "Unrated";
 
+    isSellerRegistered[msg.sender] = true;
+    emit SellerRegistered(msg.sender, name, area);
+  }
   /* open quote from seller */
+  function jobQuoteBySeller() public {
+    require(isSellerRegistered[msg.sender], 'You need to register first');
+    /* TO DO */
+  }
+
 
   /* pay seller quote */
   function paySeller(
     address seller,
     uint sellerQuoteId,
     uint amount,
-    string calldata currency,
+    string memory currency,
     uint nofdaysdeadline,
     uint revisions) public {
      /* requires seller to be registered  */
@@ -76,7 +121,9 @@ contract Tennerr is ERC1155Holder, Ownable, ReentrancyGuard, ChainlinkClient {
   /* get dev/seller portfolio link */
   /* get dev/seller rep level */
 
-
+  function getSellerRegistration(address sellerAddress) public view returns (bool){
+    return isSellerRegistered[sellerAddress];
+  }
 
   // fallback function
   receive() external payable { }
