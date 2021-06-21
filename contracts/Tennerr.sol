@@ -15,11 +15,17 @@ import "@chainlink/contracts/src/v0.6/ChainlinkClient.sol";
 
 import "@openzeppelin/contracts/utils/Counters.sol";
 
+import "./TennerrController.sol";
+import "./TennerrEscrow.sol";
 
-contract Tennerr is Ownable, ReentrancyGuard, ChainlinkClient {
+
+contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
   using SafeERC20 for IERC20;
   using SafeMath for uint;
   using Counters for Counters.Counter;
+
+  // Create a new role identifier for the admin role
+  bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
 
   // OZ counter
   Counters.Counter private sellerIdTracker;
@@ -34,18 +40,58 @@ contract Tennerr is Ownable, ReentrancyGuard, ChainlinkClient {
       uint reputationScore;
       string reputationLevel;
   }
+  /* Quote parameters
+  payment type could be something like:
+    0 - all upfront
+    1 - 50% downpayment
+    2 - superfluid
+    3 - custom etc */
+  struct Quote {
+      bytes32 jobId;
+      uint sellerId;
+      uint priceUsd;
+      uint paymentType;
+      uint nOfRevisions;
+      uint jobLength;
+  }
+
+  // tracks the amount spent on the platform
+  mapping(address => uint256) amountSpentOnPlatformUsd;
+  // authorized currency tickers on platform
+  mapping(string => bool)  _AuthorizedCurrencyTickers;
+  // mapping token name to blockchain addresses
+  mapping(string => address) private _erc20Contracts;
 
   mapping(address => bool) public isSellerRegistered;
   // a mapping of sellers
   mapping(uint256 => Seller) sellers;
 
+  mapping(address => uint) sellerIdByAddress;
+  mapping(uint => address) sellerAddressById;
+  mapping(bytes32 => Quote) quoteByQuoteId;
+
+  // address of the tennerr contract
+  address payable private _tennerrEscrowContractAddress;
+  // tennerr contract
+  TennerrEscrow public tennerrEscrow;
+  // address of the tennerr contract
+  address payable private _tennerrControllerContractAddress;
+  // tennerr contract
+  TennerrController public tennerrController;
+
+
   event SellerRegistered(address sellerAddress, string name, string area);
 
 
-  constructor() public {}
+  constructor() public {
+    _AuthorizedCurrencyTickers["USDC"] = true;
+    addSupportedCurrency("USDC", 0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174);//check address checksum
+    _setupRole(ADMIN_ROLE, msg.sender);
+  }
 
   /* register dev/seller */
   function registerSeller(string memory name, string memory area, string memory socialHandle) public {
+    require(!isSellerRegistered[msg.sender], 'User already registered');
     sellerIdTracker.increment();
     uint sellerId = sellerIdTracker.current();
     Seller storage seller = sellers[sellerId];
@@ -59,25 +105,52 @@ contract Tennerr is Ownable, ReentrancyGuard, ChainlinkClient {
     seller.reputationLevel = "Unrated";
 
     isSellerRegistered[msg.sender] = true;
+    sellerIdByAddress[msg.sender] = sellerId;
+    sellerAddressById[sellerId] = msg.sender;
     emit SellerRegistered(msg.sender, name, area);
   }
   /* open quote from seller */
-  function jobQuoteBySeller() public {
-    require(isSellerRegistered[msg.sender], 'You need to register first');
-    /* TO DO */
+  /* jobLength is how long it takes to fullfill job*/
+  function jobQuoteProposal(uint priceInUsd, uint paymentType, uint nOfRevisions,uint jobLength ) public returns (bytes32){
+    require(isSellerRegistered[msg.sender], 'You need to be registered first');
+    uint sellerId = sellerIdByAddress[msg.sender];
+    /* should be very hard to get a duplicate id from this*/
+    bytes32 jobId = keccak256(abi.encodePacked(sellerId, priceInUsd, paymentType, block.timestamp));
+
+    Quote storage quote = quoteByQuoteId[jobId];
+    quote.jobId = jobId;
+    quote.sellerId = sellerId;
+    quote.priceUsd = priceInUsd;
+    quote.paymentType = paymentType;
+    quote.nOfRevisions = nOfRevisions;
+    quote.jobLength = jobLength;
+
+    return jobId;
   }
 
 
   /* pay seller quote */
   function paySeller(
-    address seller,
-    uint sellerQuoteId,
+    bytes32 sellerQuoteId,
     uint amount,
-    string memory currency,
-    uint nofdaysdeadline,
-    uint revisions) public {
-     /* requires seller to be registered  */
-     /* require buyer to have enough money  */
+    string memory currencyTicker) public {
+      /* requires seller to be registered and buyer to have enough money  */
+      require(isSellerRegistered[msg.sender], 'You need to be registered first');
+      /* require(amount > 0, "Deposit must be more than 0."); */
+      address erc20Contract = _erc20Contracts[currencyTicker];
+      require(erc20Contract != address(0), "Invalid currency code.");
+      // Get deposit amount in USD
+      uint amountUsd = amount;
+      Quote memory quote = quoteByQuoteId[sellerQuoteId];
+      uint priceOfQuote = quote.priceUsd;
+      require(amountUsd >= priceOfQuote);
+      uint sellerId = quote.sellerId;
+      address sellerAddress = sellerAddressById[sellerId];
+      address buyerAddress = msg.sender;
+      uint jobLength = quote.jobLength;
+     // requires approval from user (tx sender, done by web3)
+     IERC20(erc20Contract).safeTransferFrom(buyerAddress, _tennerrControllerContractAddress, amount);
+     tennerrEscrow.storeOrder(sellerId,buyerAddress, sellerAddress, sellerQuoteId, priceOfQuote, jobLength);
      /* if deadline > 2 days deposit in aave and keep count */
      /* increment work id for seller */
      /* update work id status to started */
@@ -113,6 +186,25 @@ contract Tennerr is Ownable, ReentrancyGuard, ChainlinkClient {
    */
 
 
+ // add supported currency for deposits
+ function addSupportedCurrency(string memory currencyTicker, address erc20Contract) public {
+   _erc20Contracts[currencyTicker] = erc20Contract;
+ }
+
+ function setTennerrEscrow(address payable newContract) external {
+   // Check that the calling account has the admin role
+   require(hasRole(ADMIN_ROLE, msg.sender), "Caller is not an admin");
+   _tennerrEscrowContractAddress = newContract;
+   tennerrEscrow = TennerrEscrow(_tennerrEscrowContractAddress);
+ }
+
+ function setTennerrController(address payable newContract) external {
+   // Check that the calling account has the admin role
+   require(hasRole(ADMIN_ROLE, msg.sender), "Caller is not an admin");
+   _tennerrControllerContractAddress = newContract;
+   tennerrController = TennerrController(_tennerrControllerContractAddress);
+ }
+
 /* sellers info getters */
   /* get dev/seller telegram handle */
   /* get dev/seller discord handle */
@@ -123,6 +215,11 @@ contract Tennerr is Ownable, ReentrancyGuard, ChainlinkClient {
 
   function getSellerRegistration(address sellerAddress) public view returns (bool){
     return isSellerRegistered[sellerAddress];
+  }
+
+  function getSellerId() public view returns (uint){
+    require(isSellerRegistered[msg.sender], 'You need to be registered first');
+    return sellerIdByAddress[msg.sender];
   }
 
   // fallback function
