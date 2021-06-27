@@ -2,7 +2,7 @@
 networks:
   default: polygon-main-fork
   kovan-fork:
-      host: https://kovan.infura.io/v3/97b88ce7f0604299a9fc6c27290f653c
+      host: https://kovan.infura.io/v3/<KEY>
       cmd: ganache-cli
       cmd_settings:
         fork: kovan
