@@ -12,7 +12,7 @@ import "../interfaces/IAToken.sol";
 import "./Tennerr.sol";
 import "./TennerrEscrow.sol";
 
-// the pool gateway should manage the deposit/withdrawls to/from pools
+// the controller should manage the deposit/withdrawls to/from pools
 
 contract TennerrController is Ownable, AccessControl {
   using SafeMath for uint;

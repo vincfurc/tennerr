@@ -1,12 +1,9 @@
 // SPDX-License-Identifier: unlicensed
-
 pragma solidity ^0.6.6;
 
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
-import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
-import "@openzeppelin/contracts/token/ERC1155/ERC1155Holder.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/proxy/Initializable.sol";
@@ -113,6 +110,7 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
   /* jobLength is how long it takes to fullfill job*/
   function jobQuoteProposal(uint priceInUsd, uint paymentType, uint nOfRevisions,uint jobLength ) public returns (bytes32){
     require(isSellerRegistered[msg.sender], 'You need to be registered first');
+    require(paymentType < 4,'Payment type not recognized');
     uint sellerId = sellerIdByAddress[msg.sender];
     /* should be very hard to get a duplicate id from this*/
     bytes32 jobId = keccak256(abi.encodePacked(sellerId, priceInUsd, paymentType, block.timestamp));
@@ -148,14 +146,34 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
       address sellerAddress = sellerAddressById[sellerId];
       address buyerAddress = msg.sender;
       uint jobLength = quote.jobLength;
-     // requires approval from user (tx sender, done by web3)
-     IERC20(erc20Contract).safeTransferFrom(buyerAddress, _tennerrControllerContractAddress, amount);
+      uint paymentType = quote.paymentType;
+      _handlePayment(buyerAddress,amount,paymentType,erc20Contract);
      tennerrEscrow.storeOrder(sellerId,buyerAddress, sellerAddress, sellerQuoteId, priceOfQuote, jobLength);
      /* if deadline > 2 days deposit in aave and keep count */
      /* increment work id for seller */
      /* update work id status to started */
     }
 
+    function _handlePayment(address buyerAddress, uint amount, uint paymentType, address erc20Contract ) internal {
+      /* all upfront */
+      if (paymentType == 0)
+      {
+        // requires approval from user (tx sender, done by web3)
+        IERC20(erc20Contract).safeTransferFrom(buyerAddress, _tennerrControllerContractAddress, amount);
+        /* mint credit tokens, deposit all into escrow */
+      } else if (paymentType == 1)
+      /* 50% downpayment */
+      {
+        IERC20(erc20Contract).safeTransferFrom(buyerAddress, _tennerrControllerContractAddress, amount);
+        /* mint credit tokens, half in escrow half in vault */
+      } else if (paymentType == 2)
+      /* superfluid */
+      {
+        IERC20(erc20Contract).safeTransferFrom(buyerAddress, _tennerrControllerContractAddress, amount);
+        /* mint credit tokens */
+        /* start stream of credit tokens to escrow*/
+      }
+    }
 
 /* work checkers  */
   /* get work status from buyer */
