@@ -7,9 +7,26 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 import "./Tennerr.sol";
 
+/* this should be vault
 
+1) deposit in tennerr
+2) transfer to controller
+3) mint creditTokens here in vault
+4) transfer to Escrow based on payment method
+5) claim from Tennerr if all OK
 
-contract TennerrCreditFactory is ERC20Burnable, AccessControl{
+IF NOT OK
+1) dispute from tennerr
+2) chainlinkVRF in DAO contract electes voters
+3) Distributer contract (isERC20/to create still) mints governance
+rights token on the spot to elected addresses
+4) only elected(with token) can vote on conflict, once concluded distribute collected fees
+through distributer contract
+5) resolve issue with last money transfer from escrow
+
+ */
+
+contract TennerrFactory is ERC20Burnable, AccessControl{
   using SafeMath for uint;
 
   // initiialize tennerr
