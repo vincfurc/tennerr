@@ -1,5 +1,6 @@
-pragma solidity ^0.6.6;
-
+// SPDX-License-Identifier: unlicensed
+pragma solidity >=0.6.6;
+pragma experimental ABIEncoderV2;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
@@ -8,6 +9,8 @@ import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "./Tennerr.sol";
+import "./TennerrStreamer.sol";
+import "./TennerrDAO.sol";
 /**
  * @title tennerrEscrow
  * @dev under construction
@@ -26,8 +29,28 @@ contract TennerrEscrow is AccessControl {
   // tennerr contract
   Tennerr public tennerr;
 
-  mapping(address => mapping(uint256 => Order)) orders;
+  // address of the tennerr streamer
+  address payable private _tennerrStreamerContractAddress;
+  // tennerr streamer contract
+  TennerrStreamer public tennerrStreamer;
 
+  // address of the tennerr streamer
+  address payable private _tennerrDAOContractAddress;
+  // tennerr streamer contract
+  TennerrDAO public tennerrDAO;
+  // address of the tennerr factory
+  address payable private _tennerrFactoryContractAddress;
+  // tennerr contract
+  TennerrFactory public tennerrFactory;
+
+
+  mapping(address => mapping(uint256 => Order)) orders;
+  mapping(bytes32 => Order) orderByOrderId;
+
+  mapping(bytes32 => uint) public amountInEscrow;
+  mapping(address => uint) public totalAmountClaimable;
+
+  mapping(bytes32 => bool) public isWithdrawAllowed;
   // Create a new role identifier for the admin role
   bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
 
@@ -46,7 +69,6 @@ contract TennerrEscrow is AccessControl {
       uint absDeadline;
   }
 
-
   // create order and store it
   function storeOrder(
     uint sellerId,
@@ -54,7 +76,9 @@ contract TennerrEscrow is AccessControl {
     address seller,
     bytes32 jobId,
     uint price,
-    uint jobLength) external {
+    uint jobLength,
+    uint paymentType) external {
+      require(msg.sender == _tennerrContractAddress, 'Storing order not allowed');
       uint256 orderNumber = orderNumberTracker.current();
       orderNumberTracker.increment();
       Order storage order = orders[buyer][orderNumber];
@@ -65,12 +89,38 @@ contract TennerrEscrow is AccessControl {
       order.jobId = jobId;
       order.orderPrice = price;
       order.absDeadline = block.timestamp.add(jobLength);
-    /* mapDepositToController(); */
+      orderByOrderId[jobId] = order;
+      totalAmountClaimable[seller] += price;
+      totalAmountClaimable[buyer] += price;
+      if (paymentType == 2) {
+        uint[5] memory data = tennerrStreamer.getStreamData(jobId);
+        amountInEscrow[jobId] = data[2];//streamedToDate;
+      } else {
+        amountInEscrow[jobId] += price;
+      }
+  }
+
+  function getQuoteData(bytes32 jobId) external view returns (Order memory){
+    return orderByOrderId[jobId];
   }
 
  // should call this if seller or DAO approves job completion
-  function withdrawalAllowed(address payee) public view returns (bool){
-    return true;
+  function withdrawalAllowed(bytes32 jobId) public returns (bool){
+      require(orderByOrderId[jobId].buyer == msg.sender || msg.sender == _tennerrDAOContractAddress, '' );
+      isWithdrawAllowed[jobId] = true;
+      return isWithdrawAllowed[jobId];
+  }
+
+  function withdrawFromEscrow(bytes32 jobId) external {
+    require(orderByOrderId[jobId].seller == msg.sender,'Only seller can withdraw his money');
+    require(isWithdrawAllowed[jobId], 'Withdraw not allowed.');
+    _withdraw(jobId);
+  }
+
+  function _withdraw(bytes32 jobId) internal {
+    address _to = orderByOrderId[jobId].seller;
+    uint amount = amountInEscrow[jobId];
+    IERC20(tennerrFactory).safeTransferFrom(address(this), _to, amount);
   }
 
   function setTennerr(address payable newContract) external {
@@ -78,6 +128,27 @@ contract TennerrEscrow is AccessControl {
     require(hasRole(ADMIN_ROLE, msg.sender), "Caller is not an admin");
     _tennerrContractAddress = newContract;
     tennerr = Tennerr(_tennerrContractAddress);
+  }
+
+  function setTennerrStreamer(address payable newContract) external {
+    // Check that the calling account has the admin role
+    require(hasRole(ADMIN_ROLE, msg.sender), "Caller is not an admin");
+    _tennerrStreamerContractAddress = newContract;
+    tennerrStreamer= TennerrStreamer(_tennerrStreamerContractAddress);
+  }
+
+  function setTennerrDAO(address payable newContract) external {
+    // Check that the calling account has the admin role
+    require(hasRole(ADMIN_ROLE, msg.sender), "Caller is not an admin");
+    _tennerrDAOContractAddress = newContract;
+    tennerrDAO = TennerrDAO(_tennerrDAOContractAddress);
+  }
+
+  function setTennerrFactory(address payable newContract) external {
+    // Check that the calling account has the admin role
+    require(hasRole(ADMIN_ROLE, msg.sender), "Caller is not an admin");
+    _tennerrFactoryContractAddress = newContract;
+    tennerrFactory = TennerrFactory(_tennerrFactoryContractAddress);
   }
 
   receive() external payable {}
