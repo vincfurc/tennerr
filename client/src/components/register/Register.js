@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function RegisterSeller() {
+export default function Register() {
     return <div>
         <p>Register Seller</p>
     </div>;

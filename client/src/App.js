@@ -4,16 +4,20 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import Login from "./Login";
-import About from "./About";
+
 import {
   Link,
   HStack,
 } from '@chakra-ui/react';
-import FindFreelancers from "./FindFreelancers";
-import MyAccount from "./MyAccount";
-import ResolutionCenter from "./ResolutionCenter";
-import RegisterSeller from "./RegisterSeller";
+
+import Login from "./components/Login/Login";
+import About from "./components/About/About";
+
+import User from "./components/User/User";
+import Account from "./components/Account/Account";
+import Resolution from "./components/Resolution/Resolution";
+import Register from "./components/register/Register";
+import Gig from "./components/Gig/Gig";
 
 export default function App() {
   const linkData = [
@@ -27,19 +31,23 @@ export default function App() {
     },
     {
       text:'My Account',
-      url:'/my-account'
+      url:'/account'
     },
     {
-      text:'Register Seller',
-      url:'/register-seller'
+      text:'Register',
+      url:'/register'
     },
     {
       text:'Find Freelancers',
-      url:'/find-freelancers'
+      url:'/search/freelancers'
+    },
+    {
+      text:'Find Gigs',
+      url:'/search/gigs'
     },
     {
       text:'Resolution Center',
-      url:'/resolution-center'
+      url:'/resolution'
     }
   ];
   const links = linkData.map((link, idx) => {
@@ -62,24 +70,13 @@ export default function App() {
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
           <Switch>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <Route path="/my-account">
-              <MyAccount/>
-            </Route>
-            <Route path="/register-seller">
-              <RegisterSeller/>
-            </Route>
-            <Route path="/find-freelancers">
-              <FindFreelancers/>
-            </Route>
-            <Route path="/resolution-center">
-              <ResolutionCenter/>
-            </Route>
-            <Route path="/">
-              <About />
-            </Route>
+            <Route path="/login" component={Login} />
+            <Route path="/account" component={Account} />
+            <Route path="/register" component={Register} />
+            <Route path="/search/freelancers" component={User} />
+            <Route path="/search/gigs" component={Gig} />
+            <Route path="/resolution" component={Resolution} />
+            <Route path="/" component={About} />
           </Switch>
         </Router>
       </div>
