@@ -1,70 +1,82 @@
 import detectEthereumProvider from '@metamask/detect-provider';
+import {Alert, AlertIcon, Button, ButtonGroup} from "@chakra-ui/react"
+import React, { useState, useEffect } from 'react';
+
 
 export default function Login() {
-    return <div>
-        <h2>Login Page</h2>
-        <p>You are not currently logged in.</p>
-        <div>
-            <button onClick={loginViaMetamask}>
-                Click here to login/print connected MetaMask account to console
-            </button>
-        </div>
-        <div>
-            <button onClick={logoutViaMetamask}>
-                Click here to logout/choose a different MetaMask account
-            </button>
-        </div>
-    </div>;
-}
+    const [loginInProcess, setLoginInProcess] = useState(false);
+    const [walletAddress, setWalletAddress] = useState(localStorage.getItem("wallet"));
+    const [provider, setProvider] = useState(null);
 
-async function loginViaMetamask() {
-    const provider = await detectEthereumProvider();
-    if (!provider) {
-        console.log('Please install MetaMask!');
-        return;
+    useEffect(() => {
+        detectEthereumProvider()
+            .then((provider) => {
+                setProvider(provider);
+                if (provider != null) {
+                    provider.on('accountsChanged', function (accounts) {
+                        handleAccountsChanged(accounts);
+                    });
+                }
+            })
+    },[provider]);
+
+    function handleAccountsChanged(accounts) {
+        if (accounts.length === 0) {
+            logoutViaMetamask();
+        } else if (accounts[0] !== walletAddress) {
+            setWalletAddress(accounts);
+            localStorage.setItem("wallet", accounts);
+        }
     }
 
-    console.log('Ethereum successfully detected!')
-    // var accounts = await provider.eth.getAccounts();
-    // console.log("accounts: " + accounts)
-    try {
-        // Will open the MetaMask UI
-        // TODO You should disable this button while the request is pending!
-        const accounts = await provider.request({ method: 'eth_requestAccounts',
+    return <div>
+        <p>{walletAddress ? "You are currently logged in with wallet address: " + walletAddress : "You are not currently logged in."}</p>
+        {!provider ?
+            <Alert status="error">
+                <AlertIcon />
+                Could not detect MetaMask - please install Metamask to use Tennerr
+            </Alert> : null
+        }
+        <ButtonGroup variant="outline" spacing="6" isDisabled={!provider}>
+            <Button colorScheme="blue" onClick={loginViaMetamask} isLoading={loginInProcess} isDisabled={walletAddress || !provider}>
+                Login to Tennerr
+            </Button>
+            <Button colorScheme="blue" onClick={changeWalletSettings} isLoading={loginInProcess} >
+                Change Wallet Connections
+            </Button>
+            <Button onClick={logoutViaMetamask}>
+                Logout
+            </Button>
+        </ButtonGroup>
+    </div>;
+
+    function loginViaMetamask(e) {
+        setLoginInProcess(true);
+        provider.request({
+            method: 'eth_requestAccounts'
+        }).then(handleAccountsChanged).catch((e) => {
+            logoutViaMetamask();
+            console.error(e);
+        }).finally(() => {
+            setLoginInProcess(false);
+        });
+    }
+
+    function changeWalletSettings(e) {
+        setLoginInProcess(true)
+        provider.request({
+            method: "wallet_requestPermissions",
             params: [{
                 eth_accounts: {}
             }]
+        }).then((permission) => {})
+            .finally(() => {
+            setLoginInProcess(false);
         });
-        console.log(accounts)
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-async function getWalletAddress() {
-    const provider = await detectEthereumProvider();
-    if (!provider) {
-        console.log('Please install MetaMask!');
-        return;
     }
 
-    const accounts = await provider.request({ method: 'eth_accounts'});
-    console.log("detected accounts: " + accounts)
-    return accounts;
-}
-
-async function logoutViaMetamask() {
-    const provider = await detectEthereumProvider();
-    if (!provider) {
-        console.log('Please install MetaMask!');
-        return;
+    function logoutViaMetamask() {
+        localStorage.setItem("wallet", "");
+        setWalletAddress("");
     }
-
-    console.log("Popping up MetaMask so user can change their wallet settings...")
-    await provider.request({
-        method: "wallet_requestPermissions",
-        params: [{
-            eth_accounts: {}
-        }]
-    });
 }
