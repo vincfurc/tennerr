@@ -41,3 +41,4 @@ build/
 *.pyc
 
 brownie-config.yaml
+website_demo_structure.md

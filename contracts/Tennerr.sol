@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: unlicensed
-pragma solidity ^0.6.6;
-
+pragma solidity >=0.6.6;
+pragma experimental ABIEncoderV2;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/SafeERC20.sol";
@@ -14,6 +14,8 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 
 import "./TennerrController.sol";
 import "./TennerrEscrow.sol";
+import "./TennerrFactory.sol";
+import "./TennerrStreamer.sol";
 
 
 contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
@@ -67,14 +69,23 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
   mapping(uint => address) sellerAddressById;
   mapping(bytes32 => Quote) quoteByQuoteId;
 
+  mapping(address => Quote[]) quotesBySeller;
   // address of the tennerr contract
   address payable private _tennerrEscrowContractAddress;
   // tennerr contract
   TennerrEscrow public tennerrEscrow;
-  // address of the tennerr contract
+  // address of the tennerr controller
   address payable private _tennerrControllerContractAddress;
   // tennerr contract
   TennerrController public tennerrController;
+  // address of the tennerr factory
+  address payable private _tennerrFactoryContractAddress;
+  // tennerr contract
+  TennerrFactory public tennerrFactory;
+  // address of the tennerr streamer
+  address payable private _tennerrStreamerContractAddress;
+  // tennerr streamer contract
+  TennerrStreamer public tennerrStreamer;
 
 
   event SellerRegistered(address sellerAddress, string name, string area);
@@ -87,58 +98,63 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
   }
 
   /* register dev/seller */
-  function registerSeller(string memory name, string memory area, string memory socialHandle) public {
-    require(!isSellerRegistered[msg.sender], 'User already registered');
-    sellerIdTracker.increment();
-    uint sellerId = sellerIdTracker.current();
-    Seller storage seller = sellers[sellerId];
-    seller._id = sellerId;
-    seller.name = name;
-    seller.area = area;
-    seller.socialHandles = [socialHandle];
-    seller.jobsNumber = 0;
-    seller.jobsVolume = 0;
-    seller.reputationScore = 0;
-    seller.reputationLevel = "Unrated";
+  function registerSeller(string memory name,
+    string memory area,
+    string memory socialHandle)
+    public {
+      require(!isSellerRegistered[msg.sender], 'User already registered');
+      sellerIdTracker.increment();
+      uint sellerId = sellerIdTracker.current();
+      Seller storage seller = sellers[sellerId];
+      seller._id = sellerId;
+      seller.name = name;
+      seller.area = area;
+      seller.socialHandles = [socialHandle];
+      seller.jobsNumber = 0;
+      seller.jobsVolume = 0;
+      seller.reputationScore = 0;
+      seller.reputationLevel = "Unrated";
 
-    isSellerRegistered[msg.sender] = true;
-    sellerIdByAddress[msg.sender] = sellerId;
-    sellerAddressById[sellerId] = msg.sender;
-    emit SellerRegistered(msg.sender, name, area);
+      isSellerRegistered[msg.sender] = true;
+      sellerIdByAddress[msg.sender] = sellerId;
+      sellerAddressById[sellerId] = msg.sender;
+      emit SellerRegistered(msg.sender, name, area);
   }
   /* open quote from seller */
   /* jobLength is how long it takes to fullfill job*/
-  function jobQuoteProposal(uint priceInUsd, uint paymentType, uint nOfRevisions,uint jobLength ) public returns (bytes32){
-    require(isSellerRegistered[msg.sender], 'You need to be registered first');
-    require(paymentType < 4,'Payment type not recognized');
-    uint sellerId = sellerIdByAddress[msg.sender];
-    /* should be very hard to get a duplicate id from this*/
-    bytes32 jobId = keccak256(abi.encodePacked(sellerId, priceInUsd, paymentType, block.timestamp));
+  function jobQuoteProposal(uint priceInUsd,
+    uint paymentType,
+    uint nOfRevisions,
+    uint jobLength)
+    public returns (bytes32){
+      require(isSellerRegistered[msg.sender], 'You need to be registered first');
+      require(paymentType < 4,'Payment type not recognized');
+      uint sellerId = sellerIdByAddress[msg.sender];
+      /* should be very hard to get a duplicate id from this*/
+      bytes32 jobId = keccak256(abi.encodePacked(sellerId, priceInUsd, paymentType, block.timestamp));
 
-    Quote storage quote = quoteByQuoteId[jobId];
-    quote.jobId = jobId;
-    quote.sellerId = sellerId;
-    quote.priceUsd = priceInUsd;
-    quote.paymentType = paymentType;
-    quote.nOfRevisions = nOfRevisions;
-    quote.jobLength = jobLength;
+      Quote storage quote = quoteByQuoteId[jobId];
+      quote.jobId = jobId;
+      quote.sellerId = sellerId;
+      quote.priceUsd = priceInUsd;
+      quote.paymentType = paymentType;
+      quote.nOfRevisions = nOfRevisions;
+      quote.jobLength = jobLength;
 
-    return jobId;
+      quotesBySeller[msg.sender].push(quote);
+      return jobId;
   }
 
 
   /* pay seller quote */
   function paySeller(
     bytes32 sellerQuoteId,
-    uint amount,
+    uint amountUsd,
     string memory currencyTicker) public {
       /* requires seller to be registered and buyer to have enough money  */
-      require(isSellerRegistered[msg.sender], 'You need to be registered first');
       /* require(amount > 0, "Deposit must be more than 0."); */
-      address erc20Contract = _erc20Contracts[currencyTicker];
-      require(erc20Contract != address(0), "Invalid currency code.");
+      require(_erc20Contracts[currencyTicker] != address(0), "Invalid currency code.");
       // Get deposit amount in USD
-      uint amountUsd = amount;
       Quote memory quote = quoteByQuoteId[sellerQuoteId];
       uint priceOfQuote = quote.priceUsd;
       require(amountUsd >= priceOfQuote);
@@ -147,33 +163,48 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
       address buyerAddress = msg.sender;
       uint jobLength = quote.jobLength;
       uint paymentType = quote.paymentType;
-      _handlePayment(buyerAddress,amount,paymentType,erc20Contract);
-     tennerrEscrow.storeOrder(sellerId,buyerAddress, sellerAddress, sellerQuoteId, priceOfQuote, jobLength);
+      _handlePayment(sellerQuoteId,buyerAddress,amountUsd,paymentType,currencyTicker);
+      tennerrEscrow.storeOrder(sellerId,buyerAddress, sellerAddress, sellerQuoteId, priceOfQuote, jobLength, paymentType);
      /* if deadline > 2 days deposit in aave and keep count */
      /* increment work id for seller */
      /* update work id status to started */
-    }
+  }
 
-    function _handlePayment(address buyerAddress, uint amount, uint paymentType, address erc20Contract ) internal {
+  function _handlePayment(
+    bytes32 jobId,
+    address buyerAddress,
+    uint amount,
+    uint paymentType,
+    string memory currencyTicker ) internal {
+      address erc20Contract = _erc20Contracts[currencyTicker];
+      // requires approval from user (tx sender, done by web3)
+      IERC20(erc20Contract).safeTransferFrom(buyerAddress, _tennerrControllerContractAddress, amount);
+      uint amountMinted = tennerrFactory.mint(amount,currencyTicker);
       /* all upfront */
       if (paymentType == 0)
       {
-        // requires approval from user (tx sender, done by web3)
-        IERC20(erc20Contract).safeTransferFrom(buyerAddress, _tennerrControllerContractAddress, amount);
         /* mint credit tokens, deposit all into escrow */
-      } else if (paymentType == 1)
+        _moveToEscrow(amountMinted);
+      }
+      else if (paymentType == 1)
       /* 50% downpayment */
       {
-        IERC20(erc20Contract).safeTransferFrom(buyerAddress, _tennerrControllerContractAddress, amount);
-        /* mint credit tokens, half in escrow half in vault */
-      } else if (paymentType == 2)
+        _moveToEscrow(amountMinted);
+      }
+      else if (paymentType == 2)
       /* superfluid */
       {
-        IERC20(erc20Contract).safeTransferFrom(buyerAddress, _tennerrControllerContractAddress, amount);
         /* mint credit tokens */
+        /* This flow rate is equivalent to 1000 tokens per month, for a token with 18 decimals. */
+        uint flowRate = 385802469135802; //tokens per second
         /* start stream of credit tokens to escrow*/
+        tennerrStreamer.createFlow(_tennerrEscrowContractAddress, flowRate, abi.encodePacked(jobId));
       }
-    }
+  }
+
+  function _moveToEscrow(uint amountMinted) internal {
+      IERC20(tennerrFactory).safeTransferFrom(address(this),_tennerrEscrowContractAddress, amountMinted);
+  }
 
 /* work checkers  */
   /* get work status from buyer */
@@ -223,6 +254,22 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
    tennerrController = TennerrController(_tennerrControllerContractAddress);
  }
 
+ function setTennerrFactory(address payable newContract) external {
+   // Check that the calling account has the admin role
+   require(hasRole(ADMIN_ROLE, msg.sender), "Caller is not an admin");
+   _tennerrFactoryContractAddress = newContract;
+   tennerrFactory = TennerrFactory(_tennerrFactoryContractAddress);
+ }
+
+ function setTennerrStreamer(address payable newContract) external {
+   // Check that the calling account has the admin role
+   require(hasRole(ADMIN_ROLE, msg.sender), "Caller is not an admin");
+   _tennerrStreamerContractAddress = newContract;
+   tennerrStreamer= TennerrStreamer(_tennerrStreamerContractAddress);
+ }
+
+
+
 /* sellers info getters */
   /* get dev/seller telegram handle */
   /* get dev/seller discord handle */
@@ -238,6 +285,10 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
   function getSellerId() public view returns (uint){
     require(isSellerRegistered[msg.sender], 'You need to be registered first');
     return sellerIdByAddress[msg.sender];
+  }
+
+  function getQuotesByAddress(address seller) public view returns (Quote[] memory){
+    return quotesBySeller[seller];
   }
 
   // fallback function

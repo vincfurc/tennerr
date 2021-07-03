@@ -38,11 +38,11 @@ If you want to be able to deploy to testnets, do the following.
 
 Set your `WEB3_INFURA_PROJECT_ID`, and `ETHERSCAN_TOKEN`.
 
-You can get a `WEB3_INFURA_PROJECT_ID` by getting a free trial of [Infura](https://infura.io/). At the moment, it does need to be infura with brownie. If you get lost, you can [follow this guide](https://ethereumico.io/knowledge-base/infura-api-key-guide/) to getting a project key. 
+You can get a `WEB3_INFURA_PROJECT_ID` by getting a free trial of [Infura](https://infura.io/). At the moment, it does need to be infura with brownie. If you get lost, you can [follow this guide](https://ethereumico.io/knowledge-base/infura-api-key-guide/) to getting a project key.
 You can get a `ETHERSCAN_TOKEN` by registering at [Etherscan](etherscan.io/).
 You could also set your `PRIVATE_KEY`, which you can find from your ethereum wallet like [metamask](https://metamask.io/).
 
-1. Run Tests in Development network: 
+1. Run Tests in Development network:
 `brownie test --network development`
 or
 Run Tests on Polygon network:
@@ -50,5 +50,3 @@ Run Tests on Polygon network:
 
 2. Run in console:
 `brownie console --network polygon-fork`
-
-
