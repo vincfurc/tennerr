@@ -1,10 +1,9 @@
 import React from "react";
+import { Link } from "@chakra-ui/react"
 
 export default function About() {
     return <div>
-        <h2>About</h2>
-        <p>Tennerr is a project for the HackMoney 2021 Virtual DeFi Hackathon.
-            See: <a href={'https://github.com/vfurci200/tennerr'}>our GitHub</a>
-        </p>
+        <p>Tennerr is a project for the HackMoney 2021 Virtual DeFi Hackathon.</p>
+        <p><Link href={'https://github.com/vfurci200/tennerr'} isExternal>✨Click here for our GitHub ✨</Link></p>
     </div>;
 }
