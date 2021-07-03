@@ -1,0 +1,1688 @@
+{
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "contract ISuperToken",
+          "name": "superToken",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "agreementClass",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "agreementId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "agreementData",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes",
+          "name": "cbdata",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes",
+          "name": "ctx",
+          "type": "bytes"
+        }
+      ],
+      "name": "afterAgreementCreated",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "newCtx",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract ISuperToken",
+          "name": "superToken",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "agreementClass",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "agreementId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "agreementData",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes",
+          "name": "cbdata",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes",
+          "name": "ctx",
+          "type": "bytes"
+        }
+      ],
+      "name": "afterAgreementTerminated",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "newCtx",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract ISuperToken",
+          "name": "superToken",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "agreementClass",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "agreementId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "agreementData",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes",
+          "name": "cbdata",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes",
+          "name": "ctx",
+          "type": "bytes"
+        }
+      ],
+      "name": "afterAgreementUpdated",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "newCtx",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract ISuperToken",
+          "name": "superToken",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "agreementClass",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "agreementId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "agreementData",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes",
+          "name": "ctx",
+          "type": "bytes"
+        }
+      ],
+      "name": "beforeAgreementCreated",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "cbdata",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract ISuperToken",
+          "name": "superToken",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "agreementClass",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "agreementId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "agreementData",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes",
+          "name": "ctx",
+          "type": "bytes"
+        }
+      ],
+      "name": "beforeAgreementTerminated",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "cbdata",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "contract ISuperToken",
+          "name": "superToken",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "agreementClass",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "agreementId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "agreementData",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes",
+          "name": "ctx",
+          "type": "bytes"
+        }
+      ],
+      "name": "beforeAgreementUpdated",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "cbdata",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "allSourcePaths": {
+    "30": "/Users/vince/.brownie/packages/superfluid-finance/superfluid@1.0.0/ethereum-contracts/contracts/interfaces/superfluid/ISuperAgreement.sol",
+    "31": "/Users/vince/.brownie/packages/superfluid-finance/superfluid@1.0.0/ethereum-contracts/contracts/interfaces/superfluid/ISuperApp.sol",
+    "32": "/Users/vince/.brownie/packages/superfluid-finance/superfluid@1.0.0/ethereum-contracts/contracts/interfaces/superfluid/ISuperToken.sol",
+    "36": "/Users/vince/.brownie/packages/superfluid-finance/superfluid@1.0.0/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidToken.sol",
+    "38": "/Users/vince/.brownie/packages/superfluid-finance/superfluid@1.0.0/ethereum-contracts/contracts/interfaces/tokens/TokenInfo.sol",
+    "6": "/Users/vince/.brownie/packages/OpenZeppelin/openzeppelin-contracts@3.4.0/contracts/token/ERC20/IERC20.sol",
+    "8": "/Users/vince/.brownie/packages/OpenZeppelin/openzeppelin-contracts@3.4.0/contracts/token/ERC777/IERC777.sol"
+  },
+  "ast": {
+    "absolutePath": "/Users/vince/.brownie/packages/superfluid-finance/superfluid@1.0.0/ethereum-contracts/contracts/interfaces/superfluid/ISuperApp.sol",
+    "exportedSymbols": {
+      "ISuperApp": [
+        10587
+      ]
+    },
+    "id": 10588,
+    "license": "AGPLv3",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 10481,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.7",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "35:25:31"
+      },
+      {
+        "absolutePath": "/Users/vince/.brownie/packages/superfluid-finance/superfluid@1.0.0/ethereum-contracts/contracts/interfaces/superfluid/ISuperToken.sol",
+        "file": "./ISuperToken.sol",
+        "id": 10483,
+        "nodeType": "ImportDirective",
+        "scope": 10588,
+        "sourceUnit": 10941,
+        "src": "62:48:31",
+        "symbolAliases": [
+          {
+            "foreign": {
+              "id": 10482,
+              "name": "ISuperToken",
+              "nodeType": "Identifier",
+              "overloadedDeclarations": [],
+              "src": "71:11:31",
+              "typeDescriptions": {}
+            }
+          }
+        ],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 10484,
+          "nodeType": "StructuredDocumentation",
+          "src": "113:148:31",
+          "text": " @title Superfluid's app interface.\n NOTE:\n - Be fearful of the app jail, when the word permitted is used.\n @author Superfluid"
+        },
+        "fullyImplemented": false,
+        "id": 10587,
+        "linearizedBaseContracts": [
+          10587
+        ],
+        "name": "ISuperApp",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 10485,
+              "nodeType": "StructuredDocumentation",
+              "src": "289:622:31",
+              "text": " @dev Callback before a new agreement is created.\n @param superToken The super token used for the agreement.\n @param agreementClass The agreement class address.\n @param agreementId The agreementId\n @param agreementData The agreement data (non-compressed)\n @param ctx The context data.\n @return cbdata A free format in memory data the app can use to pass\n          arbitary information to the after-hook callback.\n NOTE:\n - It will be invoked with `staticcall`, no state changes are permitted.\n - Only revert with a \"reason\" is permitted."
+            },
+            "functionSelector": "30d9c915",
+            "id": 10500,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "beforeAgreementCreated",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10496,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10487,
+                  "mutability": "mutable",
+                  "name": "superToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10500,
+                  "src": "957:22:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ISuperToken_$10940",
+                    "typeString": "contract ISuperToken"
+                  },
+                  "typeName": {
+                    "id": 10486,
+                    "name": "ISuperToken",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 10940,
+                    "src": "957:11:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ISuperToken_$10940",
+                      "typeString": "contract ISuperToken"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10489,
+                  "mutability": "mutable",
+                  "name": "agreementClass",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10500,
+                  "src": "989:22:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10488,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "989:7:31",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10491,
+                  "mutability": "mutable",
+                  "name": "agreementId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10500,
+                  "src": "1021:19:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 10490,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1021:7:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10493,
+                  "mutability": "mutable",
+                  "name": "agreementData",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10500,
+                  "src": "1050:28:31",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10492,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1050:5:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10495,
+                  "mutability": "mutable",
+                  "name": "ctx",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10500,
+                  "src": "1088:18:31",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10494,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1088:5:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "947:165:31"
+            },
+            "returnParameters": {
+              "id": 10499,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10498,
+                  "mutability": "mutable",
+                  "name": "cbdata",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10500,
+                  "src": "1160:19:31",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10497,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1160:5:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1159:21:31"
+            },
+            "scope": 10587,
+            "src": "916:265:31",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 10501,
+              "nodeType": "StructuredDocumentation",
+              "src": "1187:571:31",
+              "text": " @dev Callback after a new agreement is created.\n @param superToken The super token used for the agreement.\n @param agreementClass The agreement class address.\n @param agreementId The agreementId\n @param agreementData The agreement data (non-compressed)\n @param cbdata The data returned from the before-hook callback.\n @param ctx The context data.\n @return newCtx The current context of the transaction.\n NOTE:\n - State changes is permitted.\n - Only revert with a \"reason\" is permitted."
+            },
+            "functionSelector": "d86ed3e5",
+            "id": 10518,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "afterAgreementCreated",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10514,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10503,
+                  "mutability": "mutable",
+                  "name": "superToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10518,
+                  "src": "1803:22:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ISuperToken_$10940",
+                    "typeString": "contract ISuperToken"
+                  },
+                  "typeName": {
+                    "id": 10502,
+                    "name": "ISuperToken",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 10940,
+                    "src": "1803:11:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ISuperToken_$10940",
+                      "typeString": "contract ISuperToken"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10505,
+                  "mutability": "mutable",
+                  "name": "agreementClass",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10518,
+                  "src": "1835:22:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10504,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1835:7:31",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10507,
+                  "mutability": "mutable",
+                  "name": "agreementId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10518,
+                  "src": "1867:19:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 10506,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1867:7:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10509,
+                  "mutability": "mutable",
+                  "name": "agreementData",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10518,
+                  "src": "1896:28:31",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10508,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1896:5:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10511,
+                  "mutability": "mutable",
+                  "name": "cbdata",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10518,
+                  "src": "1934:21:31",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10510,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1934:5:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10513,
+                  "mutability": "mutable",
+                  "name": "ctx",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10518,
+                  "src": "1965:18:31",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10512,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1965:5:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1793:196:31"
+            },
+            "returnParameters": {
+              "id": 10517,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10516,
+                  "mutability": "mutable",
+                  "name": "newCtx",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10518,
+                  "src": "2024:19:31",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10515,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2024:5:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2023:21:31"
+            },
+            "scope": 10587,
+            "src": "1763:282:31",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 10519,
+              "nodeType": "StructuredDocumentation",
+              "src": "2051:622:31",
+              "text": " @dev Callback before a new agreement is updated.\n @param superToken The super token used for the agreement.\n @param agreementClass The agreement class address.\n @param agreementId The agreementId\n @param agreementData The agreement data (non-compressed)\n @param ctx The context data.\n @return cbdata A free format in memory data the app can use to pass\n          arbitary information to the after-hook callback.\n NOTE:\n - It will be invoked with `staticcall`, no state changes are permitted.\n - Only revert with a \"reason\" is permitted."
+            },
+            "functionSelector": "884d1f40",
+            "id": 10534,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "beforeAgreementUpdated",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10530,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10521,
+                  "mutability": "mutable",
+                  "name": "superToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10534,
+                  "src": "2719:22:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ISuperToken_$10940",
+                    "typeString": "contract ISuperToken"
+                  },
+                  "typeName": {
+                    "id": 10520,
+                    "name": "ISuperToken",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 10940,
+                    "src": "2719:11:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ISuperToken_$10940",
+                      "typeString": "contract ISuperToken"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10523,
+                  "mutability": "mutable",
+                  "name": "agreementClass",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10534,
+                  "src": "2751:22:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10522,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2751:7:31",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10525,
+                  "mutability": "mutable",
+                  "name": "agreementId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10534,
+                  "src": "2783:19:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 10524,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2783:7:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10527,
+                  "mutability": "mutable",
+                  "name": "agreementData",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10534,
+                  "src": "2812:28:31",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10526,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2812:5:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10529,
+                  "mutability": "mutable",
+                  "name": "ctx",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10534,
+                  "src": "2850:18:31",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10528,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2850:5:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2709:165:31"
+            },
+            "returnParameters": {
+              "id": 10533,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10532,
+                  "mutability": "mutable",
+                  "name": "cbdata",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10534,
+                  "src": "2922:19:31",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10531,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2922:5:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2921:21:31"
+            },
+            "scope": 10587,
+            "src": "2678:265:31",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 10535,
+              "nodeType": "StructuredDocumentation",
+              "src": "2950:558:31",
+              "text": " @dev Callback after a new agreement is updated.\n @param superToken The super token used for the agreement.\n @param agreementClass The agreement class address.\n @param agreementId The agreementId\n @param agreementData The agreement data (non-compressed)\n @param cbdata The data returned from the before-hook callback.\n @param ctx The context data.\n @return newCtx The current context of the transaction.\n NOTE:\n - State changes is permitted.\n - Only revert with a \"reason\" is permitted."
+            },
+            "functionSelector": "230dbd29",
+            "id": 10552,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "afterAgreementUpdated",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10548,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10537,
+                  "mutability": "mutable",
+                  "name": "superToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10552,
+                  "src": "3553:22:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ISuperToken_$10940",
+                    "typeString": "contract ISuperToken"
+                  },
+                  "typeName": {
+                    "id": 10536,
+                    "name": "ISuperToken",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 10940,
+                    "src": "3553:11:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ISuperToken_$10940",
+                      "typeString": "contract ISuperToken"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10539,
+                  "mutability": "mutable",
+                  "name": "agreementClass",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10552,
+                  "src": "3585:22:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10538,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3585:7:31",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10541,
+                  "mutability": "mutable",
+                  "name": "agreementId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10552,
+                  "src": "3617:19:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 10540,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3617:7:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10543,
+                  "mutability": "mutable",
+                  "name": "agreementData",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10552,
+                  "src": "3646:28:31",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10542,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3646:5:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10545,
+                  "mutability": "mutable",
+                  "name": "cbdata",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10552,
+                  "src": "3684:21:31",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10544,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3684:5:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10547,
+                  "mutability": "mutable",
+                  "name": "ctx",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10552,
+                  "src": "3715:18:31",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10546,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3715:5:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3543:196:31"
+            },
+            "returnParameters": {
+              "id": 10551,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10550,
+                  "mutability": "mutable",
+                  "name": "newCtx",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10552,
+                  "src": "3774:19:31",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10549,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3774:5:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3773:21:31"
+            },
+            "scope": 10587,
+            "src": "3513:282:31",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 10553,
+              "nodeType": "StructuredDocumentation",
+              "src": "3801:595:31",
+              "text": " @dev Callback before a new agreement is terminated.\n @param superToken The super token used for the agreement.\n @param agreementClass The agreement class address.\n @param agreementId The agreementId\n @param agreementData The agreement data (non-compressed)\n @param ctx The context data.\n @return cbdata A free format in memory data the app can use to pass\n          arbitary information to the after-hook callback.\n NOTE:\n - It will be invoked with `staticcall`, no state changes are permitted.\n - Revert is not permitted."
+            },
+            "functionSelector": "5f9e7d77",
+            "id": 10568,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "beforeAgreementTerminated",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10564,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10555,
+                  "mutability": "mutable",
+                  "name": "superToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10568,
+                  "src": "4445:22:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ISuperToken_$10940",
+                    "typeString": "contract ISuperToken"
+                  },
+                  "typeName": {
+                    "id": 10554,
+                    "name": "ISuperToken",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 10940,
+                    "src": "4445:11:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ISuperToken_$10940",
+                      "typeString": "contract ISuperToken"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10557,
+                  "mutability": "mutable",
+                  "name": "agreementClass",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10568,
+                  "src": "4477:22:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10556,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4477:7:31",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10559,
+                  "mutability": "mutable",
+                  "name": "agreementId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10568,
+                  "src": "4509:19:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 10558,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4509:7:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10561,
+                  "mutability": "mutable",
+                  "name": "agreementData",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10568,
+                  "src": "4538:28:31",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10560,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4538:5:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10563,
+                  "mutability": "mutable",
+                  "name": "ctx",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10568,
+                  "src": "4576:18:31",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10562,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4576:5:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4435:165:31"
+            },
+            "returnParameters": {
+              "id": 10567,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10566,
+                  "mutability": "mutable",
+                  "name": "cbdata",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10568,
+                  "src": "4648:19:31",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10565,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "4648:5:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "4647:21:31"
+            },
+            "scope": 10587,
+            "src": "4401:268:31",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 10569,
+              "nodeType": "StructuredDocumentation",
+              "src": "4675:544:31",
+              "text": " @dev Callback after a new agreement is terminated.\n @param superToken The super token used for the agreement.\n @param agreementClass The agreement class address.\n @param agreementId The agreementId\n @param agreementData The agreement data (non-compressed)\n @param cbdata The data returned from the before-hook callback.\n @param ctx The context data.\n @return newCtx The current context of the transaction.\n NOTE:\n - State changes is permitted.\n - Revert is not permitted."
+            },
+            "functionSelector": "53c11f99",
+            "id": 10586,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "afterAgreementTerminated",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10582,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10571,
+                  "mutability": "mutable",
+                  "name": "superToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10586,
+                  "src": "5267:22:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ISuperToken_$10940",
+                    "typeString": "contract ISuperToken"
+                  },
+                  "typeName": {
+                    "id": 10570,
+                    "name": "ISuperToken",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 10940,
+                    "src": "5267:11:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ISuperToken_$10940",
+                      "typeString": "contract ISuperToken"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10573,
+                  "mutability": "mutable",
+                  "name": "agreementClass",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10586,
+                  "src": "5299:22:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10572,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5299:7:31",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10575,
+                  "mutability": "mutable",
+                  "name": "agreementId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10586,
+                  "src": "5331:19:31",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 10574,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5331:7:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10577,
+                  "mutability": "mutable",
+                  "name": "agreementData",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10586,
+                  "src": "5360:28:31",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10576,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5360:5:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10579,
+                  "mutability": "mutable",
+                  "name": "cbdata",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10586,
+                  "src": "5398:21:31",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10578,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5398:5:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10581,
+                  "mutability": "mutable",
+                  "name": "ctx",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10586,
+                  "src": "5429:18:31",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10580,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5429:5:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5257:196:31"
+            },
+            "returnParameters": {
+              "id": 10585,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10584,
+                  "mutability": "mutable",
+                  "name": "newCtx",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10586,
+                  "src": "5488:19:31",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 10583,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "5488:5:31",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "5487:21:31"
+            },
+            "scope": 10587,
+            "src": "5224:285:31",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 10588,
+        "src": "262:5249:31"
+      }
+    ],
+    "src": "35:5477:31"
+  },
+  "bytecode": "",
+  "bytecodeSha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+  "compiler": {
+    "evm_version": "istanbul",
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "version": "0.7.1+commit.f4a555be"
+  },
+  "contractName": "ISuperApp",
+  "coverageMap": {
+    "branches": {},
+    "statements": {}
+  },
+  "dependencies": [
+    "OpenZeppelin/openzeppelin-contracts@3.4.0/IERC20",
+    "OpenZeppelin/openzeppelin-contracts@3.4.0/IERC777",
+    "superfluid-finance/superfluid@1.0.0/ISuperAgreement",
+    "superfluid-finance/superfluid@1.0.0/ISuperToken",
+    "superfluid-finance/superfluid@1.0.0/ISuperfluidToken",
+    "superfluid-finance/superfluid@1.0.0/TokenInfo"
+  ],
+  "deployedBytecode": "",
+  "deployedSourceMap": "",
+  "language": "Solidity",
+  "natspec": {
+    "author": "Superfluid",
+    "kind": "dev",
+    "methods": {
+      "afterAgreementCreated(address,address,bytes32,bytes,bytes,bytes)": {
+        "details": "Callback after a new agreement is created.",
+        "params": {
+          "agreementClass": "The agreement class address.",
+          "agreementData": "The agreement data (non-compressed)",
+          "agreementId": "The agreementId",
+          "cbdata": "The data returned from the before-hook callback.",
+          "ctx": "The context data.",
+          "superToken": "The super token used for the agreement."
+        },
+        "returns": {
+          "newCtx": "The current context of the transaction. NOTE: - State changes is permitted. - Only revert with a \"reason\" is permitted."
+        }
+      },
+      "afterAgreementTerminated(address,address,bytes32,bytes,bytes,bytes)": {
+        "details": "Callback after a new agreement is terminated.",
+        "params": {
+          "agreementClass": "The agreement class address.",
+          "agreementData": "The agreement data (non-compressed)",
+          "agreementId": "The agreementId",
+          "cbdata": "The data returned from the before-hook callback.",
+          "ctx": "The context data.",
+          "superToken": "The super token used for the agreement."
+        },
+        "returns": {
+          "newCtx": "The current context of the transaction. NOTE: - State changes is permitted. - Revert is not permitted."
+        }
+      },
+      "afterAgreementUpdated(address,address,bytes32,bytes,bytes,bytes)": {
+        "details": "Callback after a new agreement is updated.",
+        "params": {
+          "agreementClass": "The agreement class address.",
+          "agreementData": "The agreement data (non-compressed)",
+          "agreementId": "The agreementId",
+          "cbdata": "The data returned from the before-hook callback.",
+          "ctx": "The context data.",
+          "superToken": "The super token used for the agreement."
+        },
+        "returns": {
+          "newCtx": "The current context of the transaction. NOTE: - State changes is permitted. - Only revert with a \"reason\" is permitted."
+        }
+      },
+      "beforeAgreementCreated(address,address,bytes32,bytes,bytes)": {
+        "details": "Callback before a new agreement is created.",
+        "params": {
+          "agreementClass": "The agreement class address.",
+          "agreementData": "The agreement data (non-compressed)",
+          "agreementId": "The agreementId",
+          "ctx": "The context data.",
+          "superToken": "The super token used for the agreement."
+        },
+        "returns": {
+          "cbdata": "A free format in memory data the app can use to pass          arbitary information to the after-hook callback. NOTE: - It will be invoked with `staticcall`, no state changes are permitted. - Only revert with a \"reason\" is permitted."
+        }
+      },
+      "beforeAgreementTerminated(address,address,bytes32,bytes,bytes)": {
+        "details": "Callback before a new agreement is terminated.",
+        "params": {
+          "agreementClass": "The agreement class address.",
+          "agreementData": "The agreement data (non-compressed)",
+          "agreementId": "The agreementId",
+          "ctx": "The context data.",
+          "superToken": "The super token used for the agreement."
+        },
+        "returns": {
+          "cbdata": "A free format in memory data the app can use to pass          arbitary information to the after-hook callback. NOTE: - It will be invoked with `staticcall`, no state changes are permitted. - Revert is not permitted."
+        }
+      },
+      "beforeAgreementUpdated(address,address,bytes32,bytes,bytes)": {
+        "details": "Callback before a new agreement is updated.",
+        "params": {
+          "agreementClass": "The agreement class address.",
+          "agreementData": "The agreement data (non-compressed)",
+          "agreementId": "The agreementId",
+          "ctx": "The context data.",
+          "superToken": "The super token used for the agreement."
+        },
+        "returns": {
+          "cbdata": "A free format in memory data the app can use to pass          arbitary information to the after-hook callback. NOTE: - It will be invoked with `staticcall`, no state changes are permitted. - Only revert with a \"reason\" is permitted."
+        }
+      }
+    },
+    "title": "Superfluid's app interface. NOTE: - Be fearful of the app jail, when the word permitted is used.",
+    "version": 1
+  },
+  "offset": [
+    262,
+    5511
+  ],
+  "opcodes": "",
+  "pcMap": {},
+  "sha1": "b686ecb2d17a2ce2b1dd80fcc2cf88db77084da7",
+  "source": "// SPDX-License-Identifier: AGPLv3\npragma solidity >= 0.7.0;\n\nimport { ISuperToken } from \"./ISuperToken.sol\";\n\n\n/**\n * @title Superfluid's app interface.\n *\n * NOTE:\n * - Be fearful of the app jail, when the word permitted is used.\n *\n * @author Superfluid\n */\ninterface ISuperApp {\n\n    /**\n     * @dev Callback before a new agreement is created.\n     * @param superToken The super token used for the agreement.\n     * @param agreementClass The agreement class address.\n     * @param agreementId The agreementId\n     * @param agreementData The agreement data (non-compressed)\n     * @param ctx The context data.\n     * @return cbdata A free format in memory data the app can use to pass\n     *          arbitary information to the after-hook callback.\n     *\n     * NOTE:\n     * - It will be invoked with `staticcall`, no state changes are permitted.\n     * - Only revert with a \"reason\" is permitted.\n     */\n    function beforeAgreementCreated(\n        ISuperToken superToken,\n        address agreementClass,\n        bytes32 agreementId,\n        bytes calldata agreementData,\n        bytes calldata ctx\n    )\n        external\n        view\n        returns (bytes memory cbdata);\n\n    /**\n     * @dev Callback after a new agreement is created.\n     * @param superToken The super token used for the agreement.\n     * @param agreementClass The agreement class address.\n     * @param agreementId The agreementId\n     * @param agreementData The agreement data (non-compressed)\n     * @param cbdata The data returned from the before-hook callback.\n     * @param ctx The context data.\n     * @return newCtx The current context of the transaction.\n     *\n     * NOTE:\n     * - State changes is permitted.\n     * - Only revert with a \"reason\" is permitted.\n     */\n    function afterAgreementCreated(\n        ISuperToken superToken,\n        address agreementClass,\n        bytes32 agreementId,\n        bytes calldata agreementData,\n        bytes calldata cbdata,\n        bytes calldata ctx\n    )\n        external\n        returns (bytes memory newCtx);\n\n    /**\n     * @dev Callback before a new agreement is updated.\n     * @param superToken The super token used for the agreement.\n     * @param agreementClass The agreement class address.\n     * @param agreementId The agreementId\n     * @param agreementData The agreement data (non-compressed)\n     * @param ctx The context data.\n     * @return cbdata A free format in memory data the app can use to pass\n     *          arbitary information to the after-hook callback.\n     *\n     * NOTE:\n     * - It will be invoked with `staticcall`, no state changes are permitted.\n     * - Only revert with a \"reason\" is permitted.\n     */\n    function beforeAgreementUpdated(\n        ISuperToken superToken,\n        address agreementClass,\n        bytes32 agreementId,\n        bytes calldata agreementData,\n        bytes calldata ctx\n    )\n        external\n        view\n        returns (bytes memory cbdata);\n\n\n    /**\n    * @dev Callback after a new agreement is updated.\n    * @param superToken The super token used for the agreement.\n    * @param agreementClass The agreement class address.\n    * @param agreementId The agreementId\n    * @param agreementData The agreement data (non-compressed)\n    * @param cbdata The data returned from the before-hook callback.\n    * @param ctx The context data.\n    * @return newCtx The current context of the transaction.\n    *\n    * NOTE:\n    * - State changes is permitted.\n    * - Only revert with a \"reason\" is permitted.\n    */\n    function afterAgreementUpdated(\n        ISuperToken superToken,\n        address agreementClass,\n        bytes32 agreementId,\n        bytes calldata agreementData,\n        bytes calldata cbdata,\n        bytes calldata ctx\n    )\n        external\n        returns (bytes memory newCtx);\n\n    /**\n    * @dev Callback before a new agreement is terminated.\n    * @param superToken The super token used for the agreement.\n    * @param agreementClass The agreement class address.\n    * @param agreementId The agreementId\n    * @param agreementData The agreement data (non-compressed)\n    * @param ctx The context data.\n    * @return cbdata A free format in memory data the app can use to pass\n    *          arbitary information to the after-hook callback.\n    *\n    * NOTE:\n    * - It will be invoked with `staticcall`, no state changes are permitted.\n    * - Revert is not permitted.\n    */\n    function beforeAgreementTerminated(\n        ISuperToken superToken,\n        address agreementClass,\n        bytes32 agreementId,\n        bytes calldata agreementData,\n        bytes calldata ctx\n    )\n        external\n        view\n        returns (bytes memory cbdata);\n\n    /**\n    * @dev Callback after a new agreement is terminated.\n    * @param superToken The super token used for the agreement.\n    * @param agreementClass The agreement class address.\n    * @param agreementId The agreementId\n    * @param agreementData The agreement data (non-compressed)\n    * @param cbdata The data returned from the before-hook callback.\n    * @param ctx The context data.\n    * @return newCtx The current context of the transaction.\n    *\n    * NOTE:\n    * - State changes is permitted.\n    * - Revert is not permitted.\n    */\n    function afterAgreementTerminated(\n        ISuperToken superToken,\n        address agreementClass,\n        bytes32 agreementId,\n        bytes calldata agreementData,\n        bytes calldata cbdata,\n        bytes calldata ctx\n    )\n        external\n        returns (bytes memory newCtx);\n}\n",
+  "sourceMap": "",
+  "sourcePath": "/Users/vince/.brownie/packages/superfluid-finance/superfluid@1.0.0/ethereum-contracts/contracts/interfaces/superfluid/ISuperApp.sol",
+  "type": "interface"
+}
