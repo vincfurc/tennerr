@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
 
-import {
-  Link,
-  HStack,
-} from '@chakra-ui/react';
+import 'bulma/css/bulma.min.css';
+import { 
+  Navbar,
+  Heading } from 'react-bulma-components';
 
 import Login from "./components/Login/Login";
 import About from "./components/About/About";
@@ -22,16 +22,12 @@ import Gig from "./components/Gig/Gig";
 export default function App() {
   const linkData = [
     {
-      text:'Home',
-      url:'/'
-    },
-    {
       text:'Login',
       url:'/login'
     },
     {
       text:'My Account',
-      url:'/account'
+      url:'/account',
     },
     {
       text:'Register',
@@ -50,23 +46,36 @@ export default function App() {
       url:'/resolution'
     }
   ];
-  const links = linkData.map((link, idx) => {
-    return (
-    <Link href={link.url} key={idx}>{link.text}</Link>
-    );
-  });
+
+  const links = linkData.map((link, idx) => <Navbar.Item href={link.url} key={idx}>{link.text}</Navbar.Item> );
+
+  const [isMenuOpen, handleMenu] = useState(false);
+
+  function toggleMenu() {
+    return handleMenu(!isMenuOpen);
+  }
 
   return (
       <div>
         <Router>
-          <HStack spacing={8} alignItems={'center'}>
-            <HStack
-                as={'nav'}
-                spacing={4}
-                display={{ base: 'none', md: 'flex' }}>
-              {links}
-            </HStack>
-          </HStack>
+          <Navbar active={isMenuOpen}>
+            <Navbar.Brand>
+              <Navbar.Item renderAs="a" href="./" >
+                <Heading spaced={true} size={4} weight={'bold'}>
+                  Tennerr
+                </Heading>
+              </Navbar.Item>
+              <Navbar.Burger onClick={toggleMenu} />
+            </Navbar.Brand>
+            <Navbar.Menu>
+              <Navbar.Container align="left">
+                <Navbar.Item href='./'>Home</Navbar.Item>
+              </Navbar.Container>
+              <Navbar.Container align="right">
+                {links}
+              </Navbar.Container>
+            </Navbar.Menu>
+          </Navbar>
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
           <Switch>

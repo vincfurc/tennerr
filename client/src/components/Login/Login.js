@@ -1,5 +1,5 @@
 import detectEthereumProvider from '@metamask/detect-provider';
-import {Alert, AlertIcon, Button, ButtonGroup} from "@chakra-ui/react"
+import { Block, Button, Notification, Content } from 'react-bulma-components'
 import React, { useState, useEffect } from 'react';
 
 
@@ -30,24 +30,33 @@ export default function Login() {
     }
 
     return <div>
-        <p>{walletAddress ? "You are currently logged in with wallet address: " + walletAddress : "You are not currently logged in."}</p>
+            <Block>
+                <Content>
+                    <p>{walletAddress ? "You are currently logged in with wallet address: " + walletAddress : "You are not currently logged in."}</p>
+                </Content>
+            </Block>
         {!provider ?
-            <Alert status="error">
-                <AlertIcon />
-                Could not detect MetaMask - please install Metamask to use Tennerr
-            </Alert> : null
+            <Block>
+                <Notification color='warning'>
+                    <Content>
+                        <p>
+                        Could not detect MetaMask - please install Metamask to use Tennerr!
+                        </p>
+                    </Content>
+                </Notification>
+            </Block> : null
         }
-        <ButtonGroup variant="outline" spacing="6" isDisabled={!provider}>
-            <Button colorScheme="blue" onClick={loginViaMetamask} isLoading={loginInProcess} isDisabled={walletAddress || !provider}>
+        <Button.Group variant="outline" spacing="6" isDisabled={!provider}>
+            <Button color='primary' onClick={loginViaMetamask} isLoading={loginInProcess} isDisabled={walletAddress || !provider}>
                 Login to Tennerr
             </Button>
-            <Button colorScheme="blue" onClick={changeWalletSettings} isLoading={loginInProcess} >
+            <Button color='info'onClick={changeWalletSettings} isLoading={loginInProcess} >
                 Change Wallet Connections
             </Button>
-            <Button onClick={logoutViaMetamask}>
+            <Button color='grey-dark' onClick={logoutViaMetamask}>
                 Logout
             </Button>
-        </ButtonGroup>
+        </Button.Group>
     </div>;
 
     function loginViaMetamask(e) {
