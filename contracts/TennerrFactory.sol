@@ -35,6 +35,8 @@ contract TennerrFactory is ERC20Burnable, AccessControl{
     // give admin role to deployer
     _setupRole(ADMIN_ROLE, msg.sender);
     _setRoleAdmin(MINTER_ROLE,ADMIN_ROLE);
+    _setupDecimals(6);
+
   }
 
 

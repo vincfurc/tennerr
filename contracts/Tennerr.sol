@@ -9,8 +9,11 @@ import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/proxy/Initializable.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@chainlink/contracts/src/v0.6/ChainlinkClient.sol";
-
 import "@openzeppelin/contracts/utils/Counters.sol";
+
+import {
+    ISuperToken
+} from "@superfluid-finance/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluid.sol";//"@superfluid-finance/ethereum-monorepo/packages/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluid.sol";
 
 import "./TennerrController.sol";
 import "./TennerrEscrow.sol";
@@ -52,6 +55,7 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
       uint paymentType;
       uint nOfRevisions;
       uint jobLength;
+      uint flowRate;
   }
 
   // tracks the amount spent on the platform
@@ -87,6 +91,7 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
   // tennerr streamer contract
   TennerrStreamer public tennerrStreamer;
 
+  ISuperToken tennerrFactoryX;
 
   event SellerRegistered(address sellerAddress, string name, string area);
 
@@ -125,7 +130,8 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
   function jobQuoteProposal(uint priceInUsd,
     uint paymentType,
     uint nOfRevisions,
-    uint jobLength)
+    uint jobLength,
+    uint flowRate)
     public returns (bytes32){
       require(isSellerRegistered[msg.sender], 'You need to be registered first');
       require(paymentType < 4,'Payment type not recognized');
@@ -140,6 +146,7 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
       quote.paymentType = paymentType;
       quote.nOfRevisions = nOfRevisions;
       quote.jobLength = jobLength;
+      quote.flowRate = flowRate;
 
       quotesBySeller[msg.sender].push(quote);
       return jobId;
@@ -163,9 +170,11 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
       address buyerAddress = msg.sender;
       uint jobLength = quote.jobLength;
       uint paymentType = quote.paymentType;
-      _handlePayment(sellerQuoteId,buyerAddress,amountUsd,paymentType,currencyTicker);
-      tennerrEscrow.storeOrder(sellerId,buyerAddress, sellerAddress, sellerQuoteId, priceOfQuote, jobLength, paymentType);
-     /* if deadline > 2 days deposit in aave and keep count */
+      uint flowRate = 0;
+      if (paymentType==2){flowRate = quote.flowRate;}
+      _handlePayment(sellerQuoteId,buyerAddress,amountUsd,paymentType,currencyTicker, flowRate);
+      tennerrEscrow.storeOrder(sellerId,buyerAddress, sellerAddress, sellerQuoteId, priceOfQuote, jobLength, paymentType, flowRate);
+      /* if deadline > 2 days deposit in aave and keep count */
      /* increment work id for seller */
      /* update work id status to started */
   }
@@ -175,7 +184,8 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
     address buyerAddress,
     uint amount,
     uint paymentType,
-    string memory currencyTicker ) internal {
+    string memory currencyTicker,
+    uint flowRate) internal {
       address erc20Contract = _erc20Contracts[currencyTicker];
       // requires approval from user (tx sender, done by web3)
       IERC20(erc20Contract).safeTransferFrom(buyerAddress, _tennerrControllerContractAddress, amount);
@@ -183,7 +193,7 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
       /* all upfront */
       if (paymentType == 0)
       {
-        /* mint credit tokens, deposit all into escrow */
+        // deposit all into escrow */
         _moveToEscrow(amountMinted);
       }
       else if (paymentType == 1)
@@ -194,16 +204,26 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
       else if (paymentType == 2)
       /* superfluid */
       {
-        /* mint credit tokens */
-        /* This flow rate is equivalent to 1000 tokens per month, for a token with 18 decimals. */
-        uint flowRate = 385802469135802; //tokens per second
+        _moveToStreamer(amountMinted);
+        /* This flow rate is equivalent to 1000 tokens per month, for a token with 6 decimals. */
+        // uint flowRate = 385802469135802; // for 18 decimal, tokens per second
+        // uint nSecondsIn30days = 2592000;
         /* start stream of credit tokens to escrow*/
         tennerrStreamer.createFlow(_tennerrEscrowContractAddress, flowRate, abi.encodePacked(jobId));
       }
   }
 
   function _moveToEscrow(uint amountMinted) internal {
+      IERC20(tennerrFactory).approve(address(this), amountMinted);
       IERC20(tennerrFactory).safeTransferFrom(address(this),_tennerrEscrowContractAddress, amountMinted);
+  }
+
+  function _moveToStreamer(uint amountMinted) internal {
+      IERC20(tennerrFactory).approve(address(tennerrFactoryX), amountMinted);
+      require(tennerrFactory.balanceOf(address(this))== amountMinted, 'mint failed');
+      uint transferAmount = amountMinted.mul(10**18).div(10**6);
+      tennerrFactoryX.upgrade(transferAmount);
+      tennerrFactoryX.transfer(_tennerrStreamerContractAddress,transferAmount );
   }
 
 /* work checkers  */
@@ -261,6 +281,13 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
    tennerrFactory = TennerrFactory(_tennerrFactoryContractAddress);
  }
 
+ function setTennerrFactoryX(address payable newContract) external {
+   // Check that the calling account has the admin role
+   require(hasRole(ADMIN_ROLE, msg.sender), "Caller is not an admin");
+   address _tennerrFactoryXContractAddress = newContract;
+  tennerrFactoryX = ISuperToken(_tennerrFactoryXContractAddress);
+ }
+
  function setTennerrStreamer(address payable newContract) external {
    // Check that the calling account has the admin role
    require(hasRole(ADMIN_ROLE, msg.sender), "Caller is not an admin");
@@ -278,6 +305,8 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
   /* get dev/seller portfolio link */
   /* get dev/seller rep level */
 
+  // delete quote function, switch and pop
+
   function getSellerRegistration(address sellerAddress) public view returns (bool){
     return isSellerRegistered[sellerAddress];
   }
@@ -289,6 +318,10 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
 
   function getQuotesByAddress(address seller) public view returns (Quote[] memory){
     return quotesBySeller[seller];
+  }
+
+  function getQuoteByQuoteId(bytes32 sellerQuoteId) public view returns (Quote memory) {
+    return quoteByQuoteId[sellerQuoteId];
   }
 
   // fallback function

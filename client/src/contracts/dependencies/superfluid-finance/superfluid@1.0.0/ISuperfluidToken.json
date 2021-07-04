@@ -610,15 +610,15 @@
     "absolutePath": "/Users/vince/.brownie/packages/superfluid-finance/superfluid@1.0.0/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidToken.sol",
     "exportedSymbols": {
       "ISuperfluidToken": [
-        10025
+        10791
       ]
     },
-    "id": 10026,
+    "id": 10792,
     "license": "AGPLv3",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 9773,
+        "id": 10539,
         "literals": [
           "solidity",
           ">=",
@@ -631,15 +631,15 @@
       {
         "absolutePath": "/Users/vince/.brownie/packages/superfluid-finance/superfluid@1.0.0/ethereum-contracts/contracts/interfaces/superfluid/ISuperAgreement.sol",
         "file": "./ISuperAgreement.sol",
-        "id": 9775,
+        "id": 10541,
         "nodeType": "ImportDirective",
-        "scope": 10026,
-        "sourceUnit": 9772,
+        "scope": 10792,
+        "sourceUnit": 9922,
         "src": "62:56:36",
         "symbolAliases": [
           {
             "foreign": {
-              "id": 9774,
+              "id": 10540,
               "name": "ISuperAgreement",
               "nodeType": "Identifier",
               "overloadedDeclarations": [],
@@ -656,50 +656,50 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "documentation": {
-          "id": 9776,
+          "id": 10542,
           "nodeType": "StructuredDocumentation",
           "src": "121:72:36",
           "text": " @title Superfluid's token interface.\n @author Superfluid"
         },
         "fullyImplemented": false,
-        "id": 10025,
+        "id": 10791,
         "linearizedBaseContracts": [
-          10025
+          10791
         ],
         "name": "ISuperfluidToken",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "documentation": {
-              "id": 9777,
+              "id": 10543,
               "nodeType": "StructuredDocumentation",
               "src": "414:60:36",
               "text": " @dev Get superfluid host contract address"
             },
             "functionSelector": "20bc4425",
-            "id": 9782,
+            "id": 10548,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getHost",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9778,
+              "id": 10544,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "495:2:36"
             },
             "returnParameters": {
-              "id": 9781,
+              "id": 10547,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9780,
+                  "id": 10546,
                   "mutability": "mutable",
                   "name": "host",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9782,
+                  "scope": 10548,
                   "src": "520:12:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -708,7 +708,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9779,
+                    "id": 10545,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "520:7:36",
@@ -723,7 +723,7 @@
               ],
               "src": "519:14:36"
             },
-            "scope": 10025,
+            "scope": 10791,
             "src": "479:55:36",
             "stateMutability": "view",
             "virtual": false,
@@ -731,29 +731,29 @@
           },
           {
             "documentation": {
-              "id": 9783,
+              "id": 10549,
               "nodeType": "StructuredDocumentation",
               "src": "736:359:36",
               "text": " @dev Calculate the real balance of a user, taking in consideration all agreements of the account\n @param account for the query\n @param timestamp Time of balance\n @param account Account to query\n @return availableBalance Real-time balance\n @return deposit Account deposit\n @return owedDeposit Account owed Deposit"
             },
             "functionSelector": "eb3537cc",
-            "id": 9796,
+            "id": 10562,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "realtimeBalanceOf",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9788,
+              "id": 10554,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9785,
+                  "id": 10551,
                   "mutability": "mutable",
                   "name": "account",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9796,
+                  "scope": 10562,
                   "src": "1135:15:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -762,7 +762,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9784,
+                    "id": 10550,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1135:7:36",
@@ -776,11 +776,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 9787,
+                  "id": 10553,
                   "mutability": "mutable",
                   "name": "timestamp",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9796,
+                  "scope": 10562,
                   "src": "1159:17:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -789,7 +789,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9786,
+                    "id": 10552,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1159:7:36",
@@ -804,16 +804,16 @@
               "src": "1126:56:36"
             },
             "returnParameters": {
-              "id": 9795,
+              "id": 10561,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9790,
+                  "id": 10556,
                   "mutability": "mutable",
                   "name": "availableBalance",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9796,
+                  "scope": 10562,
                   "src": "1235:23:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -822,7 +822,7 @@
                     "typeString": "int256"
                   },
                   "typeName": {
-                    "id": 9789,
+                    "id": 10555,
                     "name": "int256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1235:6:36",
@@ -835,11 +835,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 9792,
+                  "id": 10558,
                   "mutability": "mutable",
                   "name": "deposit",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9796,
+                  "scope": 10562,
                   "src": "1272:15:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -848,7 +848,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9791,
+                    "id": 10557,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1272:7:36",
@@ -861,11 +861,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 9794,
+                  "id": 10560,
                   "mutability": "mutable",
                   "name": "owedDeposit",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9796,
+                  "scope": 10562,
                   "src": "1301:19:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -874,7 +874,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9793,
+                    "id": 10559,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1301:7:36",
@@ -888,7 +888,7 @@
               ],
               "src": "1221:100:36"
             },
-            "scope": 10025,
+            "scope": 10791,
             "src": "1100:222:36",
             "stateMutability": "view",
             "virtual": false,
@@ -896,29 +896,29 @@
           },
           {
             "documentation": {
-              "id": 9797,
+              "id": 10563,
               "nodeType": "StructuredDocumentation",
               "src": "1328:67:36",
               "text": "@dev realtimeBalanceOf with timestamp equals to block timestamp"
             },
             "functionSelector": "2ec8eec7",
-            "id": 9810,
+            "id": 10576,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "realtimeBalanceOfNow",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9800,
+              "id": 10566,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9799,
+                  "id": 10565,
                   "mutability": "mutable",
                   "name": "account",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9810,
+                  "scope": 10576,
                   "src": "1438:15:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -927,7 +927,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9798,
+                    "id": 10564,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1438:7:36",
@@ -943,16 +943,16 @@
               "src": "1429:30:36"
             },
             "returnParameters": {
-              "id": 9809,
+              "id": 10575,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9802,
+                  "id": 10568,
                   "mutability": "mutable",
                   "name": "availableBalance",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9810,
+                  "scope": 10576,
                   "src": "1512:23:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -961,7 +961,7 @@
                     "typeString": "int256"
                   },
                   "typeName": {
-                    "id": 9801,
+                    "id": 10567,
                     "name": "int256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1512:6:36",
@@ -974,11 +974,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 9804,
+                  "id": 10570,
                   "mutability": "mutable",
                   "name": "deposit",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9810,
+                  "scope": 10576,
                   "src": "1549:15:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -987,7 +987,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9803,
+                    "id": 10569,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1549:7:36",
@@ -1000,11 +1000,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 9806,
+                  "id": 10572,
                   "mutability": "mutable",
                   "name": "owedDeposit",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9810,
+                  "scope": 10576,
                   "src": "1578:19:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1013,7 +1013,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9805,
+                    "id": 10571,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1578:7:36",
@@ -1026,11 +1026,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 9808,
+                  "id": 10574,
                   "mutability": "mutable",
                   "name": "timestamp",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9810,
+                  "scope": 10576,
                   "src": "1611:17:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1039,7 +1039,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9807,
+                    "id": 10573,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1611:7:36",
@@ -1053,7 +1053,7 @@
               ],
               "src": "1498:131:36"
             },
-            "scope": 10025,
+            "scope": 10791,
             "src": "1400:230:36",
             "stateMutability": "view",
             "virtual": false,
@@ -1061,29 +1061,29 @@
           },
           {
             "documentation": {
-              "id": 9811,
+              "id": 10577,
               "nodeType": "StructuredDocumentation",
               "src": "1636:185:36",
               "text": " @dev Check if one account is critical\n @param account Account check if is critical by a future time\n @param timestamp Time of balance\n @return isCritical"
             },
             "functionSelector": "d9d078d6",
-            "id": 9820,
+            "id": 10586,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "isAccountCritical",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9816,
+              "id": 10582,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9813,
+                  "id": 10579,
                   "mutability": "mutable",
                   "name": "account",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9820,
+                  "scope": 10586,
                   "src": "1862:15:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1092,7 +1092,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9812,
+                    "id": 10578,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1862:7:36",
@@ -1106,11 +1106,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 9815,
+                  "id": 10581,
                   "mutability": "mutable",
                   "name": "timestamp",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9820,
+                  "scope": 10586,
                   "src": "1887:17:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1119,7 +1119,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9814,
+                    "id": 10580,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1887:7:36",
@@ -1134,16 +1134,16 @@
               "src": "1852:58:36"
             },
             "returnParameters": {
-              "id": 9819,
+              "id": 10585,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9818,
+                  "id": 10584,
                   "mutability": "mutable",
                   "name": "isCritical",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9820,
+                  "scope": 10586,
                   "src": "1949:15:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1152,7 +1152,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 9817,
+                    "id": 10583,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "1949:4:36",
@@ -1166,7 +1166,7 @@
               ],
               "src": "1948:17:36"
             },
-            "scope": 10025,
+            "scope": 10791,
             "src": "1826:140:36",
             "stateMutability": "view",
             "virtual": false,
@@ -1174,29 +1174,29 @@
           },
           {
             "documentation": {
-              "id": 9821,
+              "id": 10587,
               "nodeType": "StructuredDocumentation",
               "src": "1972:150:36",
               "text": " @dev Check if one account is critical now\n @param account Account check if is critical by a future time\n @return isCritical"
             },
             "functionSelector": "79359f6f",
-            "id": 9828,
+            "id": 10594,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "isAccountCriticalNow",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9824,
+              "id": 10590,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9823,
+                  "id": 10589,
                   "mutability": "mutable",
                   "name": "account",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9828,
+                  "scope": 10594,
                   "src": "2166:15:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1205,7 +1205,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9822,
+                    "id": 10588,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "2166:7:36",
@@ -1221,16 +1221,16 @@
               "src": "2156:31:36"
             },
             "returnParameters": {
-              "id": 9827,
+              "id": 10593,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9826,
+                  "id": 10592,
                   "mutability": "mutable",
                   "name": "isCritical",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9828,
+                  "scope": 10594,
                   "src": "2226:15:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1239,7 +1239,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 9825,
+                    "id": 10591,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "2226:4:36",
@@ -1253,7 +1253,7 @@
               ],
               "src": "2225:17:36"
             },
-            "scope": 10025,
+            "scope": 10791,
             "src": "2127:116:36",
             "stateMutability": "view",
             "virtual": false,
@@ -1261,29 +1261,29 @@
           },
           {
             "documentation": {
-              "id": 9829,
+              "id": 10595,
               "nodeType": "StructuredDocumentation",
               "src": "2249:187:36",
               "text": " @dev Check if one account is solvent\n @param account Account check if is solvent by a future time\n @param timestamp Time of balance\n @return isSolvent"
             },
             "functionSelector": "b84cdd4a",
-            "id": 9838,
+            "id": 10604,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "isAccountSolvent",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9834,
+              "id": 10600,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9831,
+                  "id": 10597,
                   "mutability": "mutable",
                   "name": "account",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9838,
+                  "scope": 10604,
                   "src": "2476:15:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1292,7 +1292,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9830,
+                    "id": 10596,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "2476:7:36",
@@ -1306,11 +1306,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 9833,
+                  "id": 10599,
                   "mutability": "mutable",
                   "name": "timestamp",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9838,
+                  "scope": 10604,
                   "src": "2501:17:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1319,7 +1319,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9832,
+                    "id": 10598,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "2501:7:36",
@@ -1334,16 +1334,16 @@
               "src": "2466:58:36"
             },
             "returnParameters": {
-              "id": 9837,
+              "id": 10603,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9836,
+                  "id": 10602,
                   "mutability": "mutable",
                   "name": "isSolvent",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9838,
+                  "scope": 10604,
                   "src": "2563:14:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1352,7 +1352,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 9835,
+                    "id": 10601,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "2563:4:36",
@@ -1366,7 +1366,7 @@
               ],
               "src": "2562:16:36"
             },
-            "scope": 10025,
+            "scope": 10791,
             "src": "2441:138:36",
             "stateMutability": "view",
             "virtual": false,
@@ -1374,29 +1374,29 @@
           },
           {
             "documentation": {
-              "id": 9839,
+              "id": 10605,
               "nodeType": "StructuredDocumentation",
               "src": "2585:138:36",
               "text": " @dev Check if one account is solvent now\n @param account Account check if is solvent now\n @return isSolvent"
             },
             "functionSelector": "bb0d196e",
-            "id": 9846,
+            "id": 10612,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "isAccountSolventNow",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9842,
+              "id": 10608,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9841,
+                  "id": 10607,
                   "mutability": "mutable",
                   "name": "account",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9846,
+                  "scope": 10612,
                   "src": "2766:15:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1405,7 +1405,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9840,
+                    "id": 10606,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "2766:7:36",
@@ -1421,16 +1421,16 @@
               "src": "2756:31:36"
             },
             "returnParameters": {
-              "id": 9845,
+              "id": 10611,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9844,
+                  "id": 10610,
                   "mutability": "mutable",
                   "name": "isSolvent",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9846,
+                  "scope": 10612,
                   "src": "2826:14:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1439,7 +1439,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 9843,
+                    "id": 10609,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "2826:4:36",
@@ -1453,7 +1453,7 @@
               ],
               "src": "2825:16:36"
             },
-            "scope": 10025,
+            "scope": 10791,
             "src": "2728:114:36",
             "stateMutability": "view",
             "virtual": false,
@@ -1461,29 +1461,29 @@
           },
           {
             "documentation": {
-              "id": 9847,
+              "id": 10613,
               "nodeType": "StructuredDocumentation",
               "src": "2848:274:36",
               "text": " @dev Get a list of agreements that is active for the account\n @dev An active agreement is one that has state for the account\n @param account Account to query\n @return activeAgreements List of accounts that have non-zero states for the account"
             },
             "functionSelector": "386fa221",
-            "id": 9855,
+            "id": 10621,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getAccountActiveAgreements",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9850,
+              "id": 10616,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9849,
+                  "id": 10615,
                   "mutability": "mutable",
                   "name": "account",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9855,
+                  "scope": 10621,
                   "src": "3163:15:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1492,7 +1492,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9848,
+                    "id": 10614,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "3163:7:36",
@@ -1508,40 +1508,40 @@
               "src": "3162:17:36"
             },
             "returnParameters": {
-              "id": 9854,
+              "id": 10620,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9853,
+                  "id": 10619,
                   "mutability": "mutable",
                   "name": "activeAgreements",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9855,
+                  "scope": 10621,
                   "src": "3216:41:36",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_contract$_ISuperAgreement_$9771_$dyn_memory_ptr",
+                    "typeIdentifier": "t_array$_t_contract$_ISuperAgreement_$9921_$dyn_memory_ptr",
                     "typeString": "contract ISuperAgreement[]"
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 9851,
+                      "id": 10617,
                       "name": "ISuperAgreement",
                       "nodeType": "UserDefinedTypeName",
-                      "referencedDeclaration": 9771,
+                      "referencedDeclaration": 9921,
                       "src": "3216:15:36",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_ISuperAgreement_$9771",
+                        "typeIdentifier": "t_contract$_ISuperAgreement_$9921",
                         "typeString": "contract ISuperAgreement"
                       }
                     },
-                    "id": 9852,
+                    "id": 10618,
                     "nodeType": "ArrayTypeName",
                     "src": "3216:17:36",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_array$_t_contract$_ISuperAgreement_$9771_$dyn_storage_ptr",
+                      "typeIdentifier": "t_array$_t_contract$_ISuperAgreement_$9921_$dyn_storage_ptr",
                       "typeString": "contract ISuperAgreement[]"
                     }
                   },
@@ -1550,7 +1550,7 @@
               ],
               "src": "3215:43:36"
             },
-            "scope": 10025,
+            "scope": 10791,
             "src": "3127:132:36",
             "stateMutability": "view",
             "virtual": false,
@@ -1558,29 +1558,29 @@
           },
           {
             "documentation": {
-              "id": 9856,
+              "id": 10622,
               "nodeType": "StructuredDocumentation",
               "src": "3465:110:36",
               "text": " @dev Create a new agreement\n @param id Agreement ID\n @param data Agreement data"
             },
             "functionSelector": "12a6a3f8",
-            "id": 9864,
+            "id": 10630,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "createAgreement",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9862,
+              "id": 10628,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9858,
+                  "id": 10624,
                   "mutability": "mutable",
                   "name": "id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9864,
+                  "scope": 10630,
                   "src": "3614:10:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1589,7 +1589,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 9857,
+                    "id": 10623,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "3614:7:36",
@@ -1602,11 +1602,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 9861,
+                  "id": 10627,
                   "mutability": "mutable",
                   "name": "data",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9864,
+                  "scope": 10630,
                   "src": "3634:23:36",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -1616,7 +1616,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 9859,
+                      "id": 10625,
                       "name": "bytes32",
                       "nodeType": "ElementaryTypeName",
                       "src": "3634:7:36",
@@ -1625,7 +1625,7 @@
                         "typeString": "bytes32"
                       }
                     },
-                    "id": 9860,
+                    "id": 10626,
                     "nodeType": "ArrayTypeName",
                     "src": "3634:9:36",
                     "typeDescriptions": {
@@ -1639,12 +1639,12 @@
               "src": "3604:59:36"
             },
             "returnParameters": {
-              "id": 9863,
+              "id": 10629,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "3680:0:36"
             },
-            "scope": 10025,
+            "scope": 10791,
             "src": "3580:101:36",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -1653,26 +1653,26 @@
           {
             "anonymous": false,
             "documentation": {
-              "id": 9865,
+              "id": 10631,
               "nodeType": "StructuredDocumentation",
               "src": "3687:175:36",
               "text": " @dev Agreement creation event\n @param agreementClass Contract address of the agreement\n @param id Agreement ID\n @param data Agreement data"
             },
-            "id": 9874,
+            "id": 10640,
             "name": "AgreementCreated",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 9873,
+              "id": 10639,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9867,
+                  "id": 10633,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "agreementClass",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9874,
+                  "scope": 10640,
                   "src": "3899:30:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1681,7 +1681,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9866,
+                    "id": 10632,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "3899:7:36",
@@ -1695,12 +1695,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 9869,
+                  "id": 10635,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9874,
+                  "scope": 10640,
                   "src": "3939:10:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1709,7 +1709,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 9868,
+                    "id": 10634,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "3939:7:36",
@@ -1722,12 +1722,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 9872,
+                  "id": 10638,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "data",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9874,
+                  "scope": 10640,
                   "src": "3959:14:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1737,7 +1737,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 9870,
+                      "id": 10636,
                       "name": "bytes32",
                       "nodeType": "ElementaryTypeName",
                       "src": "3959:7:36",
@@ -1746,7 +1746,7 @@
                         "typeString": "bytes32"
                       }
                     },
-                    "id": 9871,
+                    "id": 10637,
                     "nodeType": "ArrayTypeName",
                     "src": "3959:9:36",
                     "typeDescriptions": {
@@ -1763,29 +1763,29 @@
           },
           {
             "documentation": {
-              "id": 9875,
+              "id": 10641,
               "nodeType": "StructuredDocumentation",
               "src": "3986:184:36",
               "text": " @dev Get data of the agreement\n @param agreementClass Contract address of the agreement\n @param id Agreement ID\n @return data Data of the agreement"
             },
             "functionSelector": "6c2d9f2f",
-            "id": 9887,
+            "id": 10653,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getAgreementData",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9882,
+              "id": 10648,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9877,
+                  "id": 10643,
                   "mutability": "mutable",
                   "name": "agreementClass",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9887,
+                  "scope": 10653,
                   "src": "4210:22:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1794,7 +1794,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9876,
+                    "id": 10642,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "4210:7:36",
@@ -1808,11 +1808,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 9879,
+                  "id": 10645,
                   "mutability": "mutable",
                   "name": "id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9887,
+                  "scope": 10653,
                   "src": "4242:10:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1821,7 +1821,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 9878,
+                    "id": 10644,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "4242:7:36",
@@ -1834,11 +1834,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 9881,
+                  "id": 10647,
                   "mutability": "mutable",
                   "name": "dataLength",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9887,
+                  "scope": 10653,
                   "src": "4262:15:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1847,7 +1847,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9880,
+                    "id": 10646,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "4262:4:36",
@@ -1862,16 +1862,16 @@
               "src": "4200:83:36"
             },
             "returnParameters": {
-              "id": 9886,
+              "id": 10652,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9885,
+                  "id": 10651,
                   "mutability": "mutable",
                   "name": "data",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9887,
+                  "scope": 10653,
                   "src": "4322:21:36",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -1881,7 +1881,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 9883,
+                      "id": 10649,
                       "name": "bytes32",
                       "nodeType": "ElementaryTypeName",
                       "src": "4322:7:36",
@@ -1890,7 +1890,7 @@
                         "typeString": "bytes32"
                       }
                     },
-                    "id": 9884,
+                    "id": 10650,
                     "nodeType": "ArrayTypeName",
                     "src": "4322:9:36",
                     "typeDescriptions": {
@@ -1903,7 +1903,7 @@
               ],
               "src": "4321:23:36"
             },
-            "scope": 10025,
+            "scope": 10791,
             "src": "4175:170:36",
             "stateMutability": "view",
             "virtual": false,
@@ -1911,29 +1911,29 @@
           },
           {
             "documentation": {
-              "id": 9888,
+              "id": 10654,
               "nodeType": "StructuredDocumentation",
               "src": "4351:110:36",
               "text": " @dev Create a new agreement\n @param id Agreement ID\n @param data Agreement data"
             },
             "functionSelector": "a1b2bf8b",
-            "id": 9896,
+            "id": 10662,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "updateAgreementData",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9894,
+              "id": 10660,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9890,
+                  "id": 10656,
                   "mutability": "mutable",
                   "name": "id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9896,
+                  "scope": 10662,
                   "src": "4504:10:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1942,7 +1942,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 9889,
+                    "id": 10655,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "4504:7:36",
@@ -1955,11 +1955,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 9893,
+                  "id": 10659,
                   "mutability": "mutable",
                   "name": "data",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9896,
+                  "scope": 10662,
                   "src": "4524:23:36",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -1969,7 +1969,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 9891,
+                      "id": 10657,
                       "name": "bytes32",
                       "nodeType": "ElementaryTypeName",
                       "src": "4524:7:36",
@@ -1978,7 +1978,7 @@
                         "typeString": "bytes32"
                       }
                     },
-                    "id": 9892,
+                    "id": 10658,
                     "nodeType": "ArrayTypeName",
                     "src": "4524:9:36",
                     "typeDescriptions": {
@@ -1992,12 +1992,12 @@
               "src": "4494:59:36"
             },
             "returnParameters": {
-              "id": 9895,
+              "id": 10661,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "4570:0:36"
             },
-            "scope": 10025,
+            "scope": 10791,
             "src": "4466:105:36",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -2006,26 +2006,26 @@
           {
             "anonymous": false,
             "documentation": {
-              "id": 9897,
+              "id": 10663,
               "nodeType": "StructuredDocumentation",
               "src": "4577:175:36",
               "text": " @dev Agreement creation event\n @param agreementClass Contract address of the agreement\n @param id Agreement ID\n @param data Agreement data"
             },
-            "id": 9906,
+            "id": 10672,
             "name": "AgreementUpdated",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 9905,
+              "id": 10671,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9899,
+                  "id": 10665,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "agreementClass",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9906,
+                  "scope": 10672,
                   "src": "4789:30:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2034,7 +2034,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9898,
+                    "id": 10664,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "4789:7:36",
@@ -2048,12 +2048,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 9901,
+                  "id": 10667,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9906,
+                  "scope": 10672,
                   "src": "4829:10:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2062,7 +2062,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 9900,
+                    "id": 10666,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "4829:7:36",
@@ -2075,12 +2075,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 9904,
+                  "id": 10670,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "data",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9906,
+                  "scope": 10672,
                   "src": "4849:14:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2090,7 +2090,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 9902,
+                      "id": 10668,
                       "name": "bytes32",
                       "nodeType": "ElementaryTypeName",
                       "src": "4849:7:36",
@@ -2099,7 +2099,7 @@
                         "typeString": "bytes32"
                       }
                     },
-                    "id": 9903,
+                    "id": 10669,
                     "nodeType": "ArrayTypeName",
                     "src": "4849:9:36",
                     "typeDescriptions": {
@@ -2116,29 +2116,29 @@
           },
           {
             "documentation": {
-              "id": 9907,
+              "id": 10673,
               "nodeType": "StructuredDocumentation",
               "src": "4876:73:36",
               "text": " @dev Close the agreement\n @param id Agreement ID"
             },
             "functionSelector": "27048397",
-            "id": 9914,
+            "id": 10680,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "terminateAgreement",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9912,
+              "id": 10678,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9909,
+                  "id": 10675,
                   "mutability": "mutable",
                   "name": "id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9914,
+                  "scope": 10680,
                   "src": "4991:10:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2147,7 +2147,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 9908,
+                    "id": 10674,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "4991:7:36",
@@ -2160,11 +2160,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 9911,
+                  "id": 10677,
                   "mutability": "mutable",
                   "name": "dataLength",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9914,
+                  "scope": 10680,
                   "src": "5011:15:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2173,7 +2173,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9910,
+                    "id": 10676,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "5011:4:36",
@@ -2188,12 +2188,12 @@
               "src": "4981:51:36"
             },
             "returnParameters": {
-              "id": 9913,
+              "id": 10679,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "5049:0:36"
             },
-            "scope": 10025,
+            "scope": 10791,
             "src": "4954:96:36",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -2202,26 +2202,26 @@
           {
             "anonymous": false,
             "documentation": {
-              "id": 9915,
+              "id": 10681,
               "nodeType": "StructuredDocumentation",
               "src": "5056:144:36",
               "text": " @dev Agreement termination event\n @param agreementClass Contract address of the agreement\n @param id Agreement ID"
             },
-            "id": 9921,
+            "id": 10687,
             "name": "AgreementTerminated",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 9920,
+              "id": 10686,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9917,
+                  "id": 10683,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "agreementClass",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9921,
+                  "scope": 10687,
                   "src": "5240:30:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2230,7 +2230,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9916,
+                    "id": 10682,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "5240:7:36",
@@ -2244,12 +2244,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 9919,
+                  "id": 10685,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9921,
+                  "scope": 10687,
                   "src": "5280:10:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2258,7 +2258,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 9918,
+                    "id": 10684,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "5280:7:36",
@@ -2276,29 +2276,29 @@
           },
           {
             "documentation": {
-              "id": 9922,
+              "id": 10688,
               "nodeType": "StructuredDocumentation",
               "src": "5303:190:36",
               "text": " @dev Update agreement state slot\n @param account Account to be updated\n NOTE\n - To clear the storage out, provide zero-ed array of intended length"
             },
             "functionSelector": "090c415e",
-            "id": 9932,
+            "id": 10698,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "updateAgreementStateSlot",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9930,
+              "id": 10696,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9924,
+                  "id": 10690,
                   "mutability": "mutable",
                   "name": "account",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9932,
+                  "scope": 10698,
                   "src": "5541:15:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2307,7 +2307,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9923,
+                    "id": 10689,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "5541:7:36",
@@ -2321,11 +2321,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 9926,
+                  "id": 10692,
                   "mutability": "mutable",
                   "name": "slotId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9932,
+                  "scope": 10698,
                   "src": "5566:14:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2334,7 +2334,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9925,
+                    "id": 10691,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "5566:7:36",
@@ -2347,11 +2347,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 9929,
+                  "id": 10695,
                   "mutability": "mutable",
                   "name": "slotData",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9932,
+                  "scope": 10698,
                   "src": "5590:27:36",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -2361,7 +2361,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 9927,
+                      "id": 10693,
                       "name": "bytes32",
                       "nodeType": "ElementaryTypeName",
                       "src": "5590:7:36",
@@ -2370,7 +2370,7 @@
                         "typeString": "bytes32"
                       }
                     },
-                    "id": 9928,
+                    "id": 10694,
                     "nodeType": "ArrayTypeName",
                     "src": "5590:9:36",
                     "typeDescriptions": {
@@ -2384,12 +2384,12 @@
               "src": "5531:92:36"
             },
             "returnParameters": {
-              "id": 9931,
+              "id": 10697,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "5640:0:36"
             },
-            "scope": 10025,
+            "scope": 10791,
             "src": "5498:143:36",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -2398,26 +2398,26 @@
           {
             "anonymous": false,
             "documentation": {
-              "id": 9933,
+              "id": 10699,
               "nodeType": "StructuredDocumentation",
               "src": "5647:214:36",
               "text": " @dev Agreement account state updated event\n @param agreementClass Contract address of the agreement\n @param account Account updated\n @param slotId slot id of the agreement state"
             },
-            "id": 9941,
+            "id": 10707,
             "name": "AgreementStateUpdated",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 9940,
+              "id": 10706,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9935,
+                  "id": 10701,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "agreementClass",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9941,
+                  "scope": 10707,
                   "src": "5903:30:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2426,7 +2426,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9934,
+                    "id": 10700,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "5903:7:36",
@@ -2440,12 +2440,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 9937,
+                  "id": 10703,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "account",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9941,
+                  "scope": 10707,
                   "src": "5943:23:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2454,7 +2454,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9936,
+                    "id": 10702,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "5943:7:36",
@@ -2468,12 +2468,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 9939,
+                  "id": 10705,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "slotId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9941,
+                  "scope": 10707,
                   "src": "5976:14:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2482,7 +2482,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9938,
+                    "id": 10704,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "5976:7:36",
@@ -2500,29 +2500,29 @@
           },
           {
             "documentation": {
-              "id": 9942,
+              "id": 10708,
               "nodeType": "StructuredDocumentation",
               "src": "6003:266:36",
               "text": " @dev Get data of the slot of the state of a agreement\n @param agreementClass Contract address of the agreement\n @param account Account to query\n @param slotId slot id of the state\n @param dataLength length of the state data"
             },
             "functionSelector": "4b61cc33",
-            "id": 9956,
+            "id": 10722,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getAgreementStateSlot",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9951,
+              "id": 10717,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9944,
+                  "id": 10710,
                   "mutability": "mutable",
                   "name": "agreementClass",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9956,
+                  "scope": 10722,
                   "src": "6314:22:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2531,7 +2531,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9943,
+                    "id": 10709,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "6314:7:36",
@@ -2545,11 +2545,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 9946,
+                  "id": 10712,
                   "mutability": "mutable",
                   "name": "account",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9956,
+                  "scope": 10722,
                   "src": "6346:15:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2558,7 +2558,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9945,
+                    "id": 10711,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "6346:7:36",
@@ -2572,11 +2572,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 9948,
+                  "id": 10714,
                   "mutability": "mutable",
                   "name": "slotId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9956,
+                  "scope": 10722,
                   "src": "6371:14:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2585,7 +2585,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9947,
+                    "id": 10713,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "6371:7:36",
@@ -2598,11 +2598,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 9950,
+                  "id": 10716,
                   "mutability": "mutable",
                   "name": "dataLength",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9956,
+                  "scope": 10722,
                   "src": "6395:15:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2611,7 +2611,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9949,
+                    "id": 10715,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "6395:4:36",
@@ -2626,16 +2626,16 @@
               "src": "6304:112:36"
             },
             "returnParameters": {
-              "id": 9955,
+              "id": 10721,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9954,
+                  "id": 10720,
                   "mutability": "mutable",
                   "name": "slotData",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9956,
+                  "scope": 10722,
                   "src": "6456:25:36",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -2645,7 +2645,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 9952,
+                      "id": 10718,
                       "name": "bytes32",
                       "nodeType": "ElementaryTypeName",
                       "src": "6456:7:36",
@@ -2654,7 +2654,7 @@
                         "typeString": "bytes32"
                       }
                     },
-                    "id": 9953,
+                    "id": 10719,
                     "nodeType": "ArrayTypeName",
                     "src": "6456:9:36",
                     "typeDescriptions": {
@@ -2667,7 +2667,7 @@
               ],
               "src": "6455:27:36"
             },
-            "scope": 10025,
+            "scope": 10791,
             "src": "6274:209:36",
             "stateMutability": "view",
             "virtual": false,
@@ -2676,26 +2676,26 @@
           {
             "anonymous": false,
             "documentation": {
-              "id": 9957,
+              "id": 10723,
               "nodeType": "StructuredDocumentation",
               "src": "6489:221:36",
               "text": " @dev Agreement account state updated event\n @param agreementClass Contract address of the agreement\n @param account Account of the agrement\n @param state Agreement state of the account"
             },
-            "id": 9965,
+            "id": 10731,
             "name": "AgreementAccountStateUpdated",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 9964,
+              "id": 10730,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9959,
+                  "id": 10725,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "agreementClass",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9965,
+                  "scope": 10731,
                   "src": "6759:30:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2704,7 +2704,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9958,
+                    "id": 10724,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "6759:7:36",
@@ -2718,12 +2718,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 9961,
+                  "id": 10727,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "account",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9965,
+                  "scope": 10731,
                   "src": "6799:23:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2732,7 +2732,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9960,
+                    "id": 10726,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "6799:7:36",
@@ -2746,12 +2746,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 9963,
+                  "id": 10729,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "state",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9965,
+                  "scope": 10731,
                   "src": "6832:11:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2760,7 +2760,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 9962,
+                    "id": 10728,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "6832:5:36",
@@ -2778,29 +2778,29 @@
           },
           {
             "documentation": {
-              "id": 9966,
+              "id": 10732,
               "nodeType": "StructuredDocumentation",
               "src": "6856:310:36",
               "text": " @dev Settle balance from an account by the agreement.\n      The agreement needs to make sure that the balance delta is balanced afterwards\n @param account Account to query.\n @param delta Amount of balance delta to be settled\n Modifiers:\n  - onlyAgreement"
             },
             "functionSelector": "cf97256d",
-            "id": 9973,
+            "id": 10739,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "settleBalance",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9971,
+              "id": 10737,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9968,
+                  "id": 10734,
                   "mutability": "mutable",
                   "name": "account",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9973,
+                  "scope": 10739,
                   "src": "7203:15:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2809,7 +2809,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9967,
+                    "id": 10733,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "7203:7:36",
@@ -2823,11 +2823,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 9970,
+                  "id": 10736,
                   "mutability": "mutable",
                   "name": "delta",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9973,
+                  "scope": 10739,
                   "src": "7228:12:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2836,7 +2836,7 @@
                     "typeString": "int256"
                   },
                   "typeName": {
-                    "id": 9969,
+                    "id": 10735,
                     "name": "int256",
                     "nodeType": "ElementaryTypeName",
                     "src": "7228:6:36",
@@ -2851,12 +2851,12 @@
               "src": "7193:53:36"
             },
             "returnParameters": {
-              "id": 9972,
+              "id": 10738,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "7263:0:36"
             },
-            "scope": 10025,
+            "scope": 10791,
             "src": "7171:93:36",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -2865,26 +2865,26 @@
           {
             "anonymous": false,
             "documentation": {
-              "id": 9974,
+              "id": 10740,
               "nodeType": "StructuredDocumentation",
               "src": "7270:368:36",
               "text": " @dev Agreement liquidation event (DEPRECATED BY AgreementLiquidatedBy)\n @param agreementClass Contract address of the agreement\n @param id Agreement ID\n @param penaltyAccount Account of the agreement to be penalized\n @param rewardAccount Account that collect the reward\n @param rewardAmount Amount of liquidation reward"
             },
-            "id": 9986,
+            "id": 10752,
             "name": "AgreementLiquidated",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 9985,
+              "id": 10751,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9976,
+                  "id": 10742,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "agreementClass",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9986,
+                  "scope": 10752,
                   "src": "7678:30:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2893,7 +2893,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9975,
+                    "id": 10741,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "7678:7:36",
@@ -2907,12 +2907,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 9978,
+                  "id": 10744,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9986,
+                  "scope": 10752,
                   "src": "7718:10:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2921,7 +2921,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 9977,
+                    "id": 10743,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "7718:7:36",
@@ -2934,12 +2934,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 9980,
+                  "id": 10746,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "penaltyAccount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9986,
+                  "scope": 10752,
                   "src": "7738:30:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2948,7 +2948,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9979,
+                    "id": 10745,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "7738:7:36",
@@ -2962,12 +2962,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 9982,
+                  "id": 10748,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "rewardAccount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9986,
+                  "scope": 10752,
                   "src": "7778:29:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2976,7 +2976,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9981,
+                    "id": 10747,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "7778:7:36",
@@ -2990,12 +2990,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 9984,
+                  "id": 10750,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "rewardAmount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9986,
+                  "scope": 10752,
                   "src": "7817:20:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3004,7 +3004,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9983,
+                    "id": 10749,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "7817:7:36",
@@ -3023,26 +3023,26 @@
           {
             "anonymous": false,
             "documentation": {
-              "id": 9987,
+              "id": 10753,
               "nodeType": "StructuredDocumentation",
               "src": "7850:210:36",
               "text": " @dev System bailout occurred (DEPRECATIED BY AgreementLiquidatedBy)\n @param bailoutAccount Account that bailout the penalty account\n @param bailoutAmount Amount of account bailout"
             },
-            "id": 9993,
+            "id": 10759,
             "name": "Bailout",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 9992,
+              "id": 10758,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9989,
+                  "id": 10755,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "bailoutAccount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9993,
+                  "scope": 10759,
                   "src": "8088:30:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3051,7 +3051,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9988,
+                    "id": 10754,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "8088:7:36",
@@ -3065,12 +3065,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 9991,
+                  "id": 10757,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "bailoutAmount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9993,
+                  "scope": 10759,
                   "src": "8128:21:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3079,7 +3079,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9990,
+                    "id": 10756,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "8128:7:36",
@@ -3098,26 +3098,26 @@
           {
             "anonymous": false,
             "documentation": {
-              "id": 9994,
+              "id": 10760,
               "nodeType": "StructuredDocumentation",
               "src": "8162:995:36",
               "text": " @dev Agreement liquidation event (including agent account)\n @param agreementClass Contract address of the agreement\n @param id Agreement ID\n @param liquidatorAccount Account of the agent that performed the liquidation.\n @param penaltyAccount Account of the agreement to be penalized\n @param bondAccount Account that collect the reward or bailout accounts\n @param rewardAmount Amount of liquidation reward\n @param bailoutAmount Amount of liquidation bailouot\n NOTE:\n Reward account rule:\n - if bailout is equal to 0, then\n   - the bondAccount will get the rewardAmount,\n   - the penaltyAccount will pay for the rewardAmount.\n - if bailout is larger than 0, then\n   - the liquidatorAccount will get the rewardAmouont,\n   - the bondAccount will pay for both the rewardAmount and bailoutAmount,\n   - the penaltyAccount will pay for the rewardAmount while get the bailoutAmount."
             },
-            "id": 10010,
+            "id": 10776,
             "name": "AgreementLiquidatedBy",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 10009,
+              "id": 10775,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9996,
+                  "id": 10762,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "liquidatorAccount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 10010,
+                  "scope": 10776,
                   "src": "9199:25:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3126,7 +3126,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9995,
+                    "id": 10761,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "9199:7:36",
@@ -3140,12 +3140,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 9998,
+                  "id": 10764,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "agreementClass",
                   "nodeType": "VariableDeclaration",
-                  "scope": 10010,
+                  "scope": 10776,
                   "src": "9234:30:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3154,7 +3154,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9997,
+                    "id": 10763,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "9234:7:36",
@@ -3168,12 +3168,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 10000,
+                  "id": 10766,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 10010,
+                  "scope": 10776,
                   "src": "9274:10:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3182,7 +3182,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 9999,
+                    "id": 10765,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "9274:7:36",
@@ -3195,12 +3195,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 10002,
+                  "id": 10768,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "penaltyAccount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 10010,
+                  "scope": 10776,
                   "src": "9294:30:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3209,7 +3209,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 10001,
+                    "id": 10767,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "9294:7:36",
@@ -3223,12 +3223,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 10004,
+                  "id": 10770,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "bondAccount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 10010,
+                  "scope": 10776,
                   "src": "9334:27:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3237,7 +3237,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 10003,
+                    "id": 10769,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "9334:7:36",
@@ -3251,12 +3251,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 10006,
+                  "id": 10772,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "rewardAmount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 10010,
+                  "scope": 10776,
                   "src": "9371:20:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3265,7 +3265,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 10005,
+                    "id": 10771,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "9371:7:36",
@@ -3278,12 +3278,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 10008,
+                  "id": 10774,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "bailoutAmount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 10010,
+                  "scope": 10776,
                   "src": "9401:21:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3292,7 +3292,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 10007,
+                    "id": 10773,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "9401:7:36",
@@ -3310,29 +3310,29 @@
           },
           {
             "documentation": {
-              "id": 10011,
+              "id": 10777,
               "nodeType": "StructuredDocumentation",
               "src": "9435:667:36",
               "text": " @dev Make liquidation payouts\n @param id Agreement ID\n @param liquidator Address of the executer of liquidation\n @param penaltyAccount Account of the agreement to be penalized\n @param rewardAmount Amount of liquidation reward\n @param bailoutAmount Amount of account bailout needed\n NOTE:\n Liquidation rules:\n  - If a bailout is required (bailoutAmount > 0)\n     - the actual reward goes to the liquidator,\n     - while the reward account becomes the bailout account\n     - total bailout include: bailout amount + reward amount\n Modifiers:\n  - onlyAgreement"
             },
             "functionSelector": "8ddd1c0f",
-            "id": 10024,
+            "id": 10790,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "makeLiquidationPayouts",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 10022,
+              "id": 10788,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 10013,
+                  "id": 10779,
                   "mutability": "mutable",
                   "name": "id",
                   "nodeType": "VariableDeclaration",
-                  "scope": 10024,
+                  "scope": 10790,
                   "src": "10153:10:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3341,7 +3341,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 10012,
+                    "id": 10778,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "10153:7:36",
@@ -3354,11 +3354,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 10015,
+                  "id": 10781,
                   "mutability": "mutable",
                   "name": "liquidator",
                   "nodeType": "VariableDeclaration",
-                  "scope": 10024,
+                  "scope": 10790,
                   "src": "10173:18:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3367,7 +3367,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 10014,
+                    "id": 10780,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "10173:7:36",
@@ -3381,11 +3381,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 10017,
+                  "id": 10783,
                   "mutability": "mutable",
                   "name": "penaltyAccount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 10024,
+                  "scope": 10790,
                   "src": "10201:22:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3394,7 +3394,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 10016,
+                    "id": 10782,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "10201:7:36",
@@ -3408,11 +3408,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 10019,
+                  "id": 10785,
                   "mutability": "mutable",
                   "name": "rewardAmount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 10024,
+                  "scope": 10790,
                   "src": "10233:20:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3421,7 +3421,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 10018,
+                    "id": 10784,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "10233:7:36",
@@ -3434,11 +3434,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 10021,
+                  "id": 10787,
                   "mutability": "mutable",
                   "name": "bailoutAmount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 10024,
+                  "scope": 10790,
                   "src": "10263:21:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3447,7 +3447,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 10020,
+                    "id": 10786,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "10263:7:36",
@@ -3462,19 +3462,19 @@
               "src": "10143:147:36"
             },
             "returnParameters": {
-              "id": 10023,
+              "id": 10789,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "10307:0:36"
             },
-            "scope": 10025,
+            "scope": 10791,
             "src": "10107:201:36",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 10026,
+        "scope": 10792,
         "src": "194:10744:36"
       }
     ],

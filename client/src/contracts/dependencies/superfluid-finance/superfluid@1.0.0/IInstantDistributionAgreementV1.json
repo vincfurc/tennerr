@@ -881,15 +881,15 @@
     "absolutePath": "/Users/vince/.brownie/packages/superfluid-finance/superfluid@1.0.0/ethereum-contracts/contracts/interfaces/agreements/IInstantDistributionAgreementV1.sol",
     "exportedSymbols": {
       "IInstantDistributionAgreementV1": [
-        8038
+        8139
       ]
     },
-    "id": 8039,
+    "id": 8140,
     "license": "AGPLv3",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 7709,
+        "id": 7810,
         "literals": [
           "solidity",
           ">=",
@@ -902,15 +902,15 @@
       {
         "absolutePath": "/Users/vince/.brownie/packages/superfluid-finance/superfluid@1.0.0/ethereum-contracts/contracts/interfaces/superfluid/ISuperAgreement.sol",
         "file": "../superfluid/ISuperAgreement.sol",
-        "id": 7711,
+        "id": 7812,
         "nodeType": "ImportDirective",
-        "scope": 8039,
-        "sourceUnit": 9772,
+        "scope": 8140,
+        "sourceUnit": 9922,
         "src": "62:68:28",
         "symbolAliases": [
           {
             "foreign": {
-              "id": 7710,
+              "id": 7811,
               "name": "ISuperAgreement",
               "nodeType": "Identifier",
               "overloadedDeclarations": [],
@@ -924,15 +924,15 @@
       {
         "absolutePath": "/Users/vince/.brownie/packages/superfluid-finance/superfluid@1.0.0/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluidToken.sol",
         "file": "../superfluid/ISuperfluidToken.sol",
-        "id": 7713,
+        "id": 7814,
         "nodeType": "ImportDirective",
-        "scope": 8039,
-        "sourceUnit": 10026,
+        "scope": 8140,
+        "sourceUnit": 10792,
         "src": "131:70:28",
         "symbolAliases": [
           {
             "foreign": {
-              "id": 7712,
+              "id": 7813,
               "name": "ISuperfluidToken",
               "nodeType": "Identifier",
               "overloadedDeclarations": [],
@@ -948,46 +948,46 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 7715,
+              "id": 7816,
               "name": "ISuperAgreement",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 9771,
+              "referencedDeclaration": 9921,
               "src": "1835:15:28",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ISuperAgreement_$9771",
+                "typeIdentifier": "t_contract$_ISuperAgreement_$9921",
                 "typeString": "contract ISuperAgreement"
               }
             },
-            "id": 7716,
+            "id": 7817,
             "nodeType": "InheritanceSpecifier",
             "src": "1835:15:28"
           }
         ],
         "contractDependencies": [
-          9771
+          9921
         ],
         "contractKind": "contract",
         "documentation": {
-          "id": 7714,
+          "id": 7815,
           "nodeType": "StructuredDocumentation",
           "src": "204:1577:28",
           "text": " @title Superfluid's instant distribution agreement interface.\n @author Superfluid\n Notes:\n   - A publisher can create as many as indeces as possibily identifiable with `indexId`.\n     - `indexId` is deliberately limited to 32 bits, to avoid the chance for sha-3 collision.\n       Despite knowing sha-3 collision is only theoratical.\n   - A publisher can create subscription to an index for any subscriber.\n   - A subscription consists of:\n     - The index it subscribes to.\n     - Number of units subscribed.\n   - An index consists of:\n     - Current value as `uint128 indexValue`.\n     - Total units of the approved subscriptions as `uint128 totalUnitsApproved`.\n     - Total units of the non approved subscription as `uint128 totalUnitsPending`.\n   - A publisher can update index with new value that doesn't decrease.\n   - A publisher can update subscription with any number of units.\n   - A publisher or a subscriber can delete subscription and reset units to zero.\n   - A subscriber must approve the index in order to receive distributions from the publisher\n     each time the index is updated.\n     - The amount distributed is $$\\Delta{index} * units$$\n   - Distributions to a non approved subscription stays in the publisher's deposit until:\n     - the subscriber approve the subscription (side effect),\n     - the publisher update the subscription (side effect),\n     - the subscriber delete the subscription even if it is never approved (side effect),\n     - or the subscriber can explicitly claim them."
         },
         "fullyImplemented": false,
-        "id": 8038,
+        "id": 8139,
         "linearizedBaseContracts": [
-          8038,
-          9771
+          8139,
+          9921
         ],
         "name": "IInstantDistributionAgreementV1",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "baseFunctions": [
-              9754
+              9904
             ],
             "body": {
-              "id": 7727,
+              "id": 7828,
               "nodeType": "Block",
               "src": "1982:102:28",
               "statements": [
@@ -996,7 +996,7 @@
                     "arguments": [
                       {
                         "hexValue": "6f72672e7375706572666c7569642d66696e616e63652e61677265656d656e74732e496e7374616e74446973747269627574696f6e41677265656d656e742e7631",
-                        "id": 7724,
+                        "id": 7825,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -1018,7 +1018,7 @@
                           "typeString": "literal_string \"org.superfluid-finance.agreements.InstantDistributionAgreement.v1\""
                         }
                       ],
-                      "id": 7723,
+                      "id": 7824,
                       "name": "keccak256",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
@@ -1029,7 +1029,7 @@
                         "typeString": "function (bytes memory) pure returns (bytes32)"
                       }
                     },
-                    "id": 7725,
+                    "id": 7826,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": true,
@@ -1044,49 +1044,49 @@
                       "typeString": "bytes32"
                     }
                   },
-                  "functionReturnParameters": 7722,
-                  "id": 7726,
+                  "functionReturnParameters": 7823,
+                  "id": 7827,
                   "nodeType": "Return",
                   "src": "1992:85:28"
                 }
               ]
             },
             "documentation": {
-              "id": 7717,
+              "id": 7818,
               "nodeType": "StructuredDocumentation",
               "src": "1858:53:28",
               "text": "@dev ISuperAgreement.agreementType implementation"
             },
             "functionSelector": "7730599e",
-            "id": 7728,
+            "id": 7829,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "agreementType",
             "nodeType": "FunctionDefinition",
             "overrides": {
-              "id": 7719,
+              "id": 7820,
               "nodeType": "OverrideSpecifier",
               "overrides": [],
               "src": "1950:8:28"
             },
             "parameters": {
-              "id": 7718,
+              "id": 7819,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1938:2:28"
             },
             "returnParameters": {
-              "id": 7722,
+              "id": 7823,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7721,
+                  "id": 7822,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7728,
+                  "scope": 7829,
                   "src": "1973:7:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1095,7 +1095,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 7720,
+                    "id": 7821,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "1973:7:28",
@@ -1109,7 +1109,7 @@
               ],
               "src": "1972:9:28"
             },
-            "scope": 8038,
+            "scope": 8139,
             "src": "1916:168:28",
             "stateMutability": "pure",
             "virtual": false,
@@ -1117,44 +1117,44 @@
           },
           {
             "documentation": {
-              "id": 7729,
+              "id": 7830,
               "nodeType": "StructuredDocumentation",
               "src": "2275:190:28",
               "text": " @dev Create a new index for the publisher.\n @param token Super token address.\n @param indexId Id of the index.\n # App callbacks\n None"
             },
             "functionSelector": "d787840a",
-            "id": 7740,
+            "id": 7841,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "createIndex",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7736,
+              "id": 7837,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7731,
+                  "id": 7832,
                   "mutability": "mutable",
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7740,
+                  "scope": 7841,
                   "src": "2500:22:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                     "typeString": "contract ISuperfluidToken"
                   },
                   "typeName": {
-                    "id": 7730,
+                    "id": 7831,
                     "name": "ISuperfluidToken",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 10025,
+                    "referencedDeclaration": 10791,
                     "src": "2500:16:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                       "typeString": "contract ISuperfluidToken"
                     }
                   },
@@ -1162,11 +1162,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7733,
+                  "id": 7834,
                   "mutability": "mutable",
                   "name": "indexId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7740,
+                  "scope": 7841,
                   "src": "2532:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1175,7 +1175,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 7732,
+                    "id": 7833,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "2532:6:28",
@@ -1188,11 +1188,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7735,
+                  "id": 7836,
                   "mutability": "mutable",
                   "name": "ctx",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7740,
+                  "scope": 7841,
                   "src": "2556:18:28",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -1201,7 +1201,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 7734,
+                    "id": 7835,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "2556:5:28",
@@ -1216,16 +1216,16 @@
               "src": "2490:85:28"
             },
             "returnParameters": {
-              "id": 7739,
+              "id": 7840,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7738,
+                  "id": 7839,
                   "mutability": "mutable",
                   "name": "newCtx",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7740,
+                  "scope": 7841,
                   "src": "2637:19:28",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -1234,7 +1234,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 7737,
+                    "id": 7838,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "2637:5:28",
@@ -1248,7 +1248,7 @@
               ],
               "src": "2636:21:28"
             },
-            "scope": 8038,
+            "scope": 8139,
             "src": "2470:188:28",
             "stateMutability": "nonpayable",
             "virtual": true,
@@ -1256,36 +1256,36 @@
           },
           {
             "anonymous": false,
-            "id": 7750,
+            "id": 7851,
             "name": "IndexCreated",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 7749,
+              "id": 7850,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7742,
+                  "id": 7843,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7750,
+                  "scope": 7851,
                   "src": "2692:30:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                     "typeString": "contract ISuperfluidToken"
                   },
                   "typeName": {
-                    "id": 7741,
+                    "id": 7842,
                     "name": "ISuperfluidToken",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 10025,
+                    "referencedDeclaration": 10791,
                     "src": "2692:16:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                       "typeString": "contract ISuperfluidToken"
                     }
                   },
@@ -1293,12 +1293,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7744,
+                  "id": 7845,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "publisher",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7750,
+                  "scope": 7851,
                   "src": "2732:25:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1307,7 +1307,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7743,
+                    "id": 7844,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "2732:7:28",
@@ -1321,12 +1321,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7746,
+                  "id": 7847,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "indexId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7750,
+                  "scope": 7851,
                   "src": "2767:22:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1335,7 +1335,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 7745,
+                    "id": 7846,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "2767:6:28",
@@ -1348,12 +1348,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7748,
+                  "id": 7849,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "userData",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7750,
+                  "scope": 7851,
                   "src": "2799:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1362,7 +1362,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 7747,
+                    "id": 7848,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "2799:5:28",
@@ -1380,44 +1380,44 @@
           },
           {
             "documentation": {
-              "id": 7751,
+              "id": 7852,
               "nodeType": "StructuredDocumentation",
               "src": "2821:426:28",
               "text": " @dev Query the data of a index.\n @param token Super token address.\n @param publisher The publisher of the index.\n @param indexId Id of the index.\n @return exist Does the index exist.\n @return indexValue Value of the current index.\n @return totalUnitsApproved Total units approved for the index.\n @return totalUnitsPending Total units pending approval for the index."
             },
             "functionSelector": "23fc23f3",
-            "id": 7768,
+            "id": 7869,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getIndex",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7758,
+              "id": 7859,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7753,
+                  "id": 7854,
                   "mutability": "mutable",
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7768,
+                  "scope": 7869,
                   "src": "3279:22:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                     "typeString": "contract ISuperfluidToken"
                   },
                   "typeName": {
-                    "id": 7752,
+                    "id": 7853,
                     "name": "ISuperfluidToken",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 10025,
+                    "referencedDeclaration": 10791,
                     "src": "3279:16:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                       "typeString": "contract ISuperfluidToken"
                     }
                   },
@@ -1425,11 +1425,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7755,
+                  "id": 7856,
                   "mutability": "mutable",
                   "name": "publisher",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7768,
+                  "scope": 7869,
                   "src": "3311:17:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1438,7 +1438,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7754,
+                    "id": 7855,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "3311:7:28",
@@ -1452,11 +1452,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7757,
+                  "id": 7858,
                   "mutability": "mutable",
                   "name": "indexId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7768,
+                  "scope": 7869,
                   "src": "3338:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1465,7 +1465,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 7756,
+                    "id": 7857,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "3338:6:28",
@@ -1480,16 +1480,16 @@
               "src": "3269:84:28"
             },
             "returnParameters": {
-              "id": 7767,
+              "id": 7868,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7760,
+                  "id": 7861,
                   "mutability": "mutable",
                   "name": "exist",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7768,
+                  "scope": 7869,
                   "src": "3449:10:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1498,7 +1498,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 7759,
+                    "id": 7860,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "3449:4:28",
@@ -1511,11 +1511,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7762,
+                  "id": 7863,
                   "mutability": "mutable",
                   "name": "indexValue",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7768,
+                  "scope": 7869,
                   "src": "3477:18:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1524,7 +1524,7 @@
                     "typeString": "uint128"
                   },
                   "typeName": {
-                    "id": 7761,
+                    "id": 7862,
                     "name": "uint128",
                     "nodeType": "ElementaryTypeName",
                     "src": "3477:7:28",
@@ -1537,11 +1537,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7764,
+                  "id": 7865,
                   "mutability": "mutable",
                   "name": "totalUnitsApproved",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7768,
+                  "scope": 7869,
                   "src": "3513:26:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1550,7 +1550,7 @@
                     "typeString": "uint128"
                   },
                   "typeName": {
-                    "id": 7763,
+                    "id": 7864,
                     "name": "uint128",
                     "nodeType": "ElementaryTypeName",
                     "src": "3513:7:28",
@@ -1563,11 +1563,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7766,
+                  "id": 7867,
                   "mutability": "mutable",
                   "name": "totalUnitsPending",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7768,
+                  "scope": 7869,
                   "src": "3557:25:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1576,7 +1576,7 @@
                     "typeString": "uint128"
                   },
                   "typeName": {
-                    "id": 7765,
+                    "id": 7866,
                     "name": "uint128",
                     "nodeType": "ElementaryTypeName",
                     "src": "3557:7:28",
@@ -1590,7 +1590,7 @@
               ],
               "src": "3431:152:28"
             },
-            "scope": 8038,
+            "scope": 8139,
             "src": "3252:332:28",
             "stateMutability": "view",
             "virtual": true,
@@ -1598,44 +1598,44 @@
           },
           {
             "documentation": {
-              "id": 7769,
+              "id": 7870,
               "nodeType": "StructuredDocumentation",
               "src": "3590:261:28",
               "text": " @dev Calculate actual distribution amount\n @param token Super token address.\n @param publisher The publisher of the index.\n @param indexId Id of the index.\n @param amount The amount of tokens desired to be distributed."
             },
             "functionSelector": "899baaec",
-            "id": 7784,
+            "id": 7885,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "calculateDistribution",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7778,
+              "id": 7879,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7771,
+                  "id": 7872,
                   "mutability": "mutable",
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7784,
+                  "scope": 7885,
                   "src": "3895:22:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                     "typeString": "contract ISuperfluidToken"
                   },
                   "typeName": {
-                    "id": 7770,
+                    "id": 7871,
                     "name": "ISuperfluidToken",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 10025,
+                    "referencedDeclaration": 10791,
                     "src": "3895:16:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                       "typeString": "contract ISuperfluidToken"
                     }
                   },
@@ -1643,11 +1643,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7773,
+                  "id": 7874,
                   "mutability": "mutable",
                   "name": "publisher",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7784,
+                  "scope": 7885,
                   "src": "3926:17:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1656,7 +1656,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7772,
+                    "id": 7873,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "3926:7:28",
@@ -1670,11 +1670,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7775,
+                  "id": 7876,
                   "mutability": "mutable",
                   "name": "indexId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7784,
+                  "scope": 7885,
                   "src": "3952:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1683,7 +1683,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 7774,
+                    "id": 7875,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "3952:6:28",
@@ -1696,11 +1696,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7777,
+                  "id": 7878,
                   "mutability": "mutable",
                   "name": "amount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7784,
+                  "scope": 7885,
                   "src": "3975:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1709,7 +1709,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7776,
+                    "id": 7877,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "3975:7:28",
@@ -1724,16 +1724,16 @@
               "src": "3886:104:28"
             },
             "returnParameters": {
-              "id": 7783,
+              "id": 7884,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7780,
+                  "id": 7881,
                   "mutability": "mutable",
                   "name": "actualAmount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7784,
+                  "scope": 7885,
                   "src": "4070:20:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1742,7 +1742,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7779,
+                    "id": 7880,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "4070:7:28",
@@ -1755,11 +1755,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7782,
+                  "id": 7883,
                   "mutability": "mutable",
                   "name": "newIndexValue",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7784,
+                  "scope": 7885,
                   "src": "4107:21:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1768,7 +1768,7 @@
                     "typeString": "uint128"
                   },
                   "typeName": {
-                    "id": 7781,
+                    "id": 7882,
                     "name": "uint128",
                     "nodeType": "ElementaryTypeName",
                     "src": "4107:7:28",
@@ -1782,7 +1782,7 @@
               ],
               "src": "4053:76:28"
             },
-            "scope": 8038,
+            "scope": 8139,
             "src": "3856:274:28",
             "stateMutability": "view",
             "virtual": true,
@@ -1790,44 +1790,44 @@
           },
           {
             "documentation": {
-              "id": 7785,
+              "id": 7886,
               "nodeType": "StructuredDocumentation",
               "src": "4136:229:28",
               "text": " @dev Update index value of an index.\n @param token Super token address.\n @param indexId Id of the index.\n @param indexValue Value of the index.\n # App callbacks\n None"
             },
             "functionSelector": "7fbc7639",
-            "id": 7798,
+            "id": 7899,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "updateIndex",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7794,
+              "id": 7895,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7787,
+                  "id": 7888,
                   "mutability": "mutable",
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7798,
+                  "scope": 7899,
                   "src": "4400:22:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                     "typeString": "contract ISuperfluidToken"
                   },
                   "typeName": {
-                    "id": 7786,
+                    "id": 7887,
                     "name": "ISuperfluidToken",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 10025,
+                    "referencedDeclaration": 10791,
                     "src": "4400:16:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                       "typeString": "contract ISuperfluidToken"
                     }
                   },
@@ -1835,11 +1835,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7789,
+                  "id": 7890,
                   "mutability": "mutable",
                   "name": "indexId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7798,
+                  "scope": 7899,
                   "src": "4432:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1848,7 +1848,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 7788,
+                    "id": 7889,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "4432:6:28",
@@ -1861,11 +1861,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7791,
+                  "id": 7892,
                   "mutability": "mutable",
                   "name": "indexValue",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7798,
+                  "scope": 7899,
                   "src": "4456:18:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1874,7 +1874,7 @@
                     "typeString": "uint128"
                   },
                   "typeName": {
-                    "id": 7790,
+                    "id": 7891,
                     "name": "uint128",
                     "nodeType": "ElementaryTypeName",
                     "src": "4456:7:28",
@@ -1887,11 +1887,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7793,
+                  "id": 7894,
                   "mutability": "mutable",
                   "name": "ctx",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7798,
+                  "scope": 7899,
                   "src": "4484:18:28",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -1900,7 +1900,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 7792,
+                    "id": 7893,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "4484:5:28",
@@ -1915,16 +1915,16 @@
               "src": "4390:113:28"
             },
             "returnParameters": {
-              "id": 7797,
+              "id": 7898,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7796,
+                  "id": 7897,
                   "mutability": "mutable",
                   "name": "newCtx",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7798,
+                  "scope": 7899,
                   "src": "4565:19:28",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -1933,7 +1933,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 7795,
+                    "id": 7896,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "4565:5:28",
@@ -1947,7 +1947,7 @@
               ],
               "src": "4564:21:28"
             },
-            "scope": 8038,
+            "scope": 8139,
             "src": "4370:216:28",
             "stateMutability": "nonpayable",
             "virtual": true,
@@ -1955,36 +1955,36 @@
           },
           {
             "anonymous": false,
-            "id": 7816,
+            "id": 7917,
             "name": "IndexUpdated",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 7815,
+              "id": 7916,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7800,
+                  "id": 7901,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7816,
+                  "scope": 7917,
                   "src": "4620:30:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                     "typeString": "contract ISuperfluidToken"
                   },
                   "typeName": {
-                    "id": 7799,
+                    "id": 7900,
                     "name": "ISuperfluidToken",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 10025,
+                    "referencedDeclaration": 10791,
                     "src": "4620:16:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                       "typeString": "contract ISuperfluidToken"
                     }
                   },
@@ -1992,12 +1992,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7802,
+                  "id": 7903,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "publisher",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7816,
+                  "scope": 7917,
                   "src": "4660:25:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2006,7 +2006,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7801,
+                    "id": 7902,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "4660:7:28",
@@ -2020,12 +2020,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7804,
+                  "id": 7905,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "indexId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7816,
+                  "scope": 7917,
                   "src": "4695:22:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2034,7 +2034,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 7803,
+                    "id": 7904,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "4695:6:28",
@@ -2047,12 +2047,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7806,
+                  "id": 7907,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "oldIndexValue",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7816,
+                  "scope": 7917,
                   "src": "4727:21:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2061,7 +2061,7 @@
                     "typeString": "uint128"
                   },
                   "typeName": {
-                    "id": 7805,
+                    "id": 7906,
                     "name": "uint128",
                     "nodeType": "ElementaryTypeName",
                     "src": "4727:7:28",
@@ -2074,12 +2074,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7808,
+                  "id": 7909,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "newIndexValue",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7816,
+                  "scope": 7917,
                   "src": "4758:21:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2088,7 +2088,7 @@
                     "typeString": "uint128"
                   },
                   "typeName": {
-                    "id": 7807,
+                    "id": 7908,
                     "name": "uint128",
                     "nodeType": "ElementaryTypeName",
                     "src": "4758:7:28",
@@ -2101,12 +2101,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7810,
+                  "id": 7911,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "totalUnitsPending",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7816,
+                  "scope": 7917,
                   "src": "4789:25:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2115,7 +2115,7 @@
                     "typeString": "uint128"
                   },
                   "typeName": {
-                    "id": 7809,
+                    "id": 7910,
                     "name": "uint128",
                     "nodeType": "ElementaryTypeName",
                     "src": "4789:7:28",
@@ -2128,12 +2128,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7812,
+                  "id": 7913,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "totalUnitsApproved",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7816,
+                  "scope": 7917,
                   "src": "4824:26:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2142,7 +2142,7 @@
                     "typeString": "uint128"
                   },
                   "typeName": {
-                    "id": 7811,
+                    "id": 7912,
                     "name": "uint128",
                     "nodeType": "ElementaryTypeName",
                     "src": "4824:7:28",
@@ -2155,12 +2155,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7814,
+                  "id": 7915,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "userData",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7816,
+                  "scope": 7917,
                   "src": "4860:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2169,7 +2169,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 7813,
+                    "id": 7914,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "4860:5:28",
@@ -2187,44 +2187,44 @@
           },
           {
             "documentation": {
-              "id": 7817,
+              "id": 7918,
               "nodeType": "StructuredDocumentation",
               "src": "4882:582:28",
               "text": " @dev Distribute tokens through the index.\n @param token Super token address.\n @param indexId Id of the index.\n @param amount The amount of tokens desired to be distributed.\n NOTE:\n - This is a convenient version of updateIndex. It adds to the index\n   a delta that equals to `amount / totalUnits`.\n - The actual amount distributed could be obtained via\n   `calculateDistribution`. This is due to precision error with index\n   value and units data range.\n # App callbacks\n None"
             },
             "functionSelector": "b96731c2",
-            "id": 7830,
+            "id": 7931,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "distribute",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7826,
+              "id": 7927,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7819,
+                  "id": 7920,
                   "mutability": "mutable",
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7830,
+                  "scope": 7931,
                   "src": "5498:22:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                     "typeString": "contract ISuperfluidToken"
                   },
                   "typeName": {
-                    "id": 7818,
+                    "id": 7919,
                     "name": "ISuperfluidToken",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 10025,
+                    "referencedDeclaration": 10791,
                     "src": "5498:16:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                       "typeString": "contract ISuperfluidToken"
                     }
                   },
@@ -2232,11 +2232,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7821,
+                  "id": 7922,
                   "mutability": "mutable",
                   "name": "indexId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7830,
+                  "scope": 7931,
                   "src": "5530:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2245,7 +2245,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 7820,
+                    "id": 7921,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "5530:6:28",
@@ -2258,11 +2258,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7823,
+                  "id": 7924,
                   "mutability": "mutable",
                   "name": "amount",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7830,
+                  "scope": 7931,
                   "src": "5554:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2271,7 +2271,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7822,
+                    "id": 7923,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "5554:7:28",
@@ -2284,11 +2284,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7825,
+                  "id": 7926,
                   "mutability": "mutable",
                   "name": "ctx",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7830,
+                  "scope": 7931,
                   "src": "5578:18:28",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -2297,7 +2297,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 7824,
+                    "id": 7925,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "5578:5:28",
@@ -2312,16 +2312,16 @@
               "src": "5488:109:28"
             },
             "returnParameters": {
-              "id": 7829,
+              "id": 7930,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7828,
+                  "id": 7929,
                   "mutability": "mutable",
                   "name": "newCtx",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7830,
+                  "scope": 7931,
                   "src": "5659:19:28",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -2330,7 +2330,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 7827,
+                    "id": 7928,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "5659:5:28",
@@ -2344,7 +2344,7 @@
               ],
               "src": "5658:21:28"
             },
-            "scope": 8038,
+            "scope": 8139,
             "src": "5469:211:28",
             "stateMutability": "nonpayable",
             "virtual": true,
@@ -2352,44 +2352,44 @@
           },
           {
             "documentation": {
-              "id": 7831,
+              "id": 7932,
               "nodeType": "StructuredDocumentation",
               "src": "5879:511:28",
               "text": " @dev Approve the subscription of an index.\n @param token Super token address.\n @param publisher The publisher of the index.\n @param indexId Id of the index.\n # App callbacks\n - if subscription exist\n   - AgreementCreated callback to the publisher:\n      - agreementId is for the subscription\n - if subscription does not exist\n   - AgreementUpdated callback to the publisher:\n      - agreementId is for the subscription"
             },
             "functionSelector": "acf4a6c2",
-            "id": 7844,
+            "id": 7945,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "approveSubscription",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7840,
+              "id": 7941,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7833,
+                  "id": 7934,
                   "mutability": "mutable",
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7844,
+                  "scope": 7945,
                   "src": "6433:22:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                     "typeString": "contract ISuperfluidToken"
                   },
                   "typeName": {
-                    "id": 7832,
+                    "id": 7933,
                     "name": "ISuperfluidToken",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 10025,
+                    "referencedDeclaration": 10791,
                     "src": "6433:16:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                       "typeString": "contract ISuperfluidToken"
                     }
                   },
@@ -2397,11 +2397,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7835,
+                  "id": 7936,
                   "mutability": "mutable",
                   "name": "publisher",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7844,
+                  "scope": 7945,
                   "src": "6465:17:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2410,7 +2410,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7834,
+                    "id": 7935,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "6465:7:28",
@@ -2424,11 +2424,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7837,
+                  "id": 7938,
                   "mutability": "mutable",
                   "name": "indexId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7844,
+                  "scope": 7945,
                   "src": "6492:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2437,7 +2437,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 7836,
+                    "id": 7937,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "6492:6:28",
@@ -2450,11 +2450,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7839,
+                  "id": 7940,
                   "mutability": "mutable",
                   "name": "ctx",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7844,
+                  "scope": 7945,
                   "src": "6516:18:28",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -2463,7 +2463,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 7838,
+                    "id": 7939,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "6516:5:28",
@@ -2478,16 +2478,16 @@
               "src": "6423:112:28"
             },
             "returnParameters": {
-              "id": 7843,
+              "id": 7944,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7842,
+                  "id": 7943,
                   "mutability": "mutable",
                   "name": "newCtx",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7844,
+                  "scope": 7945,
                   "src": "6597:19:28",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -2496,7 +2496,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 7841,
+                    "id": 7942,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "6597:5:28",
@@ -2510,7 +2510,7 @@
               ],
               "src": "6596:21:28"
             },
-            "scope": 8038,
+            "scope": 8139,
             "src": "6395:223:28",
             "stateMutability": "nonpayable",
             "virtual": true,
@@ -2518,36 +2518,36 @@
           },
           {
             "anonymous": false,
-            "id": 7856,
+            "id": 7957,
             "name": "IndexSubscribed",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 7855,
+              "id": 7956,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7846,
+                  "id": 7947,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7856,
+                  "scope": 7957,
                   "src": "6655:30:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                     "typeString": "contract ISuperfluidToken"
                   },
                   "typeName": {
-                    "id": 7845,
+                    "id": 7946,
                     "name": "ISuperfluidToken",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 10025,
+                    "referencedDeclaration": 10791,
                     "src": "6655:16:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                       "typeString": "contract ISuperfluidToken"
                     }
                   },
@@ -2555,12 +2555,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7848,
+                  "id": 7949,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "publisher",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7856,
+                  "scope": 7957,
                   "src": "6695:25:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2569,7 +2569,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7847,
+                    "id": 7948,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "6695:7:28",
@@ -2583,12 +2583,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7850,
+                  "id": 7951,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "indexId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7856,
+                  "scope": 7957,
                   "src": "6730:22:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2597,7 +2597,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 7849,
+                    "id": 7950,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "6730:6:28",
@@ -2610,12 +2610,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7852,
+                  "id": 7953,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "subscriber",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7856,
+                  "scope": 7957,
                   "src": "6762:18:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2624,7 +2624,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7851,
+                    "id": 7952,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "6762:7:28",
@@ -2638,12 +2638,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7854,
+                  "id": 7955,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "userData",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7856,
+                  "scope": 7957,
                   "src": "6790:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2652,7 +2652,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 7853,
+                    "id": 7954,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "6790:5:28",
@@ -2670,36 +2670,36 @@
           },
           {
             "anonymous": false,
-            "id": 7868,
+            "id": 7969,
             "name": "SubscriptionApproved",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 7867,
+              "id": 7968,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7858,
+                  "id": 7959,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7868,
+                  "scope": 7969,
                   "src": "6848:30:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                     "typeString": "contract ISuperfluidToken"
                   },
                   "typeName": {
-                    "id": 7857,
+                    "id": 7958,
                     "name": "ISuperfluidToken",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 10025,
+                    "referencedDeclaration": 10791,
                     "src": "6848:16:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                       "typeString": "contract ISuperfluidToken"
                     }
                   },
@@ -2707,12 +2707,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7860,
+                  "id": 7961,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "subscriber",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7868,
+                  "scope": 7969,
                   "src": "6888:26:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2721,7 +2721,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7859,
+                    "id": 7960,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "6888:7:28",
@@ -2735,12 +2735,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7862,
+                  "id": 7963,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "publisher",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7868,
+                  "scope": 7969,
                   "src": "6924:17:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2749,7 +2749,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7861,
+                    "id": 7962,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "6924:7:28",
@@ -2763,12 +2763,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7864,
+                  "id": 7965,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "indexId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7868,
+                  "scope": 7969,
                   "src": "6951:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2777,7 +2777,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 7863,
+                    "id": 7964,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "6951:6:28",
@@ -2790,12 +2790,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7866,
+                  "id": 7967,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "userData",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7868,
+                  "scope": 7969,
                   "src": "6975:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2804,7 +2804,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 7865,
+                    "id": 7966,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "6975:5:28",
@@ -2822,44 +2822,44 @@
           },
           {
             "documentation": {
-              "id": 7869,
+              "id": 7970,
               "nodeType": "StructuredDocumentation",
               "src": "6997:314:28",
               "text": " @dev Revoke the subscription of an index.\n @param token Super token address.\n @param publisher The publisher of the index.\n @param indexId Id of the index.\n # App callbacks\n - AgreementUpdated callback to the publisher:\n    - agreementId is for the subscription"
             },
             "functionSelector": "6041ae96",
-            "id": 7882,
+            "id": 7983,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "revokeSubscription",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7878,
+              "id": 7979,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7871,
+                  "id": 7972,
                   "mutability": "mutable",
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7882,
+                  "scope": 7983,
                   "src": "7353:22:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                     "typeString": "contract ISuperfluidToken"
                   },
                   "typeName": {
-                    "id": 7870,
+                    "id": 7971,
                     "name": "ISuperfluidToken",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 10025,
+                    "referencedDeclaration": 10791,
                     "src": "7353:16:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                       "typeString": "contract ISuperfluidToken"
                     }
                   },
@@ -2867,11 +2867,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7873,
+                  "id": 7974,
                   "mutability": "mutable",
                   "name": "publisher",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7882,
+                  "scope": 7983,
                   "src": "7385:17:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2880,7 +2880,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7872,
+                    "id": 7973,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "7385:7:28",
@@ -2894,11 +2894,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7875,
+                  "id": 7976,
                   "mutability": "mutable",
                   "name": "indexId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7882,
+                  "scope": 7983,
                   "src": "7412:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2907,7 +2907,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 7874,
+                    "id": 7975,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "7412:6:28",
@@ -2920,11 +2920,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7877,
+                  "id": 7978,
                   "mutability": "mutable",
                   "name": "ctx",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7882,
+                  "scope": 7983,
                   "src": "7436:18:28",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -2933,7 +2933,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 7876,
+                    "id": 7977,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "7436:5:28",
@@ -2948,16 +2948,16 @@
               "src": "7343:112:28"
             },
             "returnParameters": {
-              "id": 7881,
+              "id": 7982,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7880,
+                  "id": 7981,
                   "mutability": "mutable",
                   "name": "newCtx",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7882,
+                  "scope": 7983,
                   "src": "7508:19:28",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -2966,7 +2966,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 7879,
+                    "id": 7980,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "7508:5:28",
@@ -2980,7 +2980,7 @@
               ],
               "src": "7507:21:28"
             },
-            "scope": 8038,
+            "scope": 8139,
             "src": "7316:213:28",
             "stateMutability": "nonpayable",
             "virtual": true,
@@ -2988,36 +2988,36 @@
           },
           {
             "anonymous": false,
-            "id": 7894,
+            "id": 7995,
             "name": "IndexUnsubscribed",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 7893,
+              "id": 7994,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7884,
+                  "id": 7985,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7894,
+                  "scope": 7995,
                   "src": "7568:30:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                     "typeString": "contract ISuperfluidToken"
                   },
                   "typeName": {
-                    "id": 7883,
+                    "id": 7984,
                     "name": "ISuperfluidToken",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 10025,
+                    "referencedDeclaration": 10791,
                     "src": "7568:16:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                       "typeString": "contract ISuperfluidToken"
                     }
                   },
@@ -3025,12 +3025,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7886,
+                  "id": 7987,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "publisher",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7894,
+                  "scope": 7995,
                   "src": "7608:25:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3039,7 +3039,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7885,
+                    "id": 7986,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "7608:7:28",
@@ -3053,12 +3053,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7888,
+                  "id": 7989,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "indexId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7894,
+                  "scope": 7995,
                   "src": "7643:22:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3067,7 +3067,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 7887,
+                    "id": 7988,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "7643:6:28",
@@ -3080,12 +3080,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7890,
+                  "id": 7991,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "subscriber",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7894,
+                  "scope": 7995,
                   "src": "7675:18:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3094,7 +3094,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7889,
+                    "id": 7990,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "7675:7:28",
@@ -3108,12 +3108,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7892,
+                  "id": 7993,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "userData",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7894,
+                  "scope": 7995,
                   "src": "7703:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3122,7 +3122,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 7891,
+                    "id": 7992,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "7703:5:28",
@@ -3140,36 +3140,36 @@
           },
           {
             "anonymous": false,
-            "id": 7906,
+            "id": 8007,
             "name": "SubscriptionRevoked",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 7905,
+              "id": 8006,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7896,
+                  "id": 7997,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7906,
+                  "scope": 8007,
                   "src": "7760:30:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                     "typeString": "contract ISuperfluidToken"
                   },
                   "typeName": {
-                    "id": 7895,
+                    "id": 7996,
                     "name": "ISuperfluidToken",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 10025,
+                    "referencedDeclaration": 10791,
                     "src": "7760:16:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                       "typeString": "contract ISuperfluidToken"
                     }
                   },
@@ -3177,12 +3177,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7898,
+                  "id": 7999,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "subscriber",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7906,
+                  "scope": 8007,
                   "src": "7800:26:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3191,7 +3191,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7897,
+                    "id": 7998,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "7800:7:28",
@@ -3205,12 +3205,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7900,
+                  "id": 8001,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "publisher",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7906,
+                  "scope": 8007,
                   "src": "7836:17:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3219,7 +3219,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7899,
+                    "id": 8000,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "7836:7:28",
@@ -3233,12 +3233,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7902,
+                  "id": 8003,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "indexId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7906,
+                  "scope": 8007,
                   "src": "7863:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3247,7 +3247,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 7901,
+                    "id": 8002,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "7863:6:28",
@@ -3260,12 +3260,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7904,
+                  "id": 8005,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "userData",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7906,
+                  "scope": 8007,
                   "src": "7887:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3274,7 +3274,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 7903,
+                    "id": 8004,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "7887:5:28",
@@ -3292,44 +3292,44 @@
           },
           {
             "documentation": {
-              "id": 7907,
+              "id": 8008,
               "nodeType": "StructuredDocumentation",
               "src": "7909:579:28",
               "text": " @dev Update the nuber of units of a subscription.\n @param token Super token address.\n @param indexId Id of the index.\n @param subscriber The subscriber of the index.\n @param units Number of units of the subscription.\n # App callbacks\n - if subscription exist\n   - AgreementCreated callback to the subscriber:\n      - agreementId is for the subscription\n - if subscription does not exist\n   - AgreementUpdated callback to the subscriber:\n      - agreementId is for the subscription"
             },
             "functionSelector": "232d2b58",
-            "id": 7922,
+            "id": 8023,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "updateSubscription",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7918,
+              "id": 8019,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7909,
+                  "id": 8010,
                   "mutability": "mutable",
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7922,
+                  "scope": 8023,
                   "src": "8530:22:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                     "typeString": "contract ISuperfluidToken"
                   },
                   "typeName": {
-                    "id": 7908,
+                    "id": 8009,
                     "name": "ISuperfluidToken",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 10025,
+                    "referencedDeclaration": 10791,
                     "src": "8530:16:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                       "typeString": "contract ISuperfluidToken"
                     }
                   },
@@ -3337,11 +3337,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7911,
+                  "id": 8012,
                   "mutability": "mutable",
                   "name": "indexId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7922,
+                  "scope": 8023,
                   "src": "8562:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3350,7 +3350,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 7910,
+                    "id": 8011,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "8562:6:28",
@@ -3363,11 +3363,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7913,
+                  "id": 8014,
                   "mutability": "mutable",
                   "name": "subscriber",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7922,
+                  "scope": 8023,
                   "src": "8586:18:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3376,7 +3376,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7912,
+                    "id": 8013,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "8586:7:28",
@@ -3390,11 +3390,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7915,
+                  "id": 8016,
                   "mutability": "mutable",
                   "name": "units",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7922,
+                  "scope": 8023,
                   "src": "8614:13:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3403,7 +3403,7 @@
                     "typeString": "uint128"
                   },
                   "typeName": {
-                    "id": 7914,
+                    "id": 8015,
                     "name": "uint128",
                     "nodeType": "ElementaryTypeName",
                     "src": "8614:7:28",
@@ -3416,11 +3416,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7917,
+                  "id": 8018,
                   "mutability": "mutable",
                   "name": "ctx",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7922,
+                  "scope": 8023,
                   "src": "8637:18:28",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -3429,7 +3429,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 7916,
+                    "id": 8017,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "8637:5:28",
@@ -3444,16 +3444,16 @@
               "src": "8520:136:28"
             },
             "returnParameters": {
-              "id": 7921,
+              "id": 8022,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7920,
+                  "id": 8021,
                   "mutability": "mutable",
                   "name": "newCtx",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7922,
+                  "scope": 8023,
                   "src": "8718:19:28",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -3462,7 +3462,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 7919,
+                    "id": 8020,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "8718:5:28",
@@ -3476,7 +3476,7 @@
               ],
               "src": "8717:21:28"
             },
-            "scope": 8038,
+            "scope": 8139,
             "src": "8493:246:28",
             "stateMutability": "nonpayable",
             "virtual": true,
@@ -3484,36 +3484,36 @@
           },
           {
             "anonymous": false,
-            "id": 7936,
+            "id": 8037,
             "name": "IndexUnitsUpdated",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 7935,
+              "id": 8036,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7924,
+                  "id": 8025,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7936,
+                  "scope": 8037,
                   "src": "8778:30:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                     "typeString": "contract ISuperfluidToken"
                   },
                   "typeName": {
-                    "id": 7923,
+                    "id": 8024,
                     "name": "ISuperfluidToken",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 10025,
+                    "referencedDeclaration": 10791,
                     "src": "8778:16:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                       "typeString": "contract ISuperfluidToken"
                     }
                   },
@@ -3521,12 +3521,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7926,
+                  "id": 8027,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "publisher",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7936,
+                  "scope": 8037,
                   "src": "8818:25:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3535,7 +3535,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7925,
+                    "id": 8026,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "8818:7:28",
@@ -3549,12 +3549,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7928,
+                  "id": 8029,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "indexId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7936,
+                  "scope": 8037,
                   "src": "8853:22:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3563,7 +3563,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 7927,
+                    "id": 8028,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "8853:6:28",
@@ -3576,12 +3576,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7930,
+                  "id": 8031,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "subscriber",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7936,
+                  "scope": 8037,
                   "src": "8885:18:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3590,7 +3590,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7929,
+                    "id": 8030,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "8885:7:28",
@@ -3604,12 +3604,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7932,
+                  "id": 8033,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "units",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7936,
+                  "scope": 8037,
                   "src": "8913:13:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3618,7 +3618,7 @@
                     "typeString": "uint128"
                   },
                   "typeName": {
-                    "id": 7931,
+                    "id": 8032,
                     "name": "uint128",
                     "nodeType": "ElementaryTypeName",
                     "src": "8913:7:28",
@@ -3631,12 +3631,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7934,
+                  "id": 8035,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "userData",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7936,
+                  "scope": 8037,
                   "src": "8936:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3645,7 +3645,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 7933,
+                    "id": 8034,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "8936:5:28",
@@ -3663,36 +3663,36 @@
           },
           {
             "anonymous": false,
-            "id": 7950,
+            "id": 8051,
             "name": "SubscriptionUnitsUpdated",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 7949,
+              "id": 8050,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7938,
+                  "id": 8039,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7950,
+                  "scope": 8051,
                   "src": "8998:30:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                     "typeString": "contract ISuperfluidToken"
                   },
                   "typeName": {
-                    "id": 7937,
+                    "id": 8038,
                     "name": "ISuperfluidToken",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 10025,
+                    "referencedDeclaration": 10791,
                     "src": "8998:16:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                       "typeString": "contract ISuperfluidToken"
                     }
                   },
@@ -3700,12 +3700,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7940,
+                  "id": 8041,
                   "indexed": true,
                   "mutability": "mutable",
                   "name": "subscriber",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7950,
+                  "scope": 8051,
                   "src": "9038:26:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3714,7 +3714,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7939,
+                    "id": 8040,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "9038:7:28",
@@ -3728,12 +3728,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7942,
+                  "id": 8043,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "publisher",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7950,
+                  "scope": 8051,
                   "src": "9074:17:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3742,7 +3742,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7941,
+                    "id": 8042,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "9074:7:28",
@@ -3756,12 +3756,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7944,
+                  "id": 8045,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "indexId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7950,
+                  "scope": 8051,
                   "src": "9101:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3770,7 +3770,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 7943,
+                    "id": 8044,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "9101:6:28",
@@ -3783,12 +3783,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7946,
+                  "id": 8047,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "units",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7950,
+                  "scope": 8051,
                   "src": "9125:13:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3797,7 +3797,7 @@
                     "typeString": "uint128"
                   },
                   "typeName": {
-                    "id": 7945,
+                    "id": 8046,
                     "name": "uint128",
                     "nodeType": "ElementaryTypeName",
                     "src": "9125:7:28",
@@ -3810,12 +3810,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 7948,
+                  "id": 8049,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "userData",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7950,
+                  "scope": 8051,
                   "src": "9148:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3824,7 +3824,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 7947,
+                    "id": 8048,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "9148:5:28",
@@ -3842,44 +3842,44 @@
           },
           {
             "documentation": {
-              "id": 7951,
+              "id": 8052,
               "nodeType": "StructuredDocumentation",
               "src": "9170:494:28",
               "text": " @dev Get data of a subscription\n @param token Super token address.\n @param publisher The publisher of the index.\n @param indexId Id of the index.\n @param subscriber The subscriber of the index.\n @return exist Does the subscription exist?\n @return approved Is the subscription approved?\n @return units Units of the suscription.\n @return pendingDistribution Pending amount of tokens to be distributed for unapproved subscription."
             },
             "functionSelector": "5b534051",
-            "id": 7970,
+            "id": 8071,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getSubscription",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7960,
+              "id": 8061,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7953,
+                  "id": 8054,
                   "mutability": "mutable",
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7970,
+                  "scope": 8071,
                   "src": "9703:22:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                     "typeString": "contract ISuperfluidToken"
                   },
                   "typeName": {
-                    "id": 7952,
+                    "id": 8053,
                     "name": "ISuperfluidToken",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 10025,
+                    "referencedDeclaration": 10791,
                     "src": "9703:16:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                       "typeString": "contract ISuperfluidToken"
                     }
                   },
@@ -3887,11 +3887,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7955,
+                  "id": 8056,
                   "mutability": "mutable",
                   "name": "publisher",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7970,
+                  "scope": 8071,
                   "src": "9735:17:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3900,7 +3900,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7954,
+                    "id": 8055,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "9735:7:28",
@@ -3914,11 +3914,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7957,
+                  "id": 8058,
                   "mutability": "mutable",
                   "name": "indexId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7970,
+                  "scope": 8071,
                   "src": "9762:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3927,7 +3927,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 7956,
+                    "id": 8057,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "9762:6:28",
@@ -3940,11 +3940,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7959,
+                  "id": 8060,
                   "mutability": "mutable",
                   "name": "subscriber",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7970,
+                  "scope": 8071,
                   "src": "9786:18:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3953,7 +3953,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7958,
+                    "id": 8059,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "9786:7:28",
@@ -3969,16 +3969,16 @@
               "src": "9693:112:28"
             },
             "returnParameters": {
-              "id": 7969,
+              "id": 8070,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7962,
+                  "id": 8063,
                   "mutability": "mutable",
                   "name": "exist",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7970,
+                  "scope": 8071,
                   "src": "9901:10:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3987,7 +3987,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 7961,
+                    "id": 8062,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "9901:4:28",
@@ -4000,11 +4000,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7964,
+                  "id": 8065,
                   "mutability": "mutable",
                   "name": "approved",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7970,
+                  "scope": 8071,
                   "src": "9929:13:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -4013,7 +4013,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 7963,
+                    "id": 8064,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "9929:4:28",
@@ -4026,11 +4026,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7966,
+                  "id": 8067,
                   "mutability": "mutable",
                   "name": "units",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7970,
+                  "scope": 8071,
                   "src": "9960:13:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -4039,7 +4039,7 @@
                     "typeString": "uint128"
                   },
                   "typeName": {
-                    "id": 7965,
+                    "id": 8066,
                     "name": "uint128",
                     "nodeType": "ElementaryTypeName",
                     "src": "9960:7:28",
@@ -4052,11 +4052,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7968,
+                  "id": 8069,
                   "mutability": "mutable",
                   "name": "pendingDistribution",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7970,
+                  "scope": 8071,
                   "src": "9991:27:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -4065,7 +4065,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7967,
+                    "id": 8068,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "9991:7:28",
@@ -4079,7 +4079,7 @@
               ],
               "src": "9883:149:28"
             },
-            "scope": 8038,
+            "scope": 8139,
             "src": "9669:364:28",
             "stateMutability": "view",
             "virtual": true,
@@ -4087,44 +4087,44 @@
           },
           {
             "documentation": {
-              "id": 7971,
+              "id": 8072,
               "nodeType": "StructuredDocumentation",
               "src": "10039:452:28",
               "text": " @dev Get data of a subscription by agreement ID\n @param token Super token address.\n @param agreementId The agreement ID.\n @return publisher The publisher of the index.\n @return indexId Id of the index.\n @return approved Is the subscription approved?\n @return units Units of the suscription.\n @return pendingDistribution Pending amount of tokens to be distributed for unapproved subscription."
             },
             "functionSelector": "cd7245c5",
-            "id": 7988,
+            "id": 8089,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getSubscriptionByID",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7976,
+              "id": 8077,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7973,
+                  "id": 8074,
                   "mutability": "mutable",
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7988,
+                  "scope": 8089,
                   "src": "10534:22:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                     "typeString": "contract ISuperfluidToken"
                   },
                   "typeName": {
-                    "id": 7972,
+                    "id": 8073,
                     "name": "ISuperfluidToken",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 10025,
+                    "referencedDeclaration": 10791,
                     "src": "10534:16:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                       "typeString": "contract ISuperfluidToken"
                     }
                   },
@@ -4132,11 +4132,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7975,
+                  "id": 8076,
                   "mutability": "mutable",
                   "name": "agreementId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7988,
+                  "scope": 8089,
                   "src": "10566:19:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -4145,7 +4145,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 7974,
+                    "id": 8075,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "10566:7:28",
@@ -4160,16 +4160,16 @@
               "src": "10524:62:28"
             },
             "returnParameters": {
-              "id": 7987,
+              "id": 8088,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7978,
+                  "id": 8079,
                   "mutability": "mutable",
                   "name": "publisher",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7988,
+                  "scope": 8089,
                   "src": "10682:17:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -4178,7 +4178,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7977,
+                    "id": 8078,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "10682:7:28",
@@ -4192,11 +4192,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7980,
+                  "id": 8081,
                   "mutability": "mutable",
                   "name": "indexId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7988,
+                  "scope": 8089,
                   "src": "10717:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -4205,7 +4205,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 7979,
+                    "id": 8080,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "10717:6:28",
@@ -4218,11 +4218,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7982,
+                  "id": 8083,
                   "mutability": "mutable",
                   "name": "approved",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7988,
+                  "scope": 8089,
                   "src": "10749:13:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -4231,7 +4231,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 7981,
+                    "id": 8082,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "10749:4:28",
@@ -4244,11 +4244,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7984,
+                  "id": 8085,
                   "mutability": "mutable",
                   "name": "units",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7988,
+                  "scope": 8089,
                   "src": "10780:13:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -4257,7 +4257,7 @@
                     "typeString": "uint128"
                   },
                   "typeName": {
-                    "id": 7983,
+                    "id": 8084,
                     "name": "uint128",
                     "nodeType": "ElementaryTypeName",
                     "src": "10780:7:28",
@@ -4270,11 +4270,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7986,
+                  "id": 8087,
                   "mutability": "mutable",
                   "name": "pendingDistribution",
                   "nodeType": "VariableDeclaration",
-                  "scope": 7988,
+                  "scope": 8089,
                   "src": "10811:27:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -4283,7 +4283,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 7985,
+                    "id": 8086,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "10811:7:28",
@@ -4297,7 +4297,7 @@
               ],
               "src": "10664:188:28"
             },
-            "scope": 8038,
+            "scope": 8139,
             "src": "10496:357:28",
             "stateMutability": "view",
             "virtual": true,
@@ -4305,44 +4305,44 @@
           },
           {
             "documentation": {
-              "id": 7989,
+              "id": 8090,
               "nodeType": "StructuredDocumentation",
               "src": "10859:309:28",
               "text": " @dev List subscriptions of an user.\n @param token Super token address.\n @param subscriber The user, a subscriber.\n @return publishers Publishers of the subcriptions.\n @return indexIds Indexes of the subscriptions.\n @return unitsList Units of the subscriptions."
             },
             "functionSelector": "b6dacdb8",
-            "id": 8005,
+            "id": 8106,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "listSubscriptions",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 7994,
+              "id": 8095,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7991,
+                  "id": 8092,
                   "mutability": "mutable",
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 8005,
+                  "scope": 8106,
                   "src": "11209:22:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                     "typeString": "contract ISuperfluidToken"
                   },
                   "typeName": {
-                    "id": 7990,
+                    "id": 8091,
                     "name": "ISuperfluidToken",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 10025,
+                    "referencedDeclaration": 10791,
                     "src": "11209:16:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                       "typeString": "contract ISuperfluidToken"
                     }
                   },
@@ -4350,11 +4350,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 7993,
+                  "id": 8094,
                   "mutability": "mutable",
                   "name": "subscriber",
                   "nodeType": "VariableDeclaration",
-                  "scope": 8005,
+                  "scope": 8106,
                   "src": "11241:18:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -4363,7 +4363,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 7992,
+                    "id": 8093,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "11241:7:28",
@@ -4379,16 +4379,16 @@
               "src": "11199:61:28"
             },
             "returnParameters": {
-              "id": 8004,
+              "id": 8105,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 7997,
+                  "id": 8098,
                   "mutability": "mutable",
                   "name": "publishers",
                   "nodeType": "VariableDeclaration",
-                  "scope": 8005,
+                  "scope": 8106,
                   "src": "11356:27:28",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -4398,7 +4398,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 7995,
+                      "id": 8096,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
                       "src": "11356:7:28",
@@ -4408,7 +4408,7 @@
                         "typeString": "address"
                       }
                     },
-                    "id": 7996,
+                    "id": 8097,
                     "nodeType": "ArrayTypeName",
                     "src": "11356:9:28",
                     "typeDescriptions": {
@@ -4420,11 +4420,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 8000,
+                  "id": 8101,
                   "mutability": "mutable",
                   "name": "indexIds",
                   "nodeType": "VariableDeclaration",
-                  "scope": 8005,
+                  "scope": 8106,
                   "src": "11401:24:28",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -4434,7 +4434,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 7998,
+                      "id": 8099,
                       "name": "uint32",
                       "nodeType": "ElementaryTypeName",
                       "src": "11401:6:28",
@@ -4443,7 +4443,7 @@
                         "typeString": "uint32"
                       }
                     },
-                    "id": 7999,
+                    "id": 8100,
                     "nodeType": "ArrayTypeName",
                     "src": "11401:8:28",
                     "typeDescriptions": {
@@ -4455,11 +4455,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 8003,
+                  "id": 8104,
                   "mutability": "mutable",
                   "name": "unitsList",
                   "nodeType": "VariableDeclaration",
-                  "scope": 8005,
+                  "scope": 8106,
                   "src": "11443:26:28",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -4469,7 +4469,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 8001,
+                      "id": 8102,
                       "name": "uint128",
                       "nodeType": "ElementaryTypeName",
                       "src": "11443:7:28",
@@ -4478,7 +4478,7 @@
                         "typeString": "uint128"
                       }
                     },
-                    "id": 8002,
+                    "id": 8103,
                     "nodeType": "ArrayTypeName",
                     "src": "11443:9:28",
                     "typeDescriptions": {
@@ -4491,7 +4491,7 @@
               ],
               "src": "11338:132:28"
             },
-            "scope": 8038,
+            "scope": 8139,
             "src": "11173:298:28",
             "stateMutability": "view",
             "virtual": true,
@@ -4499,44 +4499,44 @@
           },
           {
             "documentation": {
-              "id": 8006,
+              "id": 8107,
               "nodeType": "StructuredDocumentation",
               "src": "11477:567:28",
               "text": " @dev Delete the subscription of an user.\n @param token Super token address.\n @param publisher The publisher of the index.\n @param indexId Id of the index.\n @param subscriber The user, a subscriber.\n # App callbacks\n - if the subscriber called it\n   - AgreementTerminated callback to the publsiher:\n      - agreementId is for the subscription\n - if the publisher called it\n   - AgreementTerminated callback to the subscriber:\n      - agreementId is for the subscription"
             },
             "functionSelector": "2e5e74c6",
-            "id": 8021,
+            "id": 8122,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "deleteSubscription",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 8017,
+              "id": 8118,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 8008,
+                  "id": 8109,
                   "mutability": "mutable",
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 8021,
+                  "scope": 8122,
                   "src": "12086:22:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                     "typeString": "contract ISuperfluidToken"
                   },
                   "typeName": {
-                    "id": 8007,
+                    "id": 8108,
                     "name": "ISuperfluidToken",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 10025,
+                    "referencedDeclaration": 10791,
                     "src": "12086:16:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                       "typeString": "contract ISuperfluidToken"
                     }
                   },
@@ -4544,11 +4544,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 8010,
+                  "id": 8111,
                   "mutability": "mutable",
                   "name": "publisher",
                   "nodeType": "VariableDeclaration",
-                  "scope": 8021,
+                  "scope": 8122,
                   "src": "12118:17:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -4557,7 +4557,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 8009,
+                    "id": 8110,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "12118:7:28",
@@ -4571,11 +4571,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 8012,
+                  "id": 8113,
                   "mutability": "mutable",
                   "name": "indexId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 8021,
+                  "scope": 8122,
                   "src": "12145:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -4584,7 +4584,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 8011,
+                    "id": 8112,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "12145:6:28",
@@ -4597,11 +4597,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 8014,
+                  "id": 8115,
                   "mutability": "mutable",
                   "name": "subscriber",
                   "nodeType": "VariableDeclaration",
-                  "scope": 8021,
+                  "scope": 8122,
                   "src": "12169:18:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -4610,7 +4610,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 8013,
+                    "id": 8114,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "12169:7:28",
@@ -4624,11 +4624,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 8016,
+                  "id": 8117,
                   "mutability": "mutable",
                   "name": "ctx",
                   "nodeType": "VariableDeclaration",
-                  "scope": 8021,
+                  "scope": 8122,
                   "src": "12197:18:28",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -4637,7 +4637,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 8015,
+                    "id": 8116,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "12197:5:28",
@@ -4652,16 +4652,16 @@
               "src": "12076:140:28"
             },
             "returnParameters": {
-              "id": 8020,
+              "id": 8121,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 8019,
+                  "id": 8120,
                   "mutability": "mutable",
                   "name": "newCtx",
                   "nodeType": "VariableDeclaration",
-                  "scope": 8021,
+                  "scope": 8122,
                   "src": "12278:19:28",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -4670,7 +4670,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 8018,
+                    "id": 8119,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "12278:5:28",
@@ -4684,7 +4684,7 @@
               ],
               "src": "12277:21:28"
             },
-            "scope": 8038,
+            "scope": 8139,
             "src": "12049:250:28",
             "stateMutability": "nonpayable",
             "virtual": true,
@@ -4692,44 +4692,44 @@
           },
           {
             "documentation": {
-              "id": 8022,
+              "id": 8123,
               "nodeType": "StructuredDocumentation",
               "src": "12305:411:28",
               "text": " @dev Claim pending distributions.\n @param token Super token address.\n @param publisher The publisher of the index.\n @param indexId Id of the index.\n @param subscriber The user, a subscriber.\n The subscription should not exist yet.\n # App callbacks\n - AgreementUpdated callback to the publisher:\n    - agreementId is for the subscription"
             },
             "functionSelector": "acafa1b8",
-            "id": 8037,
+            "id": 8138,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "claim",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 8033,
+              "id": 8134,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 8024,
+                  "id": 8125,
                   "mutability": "mutable",
                   "name": "token",
                   "nodeType": "VariableDeclaration",
-                  "scope": 8037,
+                  "scope": 8138,
                   "src": "12745:22:28",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                    "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                     "typeString": "contract ISuperfluidToken"
                   },
                   "typeName": {
-                    "id": 8023,
+                    "id": 8124,
                     "name": "ISuperfluidToken",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 10025,
+                    "referencedDeclaration": 10791,
                     "src": "12745:16:28",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10025",
+                      "typeIdentifier": "t_contract$_ISuperfluidToken_$10791",
                       "typeString": "contract ISuperfluidToken"
                     }
                   },
@@ -4737,11 +4737,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 8026,
+                  "id": 8127,
                   "mutability": "mutable",
                   "name": "publisher",
                   "nodeType": "VariableDeclaration",
-                  "scope": 8037,
+                  "scope": 8138,
                   "src": "12777:17:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -4750,7 +4750,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 8025,
+                    "id": 8126,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "12777:7:28",
@@ -4764,11 +4764,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 8028,
+                  "id": 8129,
                   "mutability": "mutable",
                   "name": "indexId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 8037,
+                  "scope": 8138,
                   "src": "12804:14:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -4777,7 +4777,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 8027,
+                    "id": 8128,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "12804:6:28",
@@ -4790,11 +4790,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 8030,
+                  "id": 8131,
                   "mutability": "mutable",
                   "name": "subscriber",
                   "nodeType": "VariableDeclaration",
-                  "scope": 8037,
+                  "scope": 8138,
                   "src": "12828:18:28",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -4803,7 +4803,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 8029,
+                    "id": 8130,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "12828:7:28",
@@ -4817,11 +4817,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 8032,
+                  "id": 8133,
                   "mutability": "mutable",
                   "name": "ctx",
                   "nodeType": "VariableDeclaration",
-                  "scope": 8037,
+                  "scope": 8138,
                   "src": "12856:18:28",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -4830,7 +4830,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 8031,
+                    "id": 8132,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "12856:5:28",
@@ -4845,16 +4845,16 @@
               "src": "12735:140:28"
             },
             "returnParameters": {
-              "id": 8036,
+              "id": 8137,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 8035,
+                  "id": 8136,
                   "mutability": "mutable",
                   "name": "newCtx",
                   "nodeType": "VariableDeclaration",
-                  "scope": 8037,
+                  "scope": 8138,
                   "src": "12925:19:28",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -4863,7 +4863,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 8034,
+                    "id": 8135,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "12925:5:28",
@@ -4877,14 +4877,14 @@
               ],
               "src": "12924:21:28"
             },
-            "scope": 8038,
+            "scope": 8139,
             "src": "12721:225:28",
             "stateMutability": "nonpayable",
             "virtual": true,
             "visibility": "external"
           }
         ],
-        "scope": 8039,
+        "scope": 8140,
         "src": "1782:11167:28"
       }
     ],

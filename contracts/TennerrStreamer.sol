@@ -31,15 +31,18 @@ contract TennerrStreamer is SuperAppBase, AccessControl {
     address private _receiver; // escrow
 
     bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
-
-    // initiialize escrow
-    TennerrEscrow public tennerrEscrow;
-    address payable private _tennerrEscrowContractAddress;
-
     // address of the tennerr factory
     address payable private _tennerrFactoryContractAddress;
     // tennerr contract
     TennerrFactory public tennerrFactory;
+    // initiialize escrow
+    TennerrEscrow public tennerrEscrow;
+    address payable private _tennerrEscrowContractAddress;
+    // address of the tennerr contract
+    address payable private _tennerrContractAddress;
+    // tennerr contract
+    Tennerr public tennerr;
+
 
     mapping(bytes32 => uint[]) public streamByJobId;
 
@@ -64,7 +67,8 @@ contract TennerrStreamer is SuperAppBase, AccessControl {
         require(address(acceptedToken) != address(0), "acceptedToken is zero address");
         require(address(receiver) != address(0), "receiver is zero address");
         require(!host.isApp(ISuperApp(receiver)), "receiver is an app");
-
+        // give admin role to deployer
+        _setupRole(ADMIN_ROLE, msg.sender);
         _host = host;
         _cfa = cfa;
         _acceptedToken = acceptedToken;
@@ -115,7 +119,7 @@ contract TennerrStreamer is SuperAppBase, AccessControl {
       int96 inFlowRate = netFlowRate + outFlowRate;
 
       /* use userData to update internal accounting */
-      _accountingCache(userData);
+      /* _accountingCache(userData); */
 
       // @dev If inFlowRate === 0, then delete existing flow.
       if (inFlowRate == int96(0)) {
@@ -162,24 +166,16 @@ contract TennerrStreamer is SuperAppBase, AccessControl {
       }
     }
 
-    function _accountingCache(bytes memory userData) internal {
-        bytes32 jobId = bytesToBytes32(userData,0);
+    function accountingCache(bytes32 jobId, uint flowRate) public {
+        require(msg.sender == _tennerrEscrowContractAddress, 'Not authorized');
         TennerrEscrow.Order memory order = tennerrEscrow.getQuoteData(jobId);
         address buyer = order.buyer;
         address seller = order.seller;
         uint amount = order.orderPrice;
+        require(amount > 0, 'order not fetched, job id issue');
         uint streamStart = block.timestamp;
         uint deadline = order.absDeadline;
-        _updateStreamData(jobId,buyer, seller, amount, streamStart, deadline);
-    }
-
-    function bytesToBytes32(bytes memory b, uint offset) private pure returns (bytes32) {
-      bytes32 out;
-
-      for (uint i = 0; i < 32; i++) {
-        out |= bytes32(b[offset + i] & 0xFF) >> (i * 8);
-      }
-      return out;
+        _updateStreamData(jobId,buyer, seller, amount, streamStart, deadline, flowRate);
     }
 
     function _updateStreamData(
@@ -188,17 +184,18 @@ contract TennerrStreamer is SuperAppBase, AccessControl {
       address seller,
       uint amount,
       uint streamStart,
-      uint deadline) internal {
+      uint deadline,
+      uint flowRate) internal {
         // @dev This will give me the new flowRate, as it is called in after callbacks
-        int96 netFlowRate = _cfa.getNetFlow(_acceptedToken, address(this));
-        (,int96 outFlowRate,,) = _cfa.getFlow(_acceptedToken, address(this), _receiver); // CHECK: unclear what happens if flow doesn't exist.
-        uint inFlowRate = uint(netFlowRate + outFlowRate);
+        // int96 netFlowRate = _cfa.getNetFlow(_acceptedToken, address(this));
+        // (,int96 outFlowRate,,) = _cfa.getFlow(_acceptedToken, address(this), _receiver); // CHECK: unclear what happens if flow doesn't exist.
+        // uint inFlowRate = uint(netFlowRate + outFlowRate);
+
         uint timeLeft = deadline.sub(block.timestamp);
         uint timePassed = (block.timestamp).sub(streamStart);
-        uint streamedToDate = inFlowRate * timePassed;
-
+        uint streamedToDate = flowRate * timePassed;
         /* token streaming, streamedToDate, totalToStream, timeLeft */
-        streamByJobId[jobId] = [inFlowRate, streamedToDate, amount, streamStart, timeLeft, deadline];
+        streamByJobId[jobId] = [flowRate, streamedToDate, amount, streamStart, timeLeft, deadline];
     }
 
     function getStreamData(
@@ -207,18 +204,15 @@ contract TennerrStreamer is SuperAppBase, AccessControl {
         uint totalToStream = streamByJobId[jobId][2];
         uint deadline = streamByJobId[jobId][5];
         uint streamStart = streamByJobId[jobId][3];
-        // @dev This will give me the new flowRate, as it is called in after callbacks
-        int96 netFlowRate = _cfa.getNetFlow(_acceptedToken, address(this));
-        (,int96 outFlowRate,,) = _cfa.getFlow(_acceptedToken, address(this), _receiver); // CHECK: unclear what happens if flow doesn't exist.
-        uint inFlowRate = uint(netFlowRate + outFlowRate);
-        uint timeLeft = deadline.sub(block.timestamp);
+        uint flowRate = streamByJobId[jobId][0];
 
+        uint timeLeft = deadline.sub(block.timestamp);
         /* streamByJobId[jobId].timeLeft = timeLeft; */
         uint timePassed = (block.timestamp).sub(streamStart);
-        uint streamedToDate = inFlowRate * timePassed;
+        uint streamedToDate = flowRate * timePassed;
         /* streamByJobId[jobId].streamedToDate = streamedToDate; */
         /* token streaming, streamedToDate, totalToStream, timeLeft */
-        return [inFlowRate, streamedToDate, totalToStream, timeLeft, deadline];
+        return [flowRate, streamedToDate, totalToStream, timeLeft, deadline];
     }
 
     // @dev Change the Receiver of the total flow
@@ -317,6 +311,7 @@ contract TennerrStreamer is SuperAppBase, AccessControl {
     }
 
     function createFlow(address newReceiver, uint flowRate, bytes memory jobId) external {
+        require(msg.sender == _tennerrContractAddress, 'Not authorized');
         _host.callAgreement(
                 _cfa,
                 abi.encodeWithSelector(
@@ -337,6 +332,12 @@ contract TennerrStreamer is SuperAppBase, AccessControl {
     function _isCFAv1(address agreementClass) private view returns (bool) {
         return ISuperAgreement(agreementClass).agreementType()
             == keccak256("org.superfluid-finance.agreements.ConstantFlowAgreement.v1");
+    }
+
+    function setTennerr(address payable newContract) external {
+            require(hasRole(ADMIN_ROLE, msg.sender), "Caller is not an admin");
+            _tennerrContractAddress = newContract;
+            tennerr = Tennerr(_tennerrContractAddress);
     }
 
     function setTennerrEscrow(address payable newContract) external {

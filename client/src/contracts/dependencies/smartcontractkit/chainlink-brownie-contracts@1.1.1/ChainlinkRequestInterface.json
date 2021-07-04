@@ -84,15 +84,15 @@
     "absolutePath": "/Users/vince/.brownie/packages/smartcontractkit/chainlink-brownie-contracts@1.1.1/contracts/src/v0.6/interfaces/ChainlinkRequestInterface.sol",
     "exportedSymbols": {
       "ChainlinkRequestInterface": [
-        9141
+        9242
       ]
     },
-    "id": 9142,
+    "id": 9243,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 9110,
+        "id": 9211,
         "literals": [
           "solidity",
           ">=",
@@ -108,32 +108,32 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 9141,
+        "id": 9242,
         "linearizedBaseContracts": [
-          9141
+          9242
         ],
         "name": "ChainlinkRequestInterface",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "functionSelector": "40429946",
-            "id": 9129,
+            "id": 9230,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "oracleRequest",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9127,
+              "id": 9228,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9112,
+                  "id": 9213,
                   "mutability": "mutable",
                   "name": "sender",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9129,
+                  "scope": 9230,
                   "src": "126:14:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -142,7 +142,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9111,
+                    "id": 9212,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "126:7:18",
@@ -156,11 +156,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 9114,
+                  "id": 9215,
                   "mutability": "mutable",
                   "name": "requestPrice",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9129,
+                  "scope": 9230,
                   "src": "146:20:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -169,7 +169,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9113,
+                    "id": 9214,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "146:7:18",
@@ -182,11 +182,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 9116,
+                  "id": 9217,
                   "mutability": "mutable",
                   "name": "serviceAgreementID",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9129,
+                  "scope": 9230,
                   "src": "172:26:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -195,7 +195,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 9115,
+                    "id": 9216,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "172:7:18",
@@ -208,11 +208,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 9118,
+                  "id": 9219,
                   "mutability": "mutable",
                   "name": "callbackAddress",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9129,
+                  "scope": 9230,
                   "src": "204:23:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -221,7 +221,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9117,
+                    "id": 9218,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "204:7:18",
@@ -235,11 +235,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 9120,
+                  "id": 9221,
                   "mutability": "mutable",
                   "name": "callbackFunctionId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9129,
+                  "scope": 9230,
                   "src": "233:25:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -248,7 +248,7 @@
                     "typeString": "bytes4"
                   },
                   "typeName": {
-                    "id": 9119,
+                    "id": 9220,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
                     "src": "233:6:18",
@@ -261,11 +261,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 9122,
+                  "id": 9223,
                   "mutability": "mutable",
                   "name": "nonce",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9129,
+                  "scope": 9230,
                   "src": "264:13:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -274,7 +274,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9121,
+                    "id": 9222,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "264:7:18",
@@ -287,11 +287,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 9124,
+                  "id": 9225,
                   "mutability": "mutable",
                   "name": "dataVersion",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9129,
+                  "scope": 9230,
                   "src": "283:19:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -300,7 +300,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9123,
+                    "id": 9224,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "283:7:18",
@@ -313,11 +313,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 9126,
+                  "id": 9227,
                   "mutability": "mutable",
                   "name": "data",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9129,
+                  "scope": 9230,
                   "src": "308:19:18",
                   "stateVariable": false,
                   "storageLocation": "calldata",
@@ -326,7 +326,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 9125,
+                    "id": 9226,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "308:5:18",
@@ -341,12 +341,12 @@
               "src": "120:211:18"
             },
             "returnParameters": {
-              "id": 9128,
+              "id": 9229,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "340:0:18"
             },
-            "scope": 9141,
+            "scope": 9242,
             "src": "98:243:18",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -354,23 +354,23 @@
           },
           {
             "functionSelector": "6ee4d553",
-            "id": 9140,
+            "id": 9241,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "cancelOracleRequest",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9138,
+              "id": 9239,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9131,
+                  "id": 9232,
                   "mutability": "mutable",
                   "name": "requestId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9140,
+                  "scope": 9241,
                   "src": "379:17:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -379,7 +379,7 @@
                     "typeString": "bytes32"
                   },
                   "typeName": {
-                    "id": 9130,
+                    "id": 9231,
                     "name": "bytes32",
                     "nodeType": "ElementaryTypeName",
                     "src": "379:7:18",
@@ -392,11 +392,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 9133,
+                  "id": 9234,
                   "mutability": "mutable",
                   "name": "payment",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9140,
+                  "scope": 9241,
                   "src": "402:15:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -405,7 +405,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9132,
+                    "id": 9233,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "402:7:18",
@@ -418,11 +418,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 9135,
+                  "id": 9236,
                   "mutability": "mutable",
                   "name": "callbackFunctionId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9140,
+                  "scope": 9241,
                   "src": "423:25:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -431,7 +431,7 @@
                     "typeString": "bytes4"
                   },
                   "typeName": {
-                    "id": 9134,
+                    "id": 9235,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
                     "src": "423:6:18",
@@ -444,11 +444,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 9137,
+                  "id": 9238,
                   "mutability": "mutable",
                   "name": "expiration",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9140,
+                  "scope": 9241,
                   "src": "454:18:18",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -457,7 +457,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 9136,
+                    "id": 9237,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "454:7:18",
@@ -472,19 +472,19 @@
               "src": "373:103:18"
             },
             "returnParameters": {
-              "id": 9139,
+              "id": 9240,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "485:0:18"
             },
-            "scope": 9141,
+            "scope": 9242,
             "src": "345:141:18",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 9142,
+        "scope": 9243,
         "src": "58:430:18"
       }
     ],
