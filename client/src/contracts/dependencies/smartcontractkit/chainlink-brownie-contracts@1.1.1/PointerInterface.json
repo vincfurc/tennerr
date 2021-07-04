@@ -21,15 +21,15 @@
     "absolutePath": "/Users/vince/.brownie/packages/smartcontractkit/chainlink-brownie-contracts@1.1.1/contracts/src/v0.6/interfaces/PointerInterface.sol",
     "exportedSymbols": {
       "PointerInterface": [
-        9324
+        9425
       ]
     },
-    "id": 9325,
+    "id": 9426,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 9318,
+        "id": 9419,
         "literals": [
           "solidity",
           ">=",
@@ -45,38 +45,38 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 9324,
+        "id": 9425,
         "linearizedBaseContracts": [
-          9324
+          9425
         ],
         "name": "PointerInterface",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "functionSelector": "38cc4831",
-            "id": 9323,
+            "id": 9424,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "getAddress",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 9319,
+              "id": 9420,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "108:2:21"
             },
             "returnParameters": {
-              "id": 9322,
+              "id": 9423,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 9321,
+                  "id": 9422,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 9323,
+                  "scope": 9424,
                   "src": "134:7:21",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -85,7 +85,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 9320,
+                    "id": 9421,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "134:7:21",
@@ -100,14 +100,14 @@
               ],
               "src": "133:9:21"
             },
-            "scope": 9324,
+            "scope": 9425,
             "src": "89:54:21",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 9325,
+        "scope": 9426,
         "src": "58:87:21"
       }
     ],

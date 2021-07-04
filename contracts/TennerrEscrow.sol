@@ -77,7 +77,8 @@ contract TennerrEscrow is AccessControl {
     bytes32 jobId,
     uint price,
     uint jobLength,
-    uint paymentType) external {
+    uint paymentType,
+    uint flowRate) external {
       require(msg.sender == _tennerrContractAddress, 'Storing order not allowed');
       uint256 orderNumber = orderNumberTracker.current();
       orderNumberTracker.increment();
@@ -93,8 +94,9 @@ contract TennerrEscrow is AccessControl {
       totalAmountClaimable[seller] += price;
       totalAmountClaimable[buyer] += price;
       if (paymentType == 2) {
+        tennerrStreamer.accountingCache(jobId,flowRate);
         uint[5] memory data = tennerrStreamer.getStreamData(jobId);
-        amountInEscrow[jobId] = data[2];//streamedToDate;
+        amountInEscrow[jobId] = data[2];//streamedToDate
       } else {
         amountInEscrow[jobId] += price;
       }

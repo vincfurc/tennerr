@@ -47,15 +47,15 @@
     "absolutePath": "/Users/vince/.brownie/packages/superfluid-finance/superfluid@1.0.0/ethereum-contracts/contracts/interfaces/tokens/TokenInfo.sol",
     "exportedSymbols": {
       "TokenInfo": [
-        11117
+        10813
       ]
     },
-    "id": 11118,
+    "id": 10814,
     "license": "AGPLv3",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 11097,
+        "id": 10793,
         "literals": [
           "solidity",
           ">=",
@@ -71,50 +71,50 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "documentation": {
-          "id": 11098,
+          "id": 10794,
           "nodeType": "StructuredDocumentation",
           "src": "62:166:38",
           "text": " @dev ERC20 token info interface\n NOTE: ERC20 standard interface does not specify these functions, but\n often the token implementations have them."
         },
         "fullyImplemented": false,
-        "id": 11117,
+        "id": 10813,
         "linearizedBaseContracts": [
-          11117
+          10813
         ],
         "name": "TokenInfo",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "documentation": {
-              "id": 11099,
+              "id": 10795,
               "nodeType": "StructuredDocumentation",
               "src": "255:54:38",
               "text": " @dev Returns the name of the token."
             },
             "functionSelector": "06fdde03",
-            "id": 11104,
+            "id": 10800,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "name",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 11100,
+              "id": 10796,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "327:2:38"
             },
             "returnParameters": {
-              "id": 11103,
+              "id": 10799,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 11102,
+                  "id": 10798,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 11104,
+                  "scope": 10800,
                   "src": "353:13:38",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -123,7 +123,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 11101,
+                    "id": 10797,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "353:6:38",
@@ -137,7 +137,7 @@
               ],
               "src": "352:15:38"
             },
-            "scope": 11117,
+            "scope": 10813,
             "src": "314:54:38",
             "stateMutability": "view",
             "virtual": false,
@@ -145,35 +145,35 @@
           },
           {
             "documentation": {
-              "id": 11105,
+              "id": 10801,
               "nodeType": "StructuredDocumentation",
               "src": "374:102:38",
               "text": " @dev Returns the symbol of the token, usually a shorter version of the\n name."
             },
             "functionSelector": "95d89b41",
-            "id": 11110,
+            "id": 10806,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "symbol",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 11106,
+              "id": 10802,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "496:2:38"
             },
             "returnParameters": {
-              "id": 11109,
+              "id": 10805,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 11108,
+                  "id": 10804,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 11110,
+                  "scope": 10806,
                   "src": "522:13:38",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -182,7 +182,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 11107,
+                    "id": 10803,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "522:6:38",
@@ -196,7 +196,7 @@
               ],
               "src": "521:15:38"
             },
-            "scope": 11117,
+            "scope": 10813,
             "src": "481:56:38",
             "stateMutability": "view",
             "virtual": false,
@@ -204,35 +204,35 @@
           },
           {
             "documentation": {
-              "id": 11111,
+              "id": 10807,
               "nodeType": "StructuredDocumentation",
               "src": "543:612:38",
               "text": " @dev Returns the number of decimals used to get its user representation.\n For example, if `decimals` equals `2`, a balance of `505` tokens should\n be displayed to a user as `5,05` (`505 / 10 ** 2`).\n Tokens usually opt for a value of 18, imitating the relationship between\n Ether and Wei. This is the value {ERC20} uses, unless {_setupDecimals} is\n called.\n NOTE: This information is only used for _display_ purposes: it in\n no way affects any of the arithmetic of the contract, including\n {IERC20-balanceOf} and {IERC20-transfer}."
             },
             "functionSelector": "313ce567",
-            "id": 11116,
+            "id": 10812,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "decimals",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 11112,
+              "id": 10808,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1177:2:38"
             },
             "returnParameters": {
-              "id": 11115,
+              "id": 10811,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 11114,
+                  "id": 10810,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 11116,
+                  "scope": 10812,
                   "src": "1203:5:38",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -241,7 +241,7 @@
                     "typeString": "uint8"
                   },
                   "typeName": {
-                    "id": 11113,
+                    "id": 10809,
                     "name": "uint8",
                     "nodeType": "ElementaryTypeName",
                     "src": "1203:5:38",
@@ -255,14 +255,14 @@
               ],
               "src": "1202:7:38"
             },
-            "scope": 11117,
+            "scope": 10813,
             "src": "1160:50:38",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 11118,
+        "scope": 10814,
         "src": "229:983:38"
       }
     ],
