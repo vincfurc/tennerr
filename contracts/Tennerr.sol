@@ -96,7 +96,7 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
   event SellerRegistered(address sellerAddress, string name, string area);
 
 
-  constructor() public {
+  constructor() {
     _AuthorizedCurrencyTickers["USDC"] = true;
     addSupportedCurrency("USDC", 0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174);//check address checksum
     _setupRole(ADMIN_ROLE, msg.sender);

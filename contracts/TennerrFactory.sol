@@ -31,7 +31,7 @@ contract TennerrFactory is ERC20Burnable, AccessControl{
 
 
 
-  constructor() public ERC20 ("Credit Tennerr Token","cTNR"){
+  constructor() ERC20 ("Credit Tennerr Token","cTNR"){
     // give admin role to deployer
     _setupRole(ADMIN_ROLE, msg.sender);
     _setRoleAdmin(MINTER_ROLE,ADMIN_ROLE);
