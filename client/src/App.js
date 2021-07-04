@@ -8,6 +8,7 @@ import {
   Footer,
   Container,
   Content,
+  Section
 } from "react-bulma-components";
 
 import Login from "./components/Login/Login";
@@ -34,7 +35,7 @@ export default function App() {
     {
       text: "Register",
       url: "/register",
-      isLoggedIn: false,
+      isLoggedIn: true,
     },
     {
       text: "Find Freelancers",
@@ -53,12 +54,6 @@ export default function App() {
     },
   ];
 
-  // let links = linkData.map((link, idx) => (
-  //   <Navbar.Item renderAs="li" key={idx}>
-  //     <Link to={link.url}>{link.text}</Link>
-  //   </Navbar.Item>
-  // ));
-
   const [isMenuOpen, handleMenu] = useState(false);
   const [isLoggedIn, handleLogin] = useState(false);
 
@@ -75,7 +70,7 @@ export default function App() {
   function setMenuItems() {
     return (linkData.map((link, idx) =>
       isLoggedIn === link.isLoggedIn 
-      ? (<Navbar.Item renderAs="li" key={idx}>
+      ? (<Navbar.Item key={idx}>
           <Link to={link.url}>{link.text}</Link>
         </Navbar.Item>) 
       : null
@@ -85,7 +80,10 @@ export default function App() {
   return (
     <div>
       <Router>
-        <Navbar active={isMenuOpen}>
+        <Navbar 
+        active={isMenuOpen}
+        fixed='top' color='info has-shadow' >
+          <Container breakpoint='desktop is-max-desktop' >
           <Navbar.Brand>
             <Navbar.Item renderAs="a" href="./">
               <Heading spaced={true} size={4} weight={"bold"}>
@@ -95,8 +93,8 @@ export default function App() {
             <Navbar.Burger onClick={toggleMenu} />
           </Navbar.Brand>
           <Navbar.Menu>
-            <Navbar.Container renderAs="ul" align="left">
-              <Navbar.Item renderAs="li">
+            <Navbar.Container align="left">
+              <Navbar.Item>
                 <Link to="./">Home</Link>
               </Navbar.Item>
             </Navbar.Container>
@@ -104,24 +102,33 @@ export default function App() {
               {setMenuItems()}
             </Navbar.Container>
           </Navbar.Menu>
+          </Container>
+
         </Navbar>
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/login">
-            <Login user={toggleLogin}></Login>
-          </Route>
-          <Route path="/account" component={Account} />
-          <Route path="/register" component={Register} />
-          <Route path="/search/freelancers" component={User} />
-          <Route path="/search/gigs" component={Gig} />
-          <Route path="/resolution" component={Resolution} />
-          <Route path="/" component={About} />
-        </Switch>
+        <Section >
+          <Container 
+          breakpoint='desktop is-max-desktop'>
+            <Switch>
+              <Route path="/login">
+                <Login user={toggleLogin}></Login>
+              </Route>
+              <Route path="/account" component={Account} />
+              <Route path="/register" component={Register} />
+              <Route path="/search/freelancers" component={User} />
+              <Route path="/search/gigs" component={Gig} />
+              <Route path="/resolution" component={Resolution} />
+              <Route path="/" component={About} />
+            </Switch>
+          </Container>
+        </Section>
+
       </Router>
       <Footer>
-        <Container>
-          <Content style={{ textAlign: "center" }}>
+        <Container breakpoint='desktop is-max-desktopp'>
+          <Content style={{ textAlign: "center" }}
+          >
             <p>
               Tenner was made with <strong>♥</strong> by @vinc, @iso and @eurv
             </p>

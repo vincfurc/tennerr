@@ -53,7 +53,7 @@ export default function Login( props ) {
             <Button color='info'onClick={changeWalletSettings} loading={loginInProcess} disabled={!provider} inverted >
                 Change Wallet Connections
             </Button>
-            <Button color='grey-dark' onClick={logoutViaMetamask} disabled={!provider} >
+            <Button color='grey-dark' onClick={logoutViaMetamask} disabled={!walletAddress  || !provider} >
                 Logout
             </Button>
         </Button.Group>
