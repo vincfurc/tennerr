@@ -14,7 +14,8 @@ import {
 import Login from "./components/Login/Login";
 import About from "./components/About/About";
 
-import User from "./components/User/User";
+// import User from "./components/User/User";
+import Search from "./components/Search/Search";
 import Account from "./components/Account/Account";
 import Resolution from "./components/Resolution/Resolution";
 import Register from "./components/register/Register";
@@ -116,7 +117,7 @@ export default function App() {
               </Route>
               <Route path="/account" component={Account} />
               <Route path="/register" component={Register} />
-              <Route path="/search/freelancers" component={User} />
+              <Route path="/search/freelancers" component={Search} />
               <Route path="/search/gigs" component={Gig} />
               <Route path="/resolution" component={Resolution} />
               <Route path="/" component={About} />
