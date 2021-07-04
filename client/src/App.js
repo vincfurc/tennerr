@@ -8,7 +8,10 @@ import {
 import 'bulma/css/bulma.min.css';
 import { 
   Navbar,
-  Heading } from 'react-bulma-components';
+  Heading,
+  Footer,
+  Container,
+  Content } from 'react-bulma-components';
 
 import Login from "./components/Login/Login";
 import About from "./components/About/About";
@@ -88,6 +91,15 @@ export default function App() {
             <Route path="/" component={About} />
           </Switch>
         </Router>
+        <Footer>
+            <Container>
+              <Content style={{ textAlign: 'center' }}>
+                <p>
+                Tenner was made with <strong>♥</strong> by @vinc, @iso and @eurv
+                </p>
+              </Content>
+            </Container>
+          </Footer>
       </div>
 
   );
