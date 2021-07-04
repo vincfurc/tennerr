@@ -3,7 +3,7 @@ import { Block, Button, Notification, Content } from 'react-bulma-components'
 import React, { useState, useEffect } from 'react';
 
 
-export default function Login() {
+export default function Login( props ) {
     const [loginInProcess, setLoginInProcess] = useState(false);
     const [walletAddress, setWalletAddress] = useState(localStorage.getItem("wallet"));
     const [provider, setProvider] = useState(null);
@@ -46,14 +46,14 @@ export default function Login() {
                 </Notification>
             </Block> : null
         }
-        <Button.Group variant="outline" spacing="6" isDisabled={!provider}>
-            <Button color='primary' onClick={loginViaMetamask} isLoading={loginInProcess} isDisabled={walletAddress || !provider}>
+        <Button.Group align='center'>
+            <Button color='primary' onClick={loginViaMetamask} loading={loginInProcess} disabled={walletAddress || !provider} inverted >
                 Login to Tennerr
             </Button>
-            <Button color='info'onClick={changeWalletSettings} isLoading={loginInProcess} >
+            <Button color='info'onClick={changeWalletSettings} loading={loginInProcess} disabled={!provider} inverted >
                 Change Wallet Connections
             </Button>
-            <Button color='grey-dark' onClick={logoutViaMetamask}>
+            <Button color='grey-dark' onClick={logoutViaMetamask} disabled={!provider} >
                 Logout
             </Button>
         </Button.Group>
@@ -68,6 +68,7 @@ export default function Login() {
             console.error(e);
         }).finally(() => {
             setLoginInProcess(false);
+            props.user(walletAddress);
         });
     }
 
@@ -87,5 +88,6 @@ export default function Login() {
     function logoutViaMetamask() {
         localStorage.setItem("wallet", "");
         setWalletAddress("");
+        props.user(walletAddress);
     }
 }
