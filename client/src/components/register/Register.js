@@ -14,6 +14,12 @@ export default function Register() {
         }, 4000)
     }
 
+    if (registrationState === 'success') {
+        setTimeout(() => {
+            window.location = 'http://localhost:3000/account';
+        }, 2000)
+    }
+
 
 
     return <div>
