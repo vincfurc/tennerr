@@ -235,7 +235,7 @@ contract TennerrDAO is AccessControl, VRFConsumerBase {
       require(disputeStatus[jobId][0] == 4, 'Dispute not escalated');
       require(block.timestamp > disputeStatus[jobId][1], 'deadline not passed');
       uint totalVotes = votesOnDispute[jobId][0] + votesOnDispute[jobId][1] + votesOnDispute[jobId][2];
-      uint winner = 5;
+      winner = 5;
       if ((votesOnDispute[jobId][0] > votesOnDispute[jobId][1]) && (votesOnDispute[jobId][0] > votesOnDispute[jobId][2])){
         winner = 0;
       } else if ((votesOnDispute[jobId][1] > votesOnDispute[jobId][0]) && (votesOnDispute[jobId][1] > votesOnDispute[jobId][2])){

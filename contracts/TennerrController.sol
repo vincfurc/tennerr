@@ -81,7 +81,7 @@ contract TennerrController is Ownable, AccessControl {
         aaveLendingPool = ILendingPool(aaveLendingPoolAddress);
         aaveLendingPool.withdraw(erc20Contract,amountToWithdraw,address(this));
       } else revert("Invalid pool index.");
-      IERC20(erc20Contract).approve(_tennerrEscrowContractAddress, amountToWithdraw);
+      IERC20(erc20Contract).approve(_tennerrContractAddress, amountToWithdraw);
       _updateWithdrawalsCache(amount,currencyCode, _to);
   }
 

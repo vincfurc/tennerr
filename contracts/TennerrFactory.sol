@@ -57,6 +57,11 @@ contract TennerrFactory is ERC20Burnable, AccessControl{
       return mintedAmount;
   }
 
+  function burn(address owner, uint amount) external {
+      require(hasRole(MINTER_ROLE, msg.sender), "Caller is not an authorized minter");
+      _burn(owner,amount);
+  }
+
   function getCurrentExchangeRate(string memory currencyTicker) internal returns (uint256){
       return tennerrController.getExchangeRate(TennerrController.LiquidityPool.Aave,currencyTicker);
   }

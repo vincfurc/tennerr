@@ -144,7 +144,7 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
       uint sellerId = sellerIdByAddress[msg.sender];
       /* should be very hard to get a duplicate id from this*/
       bytes32 jobId = keccak256(abi.encodePacked(sellerId, priceInUsd, paymentType, block.timestamp));
-      
+
       Quote storage quote = quotes[jobId];
       quote.jobId = jobId;
       quote.sellerId = sellerId;
@@ -291,12 +291,32 @@ function topUpOnOrder(bytes32 jobId, uint amount, string memory currencyTicker) 
     tennerrEscrow.handleTopUp(jobId,amountMinted);
 }
 
-/* dispute escalation*/
-  /* chainlink VRF to pick small group of seller/buyers
-    sign NDA(if needed) look at history and vote
-    majority gets the money, fee goes to voters and DAO
-   */
+function redeemCredit() public{
+      uint tokenBalance = IERC20(tennerrFactory).balanceOf(msg.sender);
+      require(tokenBalance >0, 'Get yourself some tokens you got nothing');
+      uint balanceInUsd= balanceToWithdraw(msg.sender, tokenBalance);
+      _withdrawFromPools("USDC",balanceInUsd, msg.sender);
+      tennerrFactory.burn(msg.sender,tokenBalance);
+      address erc20Contract = _erc20Contracts["USDC"];
+      IERC20 token = IERC20(erc20Contract);
+      token.safeTransferFrom(_tennerrControllerContractAddress, msg.sender, balanceInUsd);
+}
 
+function _withdrawFromPools(string memory currencyTicker, uint256 amount, address _to) internal {
+     // Check contract balance of token and withdraw from pools
+     address erc20Contract = _erc20Contracts[currencyTicker];
+     TennerrController.LiquidityPool pool = TennerrController.LiquidityPool.Aave;
+     tennerrController.withdrawFromPool(pool,currencyTicker,amount, _to);
+     uint tennerrControllerBalance = IERC20(erc20Contract).balanceOf(_tennerrControllerContractAddress);
+     require(amount <= tennerrControllerBalance, "Available balance not enough to cover amount even after pools withdrawal.");
+  }
+
+function balanceToWithdraw(address _to, uint tokenBalance) public returns (uint balanceInUsd){
+  require(tokenBalance > 0, "Balance must be more than 0.");
+  uint fxInterest = tennerrController.getExchangeRate(TennerrController.LiquidityPool.Aave,"USDC");
+  balanceInUsd = tokenBalance.mul(fxInterest).div(10**27);
+  return balanceInUsd;
+}
 
  // add supported currency for deposits
  function addSupportedCurrency(string memory currencyTicker, address erc20Contract) public {
@@ -369,7 +389,7 @@ function topUpOnOrder(bytes32 jobId, uint amount, string memory currencyTicker) 
   function getSellerAddressById(uint sellerId) public view returns (address){
       return sellerAddressById[sellerId];
   }
-  
+
 
   function getQuotesByAddress(address seller) public view returns (Quote[] memory){
       return quotesBySeller[seller];
