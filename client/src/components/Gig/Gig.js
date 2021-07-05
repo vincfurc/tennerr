@@ -38,14 +38,14 @@ export default function Gig() {
                     </Content>
                 </Card.Content>
                 <Card.Footer>
-                    <Card.Footer.Item renderAs="a" href="#Yes">
+                    <Card.Footer.Item renderAs="a" href="#AcceptJob">
                         Accept Job
                     </Card.Footer.Item>
-                    <Card.Footer.Item renderAs="a" href="#No">
-                        No
+                    <Card.Footer.Item renderAs="a" href="#HideJob">
+                        Hide Job
                     </Card.Footer.Item>
-                    <Card.Footer.Item renderAs="a" href="#Maybe">
-                        Maybe
+                    <Card.Footer.Item renderAs="a" href="#MoreDetails">
+                        More Details
                     </Card.Footer.Item>
                 </Card.Footer>
             </Card>
