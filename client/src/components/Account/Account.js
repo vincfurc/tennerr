@@ -1,17 +1,29 @@
 import React, {useState} from "react";
-import {Block, Content, Heading} from "react-bulma-components";
+import {Block, Box, Content, Heading} from "react-bulma-components";
 
 export default function Account() {
     const [walletAddress, setWalletAddress] = useState(localStorage.getItem("wallet"));
+    const [username, setUserName] = useState("vinc");
 
     return (
         <div>
-            <Block>
-                <Content>
-                    <Heading>vinc</Heading>
-                    <p>{walletAddress ? "Wallet address: " + walletAddress : "You are not currently logged in."}</p>
-                </Content>
-            </Block>
+            <Box style={{width: 500, margin: 'auto'}}>
+                <Block>
+                    <Content>
+                        <Heading>vinc</Heading>
+                        <dl>
+                            <dt>Wallet address</dt>
+                            <dd>{walletAddress}</dd>
+                            <dt>Name</dt>
+                            <dd>Vitalik Buterin</dd>
+                            <dt>Area</dt>
+                            <dd>Earth</dd>
+                            <dt>Discord</dt>
+                            <dd>vinc#1920</dd>
+                        </dl>
+                    </Content>
+                </Block>
+            </Box>
         </div>
     )
 }
