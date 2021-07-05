@@ -16,6 +16,7 @@ import {
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 import { ERC20 } from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
+import "./TennerrDAO.sol";
 
 /**
  * The dividends rights token show cases two use cases
@@ -36,6 +37,11 @@ contract TennerrVotingRightsToken is
 
     // use callbacks to track approved subscriptions
     mapping (address => bool) public isSubscribing;
+
+    // address of the tennerr streamer
+    address payable private _tennerrDAOContractAddress;
+    // tennerr streamer contract
+    TennerrDAO public tennerrDAO;
 
     constructor(
         string memory name,
@@ -181,6 +187,53 @@ contract TennerrVotingRightsToken is
         );
     }
 
+
+    /// @dev Issue new `amount` of giths to `beneficiary`
+    function issueMulti(address[2] memory beneficiaries) external {
+        require(msg.sender == _tennerrDAOContractAddress, 'Governance only.');
+        // then adjust beneficiary subscription units
+        for(uint i=0; i < beneficiaries.length; i++){
+             uint256 currentAmount = balanceOf(beneficiaries[i]);
+            // first try to do ERC20 mint
+            ERC20._mint(beneficiaries[i], 1);
+            _host.callAgreement(
+                _ida,
+                abi.encodeWithSelector(
+                    _ida.updateSubscription.selector,
+                    _cashToken,
+                    INDEX_ID,
+                    beneficiaries[i],
+                    uint128(currentAmount) + 1,
+                    new bytes(0) // placeholder ctx
+                ),
+                new bytes(0) // user data
+            );
+        }
+    }
+
+        /// @dev Revoke new `amount` of giths to `beneficiary`
+    function revokeMulti(address[] memory beneficiaries) external {
+        require(msg.sender == _tennerrDAOContractAddress, 'Governance only.');
+        // then adjust beneficiary subscription units
+        for(uint i=0; i < beneficiaries.length; i++){
+             uint256 currentAmount = balanceOf(beneficiaries[i]);
+            // first try to do ERC20 mint
+            ERC20._mint(beneficiaries[i], 1);
+            _host.callAgreement(
+                _ida,
+                abi.encodeWithSelector(
+                    _ida.deleteSubscription.selector,
+                    _tennerrDAOContractAddress,
+                    _cashToken,
+                    INDEX_ID,
+                    beneficiaries[i],
+                    new bytes(0) // placeholder ctx
+                ),
+                new bytes(0) // user data
+            );
+        }
+    }
+
     /// @dev Distribute `amount` of cash among all token holders
     function distribute(uint256 cashAmount) external onlyOwner {
         (uint256 actualCashAmount,) = _ida.calculateDistribution(
@@ -235,6 +288,12 @@ contract TennerrVotingRightsToken is
             ),
             new bytes(0) // user data
         );
+    }
+
+    function setTennerrDAO(address payable newContract) external onlyOwner {
+        // Check that the calling account has the admin role
+        _tennerrDAOContractAddress = newContract;
+        tennerrDAO = TennerrDAO(_tennerrDAOContractAddress);
     }
 
 }
