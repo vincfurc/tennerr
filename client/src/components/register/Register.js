@@ -3,9 +3,10 @@ import { Block, Box, Button, Container, Content, Icon, Form, Heading } from 'rea
 
 export default function Register() {
     const [registrationState, setRegistrationState] = useState('');
+    const [walletAddress, setWalletAddress] = useState(localStorage.getItem("wallet"));
 
     const props = {
-        wallet: 'MetaMask wallet address'
+        wallet: walletAddress
     };
 
     if (registrationState === 'pending') {
