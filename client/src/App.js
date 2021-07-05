@@ -55,8 +55,10 @@ export default function App() {
     },
   ];
 
+  const walletSet = (localStorage.getItem("wallet").length === 0 ? false : true);
+
   const [isMenuOpen, handleMenu] = useState(false);
-  const [isLoggedIn, handleLogin] = useState(false);
+  const [isLoggedIn, handleLogin] = useState(walletSet);
 
   function toggleMenu() {
     return handleMenu(!isMenuOpen);
@@ -71,9 +73,7 @@ export default function App() {
   function setMenuItems() {
     return (linkData.map((link, idx) =>
       isLoggedIn === link.isLoggedIn 
-      ? (<Navbar.Item key={idx}>
-          <Link to={link.url}>{link.text}</Link>
-        </Navbar.Item>) 
+      ? <Navbar.Item href={link.url} key={idx}> {link.text}</Navbar.Item> 
       : null
     ));
   }
@@ -95,8 +95,7 @@ export default function App() {
           </Navbar.Brand>
           <Navbar.Menu>
             <Navbar.Container align="left">
-              <Navbar.Item>
-                <Link to="./">Home</Link>
+              <Navbar.Item href="./">Home
               </Navbar.Item>
             </Navbar.Container>
             <Navbar.Container renderAs="ul" align="right">
