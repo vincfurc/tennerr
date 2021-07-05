@@ -19,6 +19,7 @@ import "./TennerrController.sol";
 import "./TennerrEscrow.sol";
 import "./TennerrFactory.sol";
 import "./TennerrStreamer.sol";
+import "./TennerrDAO.sol";
 
 
 contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
@@ -71,7 +72,7 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
 
   mapping(address => uint) sellerIdByAddress;
   mapping(uint => address) sellerAddressById;
-  mapping(bytes32 => Quote) quoteByQuoteId;
+  mapping(bytes32 => Quote) quotes;
 
   mapping(address => Quote[]) quotesBySeller;
   // address of the tennerr contract
@@ -86,6 +87,10 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
   address payable private _tennerrFactoryContractAddress;
   // tennerr contract
   TennerrFactory public tennerrFactory;
+  // address of the tennerr DAO
+  address payable private _tennerrDAOContractAddress;
+  // tennerr DAO contract
+  TennerrDAO public tennerrDAO;
   // address of the tennerr streamer
   address payable private _tennerrStreamerContractAddress;
   // tennerr streamer contract
@@ -127,7 +132,8 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
   }
   /* open quote from seller */
   /* jobLength is how long it takes to fullfill job*/
-  function jobQuoteProposal(uint priceInUsd,
+  function jobQuoteProposal(
+    uint priceInUsd,
     uint paymentType,
     uint nOfRevisions,
     uint jobLength,
@@ -138,8 +144,8 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
       uint sellerId = sellerIdByAddress[msg.sender];
       /* should be very hard to get a duplicate id from this*/
       bytes32 jobId = keccak256(abi.encodePacked(sellerId, priceInUsd, paymentType, block.timestamp));
-
-      Quote storage quote = quoteByQuoteId[jobId];
+      
+      Quote storage quote = quotes[jobId];
       quote.jobId = jobId;
       quote.sellerId = sellerId;
       quote.priceUsd = priceInUsd;
@@ -147,7 +153,7 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
       quote.nOfRevisions = nOfRevisions;
       quote.jobLength = jobLength;
       quote.flowRate = flowRate;
-
+      require( quote.priceUsd > 0, 'wtf');
       quotesBySeller[msg.sender].push(quote);
       return jobId;
   }
@@ -158,25 +164,20 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
     bytes32 sellerQuoteId,
     uint amountUsd,
     string memory currencyTicker) public {
+
       /* requires seller to be registered and buyer to have enough money  */
       /* require(amount > 0, "Deposit must be more than 0."); */
       require(_erc20Contracts[currencyTicker] != address(0), "Invalid currency code.");
       // Get deposit amount in USD
-      Quote memory quote = quoteByQuoteId[sellerQuoteId];
+      Quote memory quote = quotes[sellerQuoteId];
       uint priceOfQuote = quote.priceUsd;
       require(amountUsd >= priceOfQuote);
       uint sellerId = quote.sellerId;
       address sellerAddress = sellerAddressById[sellerId];
-      address buyerAddress = msg.sender;
-      uint jobLength = quote.jobLength;
-      uint paymentType = quote.paymentType;
       uint flowRate = 0;
-      if (paymentType==2){flowRate = quote.flowRate;}
-      _handlePayment(sellerQuoteId,buyerAddress,amountUsd,paymentType,currencyTicker, flowRate);
-      tennerrEscrow.storeOrder(sellerId,buyerAddress, sellerAddress, sellerQuoteId, priceOfQuote, jobLength, paymentType, flowRate);
-      /* if deadline > 2 days deposit in aave and keep count */
-     /* increment work id for seller */
-     /* update work id status to started */
+      if (quote.paymentType==2){flowRate = quote.flowRate;}
+      uint amountMinted = _handlePayment(sellerQuoteId,msg.sender,amountUsd,quote.paymentType,currencyTicker, flowRate);
+      tennerrEscrow.storeOrder(sellerId,msg.sender, sellerAddress, sellerQuoteId, priceOfQuote, quote.jobLength, quote.paymentType, flowRate, amountMinted);
   }
 
   function _handlePayment(
@@ -185,11 +186,11 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
     uint amount,
     uint paymentType,
     string memory currencyTicker,
-    uint flowRate) internal {
+    uint flowRate) internal returns (uint amountMinted) {
       address erc20Contract = _erc20Contracts[currencyTicker];
       // requires approval from user (tx sender, done by web3)
       IERC20(erc20Contract).safeTransferFrom(buyerAddress, _tennerrControllerContractAddress, amount);
-      uint amountMinted = tennerrFactory.mint(amount,currencyTicker);
+      amountMinted = tennerrFactory.mint(amount,currencyTicker);
       /* all upfront */
       if (paymentType == 0)
       {
@@ -248,6 +249,48 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
     if reply and decline, disputes escaleted to DAO
    */
 
+// issueId: 1 jobNotDelivered, 2 jobNotMeetingExpectation, 3 other
+function openDispute(bytes32 jobId, uint issueId) public returns (bool success){
+    TennerrEscrow.Order memory order = tennerrEscrow.getQuoteData(jobId);
+    address buyer = order.buyer;
+    address seller = order.seller;
+    require(msg.sender == buyer, 'Only buyer can open dispute');
+    success = tennerrDAO.disputeJob(jobId,buyer, seller,issueId);
+}
+
+// proposalId: 0 refund, 1 timeExtension , 2 compensationUpgrade, 3 split,
+function sellerAppeal(bytes32 jobId, uint proposalId, uint proposalData, string calldata shortExplanation) public {
+    TennerrEscrow.Order memory order = tennerrEscrow.getQuoteData(jobId);
+    address seller = order.seller;
+    require(msg.sender == seller, 'Only seller can appeal');
+    tennerrDAO.updateDisputeAfterAppeal(jobId,seller,proposalId,proposalData,shortExplanation);
+}
+
+// proposalId: 0 accept, 1 timeExtension , 2 compensationUpgrade, 3 split, 4 refund
+function buyerAppealResponse(bytes32 jobId, uint responseId,uint proposalData, string calldata shortExplanation) public {
+    TennerrEscrow.Order memory order = tennerrEscrow.getQuoteData(jobId);
+    address buyer = order.buyer;
+    require(msg.sender == buyer, 'Only buyer can respond');
+    tennerrDAO.buyerAppealEvaluation(jobId,buyer,responseId, proposalData, shortExplanation);
+}
+
+// proposalId: 0 accept, other: DAO
+function sellerDealResponse(bytes32 jobId, uint responseId, string calldata shortExplanation) public {
+    TennerrEscrow.Order memory order = tennerrEscrow.getQuoteData(jobId);
+    address seller = order.seller;
+    require(msg.sender == seller, 'Only seller can respond to proposed deal');
+    tennerrDAO.sellerDealEvaluation(jobId,seller,responseId, shortExplanation);
+}
+
+function topUpOnOrder(bytes32 jobId, uint amount, string memory currencyTicker) external {
+    address erc20Contract = _erc20Contracts[currencyTicker];
+    require(IERC20(erc20Contract).balanceOf(msg.sender)>= amount);
+    IERC20(erc20Contract).safeTransferFrom(msg.sender, _tennerrControllerContractAddress, amount);
+    uint amountMinted = tennerrFactory.mint(amount,currencyTicker);
+    _moveToEscrow(amountMinted);
+    tennerrEscrow.handleTopUp(jobId,amountMinted);
+}
+
 /* dispute escalation*/
   /* chainlink VRF to pick small group of seller/buyers
     sign NDA(if needed) look at history and vote
@@ -257,14 +300,14 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
 
  // add supported currency for deposits
  function addSupportedCurrency(string memory currencyTicker, address erc20Contract) public {
-   _erc20Contracts[currencyTicker] = erc20Contract;
+    _erc20Contracts[currencyTicker] = erc20Contract;
  }
 
  function setTennerrEscrow(address payable newContract) external {
-   // Check that the calling account has the admin role
-   require(hasRole(ADMIN_ROLE, msg.sender), "Caller is not an admin");
-   _tennerrEscrowContractAddress = newContract;
-   tennerrEscrow = TennerrEscrow(_tennerrEscrowContractAddress);
+     // Check that the calling account has the admin role
+     require(hasRole(ADMIN_ROLE, msg.sender), "Caller is not an admin");
+     _tennerrEscrowContractAddress = newContract;
+     tennerrEscrow = TennerrEscrow(_tennerrEscrowContractAddress);
  }
 
  function setTennerrController(address payable newContract) external {
@@ -279,6 +322,13 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
    require(hasRole(ADMIN_ROLE, msg.sender), "Caller is not an admin");
    _tennerrFactoryContractAddress = newContract;
    tennerrFactory = TennerrFactory(_tennerrFactoryContractAddress);
+ }
+
+ function setTennerrDAO(address payable newContract) external {
+   // Check that the calling account has the admin role
+   require(hasRole(ADMIN_ROLE, msg.sender), "Caller is not an admin");
+   _tennerrDAOContractAddress = newContract;
+   tennerrDAO = TennerrDAO(_tennerrDAOContractAddress);
  }
 
  function setTennerrFactoryX(address payable newContract) external {
@@ -316,12 +366,17 @@ contract Tennerr is AccessControl, ReentrancyGuard, ChainlinkClient {
     return sellerIdByAddress[msg.sender];
   }
 
+  function getSellerAddressById(uint sellerId) public view returns (address){
+      return sellerAddressById[sellerId];
+  }
+  
+
   function getQuotesByAddress(address seller) public view returns (Quote[] memory){
-    return quotesBySeller[seller];
+      return quotesBySeller[seller];
   }
 
   function getQuoteByQuoteId(bytes32 sellerQuoteId) public view returns (Quote memory) {
-    return quoteByQuoteId[sellerQuoteId];
+      return quotes[sellerQuoteId];
   }
 
   // fallback function

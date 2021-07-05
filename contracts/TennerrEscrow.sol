@@ -44,8 +44,8 @@ contract TennerrEscrow is AccessControl {
   TennerrFactory public tennerrFactory;
 
 
-  mapping(address => mapping(uint256 => Order)) orders;
-  mapping(bytes32 => Order) orderByOrderId;
+  /* mapping(address => mapping(uint256 => Order)) orders; */
+  mapping(bytes32 => Order) public orderByOrderId;
 
   mapping(bytes32 => uint) public amountInEscrow;
   mapping(address => uint) public totalAmountClaimable;
@@ -78,11 +78,12 @@ contract TennerrEscrow is AccessControl {
     uint price,
     uint jobLength,
     uint paymentType,
-    uint flowRate) external {
+    uint flowRate,
+    uint amountMinted) external {
       require(msg.sender == _tennerrContractAddress, 'Storing order not allowed');
       uint256 orderNumber = orderNumberTracker.current();
       orderNumberTracker.increment();
-      Order storage order = orders[buyer][orderNumber];
+      Order storage order = orderByOrderId[jobId];
       order.orderId = orderNumber;
       order.sellerId = sellerId;
       order.buyer = buyer;
@@ -90,7 +91,6 @@ contract TennerrEscrow is AccessControl {
       order.jobId = jobId;
       order.orderPrice = price;
       order.absDeadline = block.timestamp.add(jobLength);
-      orderByOrderId[jobId] = order;
       totalAmountClaimable[seller] += price;
       totalAmountClaimable[buyer] += price;
       if (paymentType == 2) {
@@ -98,9 +98,40 @@ contract TennerrEscrow is AccessControl {
         uint[5] memory data = tennerrStreamer.getStreamData(jobId);
         amountInEscrow[jobId] = data[2];//streamedToDate
       } else {
-        amountInEscrow[jobId] += price;
+        amountInEscrow[jobId] += amountMinted;
       }
+      tennerrDAO.includeElegible(buyer);
+      tennerrDAO.includeElegible(seller);
   }
+
+
+
+  function editTimeline(bytes32 jobId, uint proposalData) external {
+      require(_tennerrDAOContractAddress == msg.sender, 'Governance rules on this');
+      // adding time from now not from original timeline
+      orderByOrderId[jobId].absDeadline = block.timestamp.add(proposalData);
+  }
+
+  function editCompensation(bytes32 jobId, uint proposalData) external {
+      require(_tennerrDAOContractAddress == msg.sender, 'Governance rules on this');
+      orderByOrderId[jobId].orderPrice += proposalData;
+  }
+
+  function initiateRefund(bytes32 jobId) external {
+      require(_tennerrDAOContractAddress == msg.sender, 'Governance rules on this');
+      address _to = orderByOrderId[jobId].buyer;
+      uint amount = amountInEscrow[jobId];
+      amountInEscrow[jobId] -= amount;
+      IERC20(tennerrFactory).approve(address(this), amount);
+      IERC20(tennerrFactory).safeTransferFrom(address(this), _to, amount);
+  }
+
+
+  function handleTopUp(bytes32 jobId, uint amount) external {
+      require(_tennerrContractAddress == msg.sender);
+      amountInEscrow[jobId] += amount;
+  }
+
 
   function getQuoteData(bytes32 jobId) external view returns (Order memory){
     return orderByOrderId[jobId];
