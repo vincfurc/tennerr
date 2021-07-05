@@ -10,7 +10,7 @@ export default function Account() {
             <Box style={{width: 500, margin: 'auto'}}>
                 <Block>
                     <Content>
-                        <Heading>vinc</Heading>
+                        <Heading>{username}</Heading>
                         <dl>
                             <dt>Wallet address</dt>
                             <dd>{walletAddress}</dd>
