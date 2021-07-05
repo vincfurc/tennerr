@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import { Block, Box, Button, Container, Form, Heading } from 'react-bulma-components'
 
 export default function Register() {
+    const [registrationState, setRegistrationState] = useState('');
 
     const props = {
         wallet: 'MetaMask wallet address'
