@@ -54,7 +54,7 @@ contract TennerrEscrow is AccessControl {
   // Create a new role identifier for the admin role
   bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
 
-  constructor() public {
+  constructor() {
     // give admin role to deployer
     _setupRole(ADMIN_ROLE, msg.sender);
   }

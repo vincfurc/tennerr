@@ -1,88 +1,141 @@
-import React from "react";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+import "bulma/css/bulma.min.css";
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
-import Login from "./Login";
-import About from "./About";
-import {
-  Link,
-  HStack,
-} from '@chakra-ui/react';
-import FindFreelancers from "./FindFreelancers";
-import MyAccount from "./MyAccount";
-import ResolutionCenter from "./ResolutionCenter";
-import RegisterSeller from "./RegisterSeller";
+  Navbar,
+  Heading,
+  Footer,
+  Container,
+  Content,
+  Section
+} from "react-bulma-components";
+
+import Login from "./components/Login/Login";
+import About from "./components/About/About";
+
+// import User from "./components/User/User";
+import Search from "./components/Search/Search";
+import Account from "./components/Account/Account";
+import Resolution from "./components/Resolution/Resolution";
+import Register from "./components/register/Register";
+import Gig from "./components/Gig/Gig";
 
 export default function App() {
   const linkData = [
     {
-      text:'Home',
-      url:'/'
+      text: "Login",
+      url: "/login",
+      isLoggedIn: false,
     },
     {
-      text:'Login',
-      url:'/login'
+      text: "My Account",
+      url: "/account",
+      isLoggedIn: true,
     },
     {
-      text:'My Account',
-      url:'/my-account'
+      text: "Register",
+      url: "/register",
+      isLoggedIn: true,
     },
     {
-      text:'Register Seller',
-      url:'/register-seller'
+      text: "Find Freelancers",
+      url: "/search/freelancers",
+      isLoggedIn: true,
     },
     {
-      text:'Find Freelancers',
-      url:'/find-freelancers'
+      text: "Find Gigs",
+      url: "/search/gigs",
+      isLoggedIn: true,
     },
     {
-      text:'Resolution Center',
-      url:'/resolution-center'
-    }
+      text: "Resolution Center",
+      url: "/resolution",
+      isLoggedIn: true,
+    },
   ];
-  const links = linkData.map((link, idx) => {
-    return (
-    <Link href={link.url} key={idx}>{link.text}</Link>
-    );
-  });
+
+  const [isMenuOpen, handleMenu] = useState(false);
+  const [isLoggedIn, handleLogin] = useState(false);
+
+  function toggleMenu() {
+    return handleMenu(!isMenuOpen);
+  }
+
+  function toggleLogin() {
+    let login = !isLoggedIn;
+    handleLogin(login);
+    setMenuItems();
+  }
+
+  function setMenuItems() {
+    return (linkData.map((link, idx) =>
+      isLoggedIn === link.isLoggedIn 
+      ? (<Navbar.Item key={idx}>
+          <Link to={link.url}>{link.text}</Link>
+        </Navbar.Item>) 
+      : null
+    ));
+  }
 
   return (
-      <div>
-        <Router>
-          <HStack spacing={8} alignItems={'center'}>
-            <HStack
-                as={'nav'}
-                spacing={4}
-                display={{ base: 'none', md: 'flex' }}>
-              {links}
-            </HStack>
-          </HStack>
-          {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-          <Switch>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <Route path="/my-account">
-              <MyAccount/>
-            </Route>
-            <Route path="/register-seller">
-              <RegisterSeller/>
-            </Route>
-            <Route path="/find-freelancers">
-              <FindFreelancers/>
-            </Route>
-            <Route path="/resolution-center">
-              <ResolutionCenter/>
-            </Route>
-            <Route path="/">
-              <About />
-            </Route>
-          </Switch>
-        </Router>
-      </div>
+    <div>
+      <Router>
+        <Navbar 
+        active={isMenuOpen}
+        fixed='top' color='info has-shadow' >
+          <Container breakpoint='desktop is-max-desktop' >
+          <Navbar.Brand>
+            <Navbar.Item renderAs="a" href="./">
+              <Heading spaced={true} size={4} weight={"bold"}>
+                Tennerr
+              </Heading>
+            </Navbar.Item>
+            <Navbar.Burger onClick={toggleMenu} />
+          </Navbar.Brand>
+          <Navbar.Menu>
+            <Navbar.Container align="left">
+              <Navbar.Item>
+                <Link to="./">Home</Link>
+              </Navbar.Item>
+            </Navbar.Container>
+            <Navbar.Container renderAs="ul" align="right">
+              {setMenuItems()}
+            </Navbar.Container>
+          </Navbar.Menu>
+          </Container>
 
+        </Navbar>
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Section >
+          <Container 
+          breakpoint='desktop is-max-desktop'>
+            <Switch>
+              <Route path="/login">
+                <Login user={toggleLogin}></Login>
+              </Route>
+              <Route path="/account" component={Account} />
+              <Route path="/register" component={Register} />
+              <Route path="/search/freelancers" component={Search} />
+              <Route path="/search/gigs" component={Gig} />
+              <Route path="/resolution" component={Resolution} />
+              <Route path="/" component={About} />
+            </Switch>
+          </Container>
+        </Section>
+
+      </Router>
+      <Footer>
+        <Container breakpoint='desktop is-max-desktopp'>
+          <Content style={{ textAlign: "center" }}
+          >
+            <p>
+              Tenner was made with <strong>♥</strong> by @vinc, @iso and @eurv
+            </p>
+          </Content>
+        </Container>
+      </Footer>
+    </div>
   );
 }
