@@ -1,12 +1,19 @@
 import React from 'react'
-import {Card, Content, Heading, Image, Media, Section} from "react-bulma-components";
+import {Card, Content, Form, Heading, Image, Media, Section} from "react-bulma-components";
 
 export default function Gig() {
     return (
         <Section>
+            <form>
+                <Form.Field>
+                    <Form.Control>
+                        <Form.Input type="text" placeholder="Search gigs" />
+                    </Form.Control>
+                </Form.Field>
+            </form>
             <Card>
                 <Card.Header>
-                    <Card.Header.Title>Active Gigs</Card.Header.Title>
+                    <Card.Header.Title>Recently Added Gigs</Card.Header.Title>
                 </Card.Header>
                 <Card.Content>
                     <Media>
