@@ -87,7 +87,7 @@ export default function App() {
           <Container breakpoint='desktop is-max-desktop' >
           <Navbar.Brand>
             <Navbar.Item renderAs="a" href="./">
-              <Heading spaced={true} size={4} weight={"bold"}>
+              <Heading style={{color: 'white'}} spaced={true} size={4} weight={"bold"} >
                 Tennerr
               </Heading>
             </Navbar.Item>

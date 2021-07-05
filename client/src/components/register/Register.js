@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Block, Box, Button, Container, Form, Heading } from 'react-bulma-components'
+import { Block, Box, Button, Container, Content, Icon, Form, Heading } from 'react-bulma-components'
 
 export default function Register() {
     const [registrationState, setRegistrationState] = useState('');
@@ -7,6 +7,14 @@ export default function Register() {
     const props = {
         wallet: 'MetaMask wallet address'
     };
+
+    if (registrationState === 'pending') {
+        setTimeout(() => {
+            return setRegistrationState('success')
+        }, 4000)
+    }
+
+
 
     return <div>
         <section>
@@ -16,6 +24,33 @@ export default function Register() {
                         Register your account
                     </Heading>
                         <Block>
+                            {registrationState === 'error' ?  
+                                <Container>
+                                    <Content>
+                                        <Heading>Something went wrong! Please try again. </Heading>
+                                    </Content>
+                                </Container>
+                        : registrationState === 'pending' 
+                        ? 
+                            <Container>
+                                <Content>
+                                    <Heading size={4}>
+                                     Please wait while we register your account. This should take about 30 seconds
+                                    </Heading>
+                                </Content>
+                            </Container>
+                       
+
+                        : registrationState === 'success' 
+                        ? 
+                            <Container>
+                                <Content>
+                                    <Heading size={4}>You have successfully registered! </Heading>
+                                </Content>
+                            </Container>
+                        
+
+                        :                       
                         <form>
                             <Form.Field>
                             <Form.Label size={'small'}>Wallet Address</Form.Label>
@@ -96,10 +131,12 @@ export default function Register() {
                             </Form.Field>
                             <Form.Field >
                                 <Form.Control>
-                                    <Button color="link" size={'small'} >Submit</Button>
+                                    <Button color="link" size={'small'} onClick={() => setRegistrationState('pending')}>Submit</Button>
                                 </Form.Control>
                             </Form.Field>
-                        </form>
+                        </form>    
+                        }
+
                     </Block>
                 </Container>
             </Box>
