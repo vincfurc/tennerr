@@ -5,10 +5,6 @@ export default function Register() {
     const [registrationState, setRegistrationState] = useState('');
     const [walletAddress, setWalletAddress] = useState(localStorage.getItem("wallet"));
 
-    const props = {
-        wallet: walletAddress
-    };
-
     if (registrationState === 'pending') {
         setTimeout(() => {
             return setRegistrationState('success')
@@ -67,7 +63,7 @@ export default function Register() {
                                     color='grey-light'
                                     disabled 
                                     readOnly
-                                    placeholder={props.wallet} />
+                                    placeholder={walletAddress} />
                                 </Form.Control>
                             </Form.Field>
                             <Form.Field>
