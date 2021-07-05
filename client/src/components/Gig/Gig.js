@@ -33,7 +33,7 @@ export default function Gig() {
                     </Media>
                     <Content>
                         <p>can someone please feed my cats while i'm on vacation this week</p>
-                        <p>Payment: 0.0091 Eth per day</p>
+                        <p>Payment: 20.00 USDC per day</p>
                         <time dateTime="2021-7-3">11:09 PM - 3 Jul 2021</time>
                     </Content>
                 </Card.Content>

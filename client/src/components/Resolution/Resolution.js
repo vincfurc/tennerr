@@ -39,7 +39,7 @@ export default function Resolution() {
                 <Content>
                     <p><strong>Original Request:</strong> I need someone to play some music for our 4th of july party</p>
                     <p><strong>Dispute Information:</strong> no show</p>
-                    <p><strong>Payment:</strong> 0.090 Eth</p>
+                    <p><strong>Payment:</strong> 200.00 USDC</p>
                     <time dateTime="2021-07-04">9:48 PM - 4 Jul 2021</time>
                 </Content>
             </Card.Content>
@@ -73,7 +73,7 @@ export default function Resolution() {
                     <p><strong>Original Request:</strong> can someone knit christmas hats for my cats</p>
                     <p><strong>Dispute Information:</strong> wigglesworth doesnt like the green hat</p>
                     <img src="./assets/images/christmas-cats.jpg"/>
-                    <p><strong>Payment:</strong> 0.0068 Eth</p>
+                    <p><strong>Payment:</strong> 15.00 USDC</p>
                     <time dateTime="2020-12-24">3:23 PM - 24 Dec 2020</time>
                 </Content>
             </Card.Content>
