@@ -16,63 +16,21 @@ export default function Search() {
                     <Tile kind="parent" size={3}>
                         <Tile kind="child" color="primary">
                             <Box>
-                                <Heading>Test</Heading>
+                                <Heading>vinc</Heading>
                             </Box>
                         </Tile>
                     </Tile>
                     <Tile kind="parent" size={3}>
                         <Tile kind="child" color="primary">
                             <Box>
-                                <Heading>Test</Heading>
+                                <Heading>eurv</Heading>
                             </Box>
                         </Tile>
                     </Tile>
                     <Tile kind="parent" size={3}>
                         <Tile kind="child" color="primary">
                             <Box>
-                                <Heading>Test</Heading>
-                            </Box>
-                        </Tile>
-                    </Tile>
-                    <Tile kind="parent" size={3}>
-                        <Tile kind="child" color="primary">
-                            <Box>
-                                <Heading>Test</Heading>
-                            </Box>
-                        </Tile>
-                    </Tile>
-                    <Tile kind="parent" size={3}>
-                        <Tile kind="child" color="primary">
-                            <Box>
-                                <Heading>Test</Heading>
-                            </Box>
-                        </Tile>
-                    </Tile>
-                    <Tile kind="parent" size={3}>
-                        <Tile kind="child" color="primary">
-                            <Box>
-                                <Heading>Test</Heading>
-                            </Box>
-                        </Tile>
-                    </Tile>
-                    <Tile kind="parent" size={3}>
-                        <Tile kind="child" color="primary">
-                            <Box>
-                                <Heading>Test</Heading>
-                            </Box>
-                        </Tile>
-                    </Tile>
-                    <Tile kind="parent" size={3}>
-                        <Tile kind="child" color="primary">
-                            <Box>
-                                <Heading>Test</Heading>
-                            </Box>
-                        </Tile>
-                    </Tile>
-                    <Tile kind="parent" size={3}>
-                        <Tile kind="child" color="primary">
-                            <Box>
-                                <Heading>Test</Heading>
+                                <Heading>iso</Heading>
                             </Box>
                         </Tile>
                     </Tile>
