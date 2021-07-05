@@ -126,6 +126,26 @@ contract TennerrEscrow is AccessControl {
       IERC20(tennerrFactory).safeTransferFrom(address(this), _to, amount);
   }
 
+  function initiateSplitRefund(bytes32 jobId) external {
+      require(_tennerrDAOContractAddress == msg.sender, 'Governance rules on this');
+      address _buyer = orderByOrderId[jobId].buyer;
+      address _seller = orderByOrderId[jobId].seller;
+      uint amount = amountInEscrow[jobId];
+      amountInEscrow[jobId] -= amount;
+      IERC20(tennerrFactory).approve(address(this), amount);
+      IERC20(tennerrFactory).safeTransferFrom(address(this), _buyer, amount.div(2));
+      IERC20(tennerrFactory).safeTransferFrom(address(this), _seller, amount.div(2));
+  }
+
+  function initiateRefundSeller(bytes32 jobId) external {
+      require(_tennerrDAOContractAddress == msg.sender, 'Governance rules on this');
+      address _to = orderByOrderId[jobId].seller;
+      uint amount = amountInEscrow[jobId];
+      amountInEscrow[jobId] -= amount;
+      IERC20(tennerrFactory).approve(address(this), amount);
+      IERC20(tennerrFactory).safeTransferFrom(address(this), _to, amount);
+  }
+
 
   function handleTopUp(bytes32 jobId, uint amount) external {
       require(_tennerrContractAddress == msg.sender);

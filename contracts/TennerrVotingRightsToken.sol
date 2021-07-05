@@ -189,13 +189,14 @@ contract TennerrVotingRightsToken is
 
 
     /// @dev Issue new `amount` of giths to `beneficiary`
-    function issueMulti(address[2] memory beneficiaries) external {
+    function issueMulti(address[] memory beneficiaries) external {
         require(msg.sender == _tennerrDAOContractAddress, 'Governance only.');
         // then adjust beneficiary subscription units
         for(uint i=0; i < beneficiaries.length; i++){
-             uint256 currentAmount = balanceOf(beneficiaries[i]);
+            uint256 currentAmount = balanceOf(beneficiaries[i]);
             // first try to do ERC20 mint
             ERC20._mint(beneficiaries[i], 1);
+            require(ERC20.balanceOf(beneficiaries[i])>0,'Mint failed');
             _host.callAgreement(
                 _ida,
                 abi.encodeWithSelector(

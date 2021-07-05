@@ -32,10 +32,10 @@ contract TennerrDAO is AccessControl, VRFConsumerBase {
 
   mapping(bytes32 => uint[]) public disputeCurrentDeal;
 
-  address[] public elegible;
+  mapping(bytes32 => mapping(address => bool)) public electedJobId;
+  mapping(bytes32 => mapping(address => bool)) public hasVoted;
 
-  /* address[] public electedGlobal;
-  uint[2] public  valuesGlobal; */
+  address[] public elegible;
 
   // address of the tennerr contract
   address payable private _tennerrContractAddress;
@@ -131,9 +131,9 @@ contract TennerrDAO is AccessControl, VRFConsumerBase {
           disputeStatus[jobId] = [3, block.timestamp + 2 days];
           disputeCurrentDeal[jobId] = [proposalId, counterProposalData];
       } else if (proposalId == 5 ){
-        disputeStatus[jobId][0] = 4;
-        /* _escalationSetUp(jobId); */
-        _escalationSetUpMOCK(jobId);
+          disputeStatus[jobId][0] = 4;
+        /* _escalationSetUp(jobId); */ //online
+        _escalationSetUpMOCK(jobId); //for testing locally
       }
   }
 
@@ -155,23 +155,23 @@ contract TennerrDAO is AccessControl, VRFConsumerBase {
       uint len = elegible.length;
       bytes32 reqId = reqIdByJobId[jobId];
       if (len > 7){ len = 7 ;}
-      values = expand(randomResultByReqId[reqId], len);
-      uint[2] memory newValues = _modValues(values, len, jobId);
-      address[2] memory elected = _electVoters(newValues);
-      /* valuesGlobal = newValues;
-      electedGlobal =  elected; */
+      require(randomResultByReqId[reqId]>0,'No random res');
+      values = expand(randomResultByReqId[reqId], 7);
+      uint[] memory newValues = _modValues(values, 7);
+      require(newValues[1]>0,'No modvalue res');
+      address[] memory elected = _electVoters(newValues,jobId);
       _distributeVotingRights(elected);
   }
 
-  function _modValues(uint[] memory values, uint len, bytes32 jobId) public returns (uint[2] memory newValues){
-      uint index;
+  function _modValues(uint[] memory values, uint len) public returns (uint[] memory newValues){
+      newValues = new uint[](len);
       for (uint i=0; i < len; i++) {
-         index = values[i] % (len - i);
-         newValues[i] = index;
+         newValues[i] = uint(values[i] % (len - i));
       }
+      return newValues;
   }
 
-  function _distributeVotingRights(address[2] memory beneficiaries) internal {
+  function _distributeVotingRights(address[] memory beneficiaries) internal {
     uint amountGov = _calculateFee();
     tennerrVRT.issueMulti(beneficiaries);
   }
@@ -182,10 +182,13 @@ contract TennerrDAO is AccessControl, VRFConsumerBase {
   function _distributeFee() internal {
   }
 
-  function _electVoters(uint[2] memory values) internal view returns (address[2] memory elected) {
+  function _electVoters(uint[] memory values, bytes32 jobId) public returns (address[] memory elected) {
+      uint len = values.length;
+      elected = new address[](len);
       for(uint i =0; i < values.length; i++){
         address selection = elegible[values[i]];
         elected[i] = selection;
+        electedJobId[jobId][selection] = true;
       }
   }
 
@@ -212,47 +215,53 @@ contract TennerrDAO is AccessControl, VRFConsumerBase {
   }
 
   // vote: 0 giveBackToBuyer, 1 giveToSeller, 2 split
-  function voteOnDispute(bytes32 disputeId, uint8 vote) public {
-      require(isDisputeOpen[disputeId],"Dispute closed or non-existant.");
-      uint deadline = votesOnDispute[disputeId][3] + 2 days;
-      require( block.timestamp < deadline, "Deadline passed. Voting closed.");
+  function voteOnDispute(bytes32 jobId, uint8 vote) public {
+      require(disputeStatus[jobId][0] == 4, 'Dispute not escalated');
+      require(block.timestamp < disputeStatus[jobId][1], 'deadline has passed');
+      require(electedJobId[jobId][msg.sender],'Sender not elected.');
+      require(!hasVoted[jobId][msg.sender], 'Already voted');
       uint weight = 1;
       if (vote == 0) {
-        votesOnDispute[disputeId][0] += weight;
+        votesOnDispute[jobId][0] += weight;
       } else if (vote ==1) {
-        votesOnDispute[disputeId][1] += weight;
+        votesOnDispute[jobId][1] += weight;
       } else if (vote ==2) {
-        votesOnDispute[disputeId][2] += weight;
+        votesOnDispute[jobId][2] += weight;
       }
+      hasVoted[jobId][msg.sender] = true;
   }
 
-  function getDisputeDecision(bytes32 disputeId) public {
-      require(isDisputeOpen[disputeId],"Dispute closed or non-existant.");
-      uint deadline = votesOnDispute[disputeId][3] + 2 days;
-      require( block.timestamp > deadline, "Voting still open. Try later.");
-      uint totalVotes = votesOnDispute[disputeId][0] + votesOnDispute[disputeId][1] + votesOnDispute[disputeId][2];
+  function getDisputeDecision(bytes32 jobId) public returns (uint winner){
+      require(disputeStatus[jobId][0] == 4, 'Dispute not escalated');
+      require(block.timestamp > disputeStatus[jobId][1], 'deadline not passed');
+      uint totalVotes = votesOnDispute[jobId][0] + votesOnDispute[jobId][1] + votesOnDispute[jobId][2];
       uint winner = 5;
-      if ((votesOnDispute[disputeId][0] > votesOnDispute[disputeId][1]) && (votesOnDispute[disputeId][0] > votesOnDispute[disputeId][2])){
+      if ((votesOnDispute[jobId][0] > votesOnDispute[jobId][1]) && (votesOnDispute[jobId][0] > votesOnDispute[jobId][2])){
         winner = 0;
-      } else if ((votesOnDispute[disputeId][1] > votesOnDispute[disputeId][0]) && (votesOnDispute[disputeId][1] > votesOnDispute[disputeId][2])){
+      } else if ((votesOnDispute[jobId][1] > votesOnDispute[jobId][0]) && (votesOnDispute[jobId][1] > votesOnDispute[jobId][2])){
         winner = 1;
-      } else if ((votesOnDispute[disputeId][2] > votesOnDispute[disputeId][0]) && (votesOnDispute[disputeId][2] > votesOnDispute[disputeId][1])){
+      } else if ((votesOnDispute[jobId][2] > votesOnDispute[jobId][0]) && (votesOnDispute[jobId][2] > votesOnDispute[jobId][1])){
         winner = 2;
       }
-      votesOnDispute[disputeId][5] = winner;
+      votesOnDispute[jobId][5] = winner;
   }
 
-  function executeDisputeDecision(bytes32 disputeId) public {
-      require(votesOnDispute[disputeId][3]>0, "Dispute does not exist");
-      require(isDisputeOpen[disputeId],"Dispute already closed.");
-      uint deadline = votesOnDispute[disputeId][3] + 2 days;
-      require( block.timestamp > deadline, "Voting still open. Try later.");
-      require( votesOnDispute[disputeId][5] != 5, "No decision yet.");
-      require( votesOnDispute[disputeId][5] != 6," Decision is a draw, no enforceable action.");
+  function executeDisputeDecision(bytes32 jobId) public {
+      require(disputeStatus[jobId][0] == 4, 'Dispute not escalated');
+      require(block.timestamp > disputeStatus[jobId][1], 'deadline not passed');
+      require( votesOnDispute[jobId][5] != 5, "No decision yet.");
+        /* execute decision */
+      if (votesOnDispute[jobId][5] ==0){
+        tennerrEscrow.initiateRefund(jobId);
+        disputeStatus[jobId][0] = 5; //close
+        isDisputeOpen[jobId] == false;
+      } else if (votesOnDispute[jobId][5] ==1){
+        tennerrEscrow.initiateRefundSeller(jobId);
+        disputeStatus[jobId][0] = 5; //close
+        isDisputeOpen[jobId] == false;
+      } else if (votesOnDispute[jobId][5] ==2){
 
-      address staker = disputingPartiesByJobId[disputeId][0];
-      address disputer = disputingPartiesByJobId[disputeId][1];
-      /* execute decision */
+      }
   }
 
 
@@ -299,10 +308,10 @@ contract TennerrDAO is AccessControl, VRFConsumerBase {
       emit RandomnessIsHere(requestId, value);
   }
 
-  function expand(uint256 randomValue, uint256 n) public pure returns (uint256[] memory expandedValues) {
-      expandedValues = new uint256[](n);
-      for (uint256 i = 0; i < n; i++) {
-          expandedValues[i] = uint256(keccak256(abi.encode(randomValue, i)));
+  function expand(uint256 randomValue, uint256 n) public pure returns (uint[] memory expandedValues) {
+      expandedValues = new uint[](n);
+      for (uint i = 0; i < n; i++) {
+          expandedValues[i] = uint(keccak256(abi.encode(randomValue, i)));
       }
       return expandedValues;
   }
